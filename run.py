@@ -3,10 +3,11 @@
 # locally using just notepad++ and python installed.
 # while experimening and figuring out what my project should be
 
-# import my own functions. They are in a separate file to make the code easier to read
-# and game-file itself only contain the main loop and the initialization code
-# This of course requires that a lot of the functions require parameters and 
-# return-values
+# import my own functions. They are in a separate file to make 
+# the code easier to read and game-file itself only contain the 
+# main loop and the initialization code
+# This of course requires that a lot of the functions require 
+# parameters and return-values
 # Which is good-practice anyway
 
 import functions

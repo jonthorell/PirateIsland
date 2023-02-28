@@ -15,7 +15,7 @@ COLOR = {
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions"}
 locations=[]
 verbs=[]
-current_location=3
+current_location=4
 verbosity=False
 #1=always print verbose text, 0 only at first visit. Altered by verbose and brief functions
 
@@ -369,6 +369,18 @@ def create_locations ():
     "east": 4,
     "west": 0,
     "south": 7,
+    "north": 0
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are at a beach.",
+    "verbose": "You're at beach at the north-eastern end of this somewhat small island. In the water you can see several fishes swimming by and doing whatever fishes usually do. The sand is kinda golden in look, and is soft to the touch.",
+    "outdoors": True,
+    "visited": False,
+    "east": 0,
+    "west": 3,
+    "south": 8,
     "north": 0
 }
     locations.append(data)
