@@ -1,1 +1,3 @@
-# Your requirements go here
+# Requires a version of python that has the match-case syntax enabled. That is, 3.10 or newer
+# Otherwise, only requires the functions.py file. Imported from run.py. Is a part of the repository
+# No external libraries are used
