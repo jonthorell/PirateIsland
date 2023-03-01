@@ -30,7 +30,7 @@ functions.print_location(functions.current_location,1)
 game_in_progress=True
 
 while game_in_progress:
-    user_input=input(f"{name}, what is thy bidding? ")
+    user_input=input(f"\n{name}, what is thy bidding? ")
     user_string=functions.parser(user_input)
     if user_string is not None:
         verb=user_string[0]

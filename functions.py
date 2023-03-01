@@ -16,7 +16,7 @@ verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south
 locations=[]
 objects=[]
 verbs=[]
-current_location=4
+current_location=7
 verbosity=False
 #1=always print verbose text, 0 only at first visit. Altered by verbose and brief functions
 
@@ -24,7 +24,8 @@ verbosity=False
 def createObjects():
     #the different keys are for:
     #id: internal id to keep track of which object the user interacts with
-    #noun: the noun used to refer to it. Also displayed in "You can see:" text at location
+    #noun: the noun used to refer to it. 
+    #description: Displayed in "You can see:" text at location
     #exam: what will be displayed when user examines the object
     #location: initial location. Updated when taken/dropped etc. -1 if being carried
     #gettable: if the object can be taken or not.
@@ -34,10 +35,22 @@ def createObjects():
     data = {
     "ID": 0,
     "noun": "sword",
+    "description": "a cutlass sword",
     "exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
-    "location": -1,
+    "location": 7,
     "gettable": True,
     "visible": True
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 1,
+    "noun": "chest",
+    "description": "a campher wood chest",
+    "exam": "The chest looks and smells as if it is made out of campher wood. It looks like it is extremely heavy.",
+    "location": 7,
+    "gettable": True,
+    "visible": False
 }
     objects.append(data)
     
@@ -421,6 +434,44 @@ def create_locations ():
 }
     locations.append(data)
     
+    data = {
+    "brief": "You are at the shore.",
+    "verbose": "You're at the shore. It is more of a harbour really, with one sole ship lying anchored here. The ship is somewhat small, but appears to be sea-worthy. A grim-looking guard watches the entry with a stern look in his eyes.",
+    "outdoors": True,
+    "visited": False,
+    "east": 0,
+    "west": 0,
+    "south": 18,
+    "north": 1
+}
+    locations.append(data)
+    
+    
+    
+    data = {
+    "brief": "You are in the jungle.",
+    "verbose": "You're at the edge of the jungle. Birds are chirping, and the jungle is not as thick here. Which is good, since that means there are fewer places for dangerous animals to hide.",
+    "outdoors": True,
+    "visited": False,
+    "east": 7,
+    "west": 0,
+    "south": 0,
+    "north": 2
+}
+    locations.append(data)
+
+    data = {
+    "brief": "You are in a small clearing.",
+    "verbose": "You're in a clearing. In the trees surrounding the clearing you can see some monkeys monkeying around. Paths lead off in all directions, although the path running to the east is blocked by a large chest.",
+    "outdoors": True,
+    "visited": False,
+    "east": 0,
+    "west": 6,
+    "south": 11,
+    "north": 3
+}
+    locations.append(data)
+
     return current_location
 
 def print_verbs(): 
@@ -443,6 +494,7 @@ def print_location(which_location,verbose_mode):
     
     print_direction(which_location)
     current_location_data['visited']=True   #the location has now been visited
+    you_can_see()
     
 
 def print_direction(where):
@@ -485,11 +537,30 @@ def inventory():
         locat=item['location']
         
         if locat==-1:
-            print_yellow(item['noun'])
+            print_yellow(item['description'])
             inventory+=1
     
     if inventory==0:
         print_red("Bloody nothing!")
+
+def you_can_see():
+    
+    see_string=""
+    location_see=0 # keep track of local objects
+    for item in objects:
+        locat=item['location']
+        if item['visible']==False:
+            #skip items that should not be shown
+            continue
+        if locat==current_location:
+            #print(" "+item['description'],end = " ")
+            see_string=see_string+" "+item['description']
+            location_see+=1
+    
+    if location_see>0:
+        print("You can see:",end = " ")
+        print(see_string)
+            
 def go_west():
     global current_location
     current_location_data=(locations[current_location])
@@ -497,6 +568,7 @@ def go_west():
     if west==0:
         print("You can not go that way!")
     else:
-        print_location(west,0)
         current_location=west
+        print_location(current_location,0)
+        
     
