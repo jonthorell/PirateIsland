@@ -16,7 +16,7 @@ verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south
 locations=[]
 objects=[]
 verbs=[]
-current_location=7
+current_location=14
 verbosity=False
 #1=always print verbose text, 0 only at first visit. Altered by verbose and brief functions
 
@@ -37,7 +37,7 @@ def createObjects():
     "noun": "sword",
     "description": "a cutlass sword",
     "exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
-    "location": 7,
+    "location": -1,
     "gettable": True,
     "visible": True
 }
@@ -49,8 +49,151 @@ def createObjects():
     "description": "a campher wood chest",
     "exam": "The chest looks and smells as if it is made out of campher wood. It looks like it is extremely heavy.",
     "location": 7,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 2,
+    "noun": "bottle",
+    "description": "a dirty old bottle",
+    "exam": "The bottle might have contained rum at one point. There seems to be something else inside it now, a piece of paper.",
+    "location": 4,
+    "gettable": True,
+    "visible": True
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 3,
+    "noun": "eyepatch",
+    "description": "an eyepatch (being worn)",
+    "exam": "It is made of cloth, dyed black.",
+    "location": -1,
+    "gettable": True,
+    "visible": True
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 4,
+    "noun": "map",
+    "description": "a treasure map",
+    "exam": "The paper the map is written on seems to be fragile. Probably due to having been subjected to some liquid before.",
+    "location": 4,
     "gettable": True,
     "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 5,
+    "noun": "skeleton",
+    "description": "Mr skeleton",
+    "exam": "The skeleton holds a piece of paper and an ID-card.",
+    "location": 9,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 6,
+    "noun": "paper",
+    "description": "a piece of paper",
+    "exam": "The piece of paper is partially crumbled, but there are some words written on it.",
+    "location": 9,
+    "gettable": True,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 7,
+    "noun": "id",
+    "description": "a ID card",
+    "exam": "Apparently the nobleman was called Murphy when he was alive.",
+    "location": 9,
+    "gettable": True,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 8,
+    "noun": "rope",
+    "description": "a long rope",
+    "exam": "A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth.",
+    "location": 12,
+    "gettable": True,
+    "visible": True
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 9,
+    "noun": "table",
+    "description": "an unstable table",
+    "exam": 'The table is made of balsa wood. No wonder it is unstable. Someone has carved "Smeagol was here" in it.',
+    "location": 12,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 10,
+    "noun": "ring",
+    "description": "a golden ring",
+    "exam": "The ring is perfectly cirular with a huge diamond decorating it.",
+    "location": 3,
+    "gettable": True,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 11,
+    "noun": "board",
+    "description": "a wooden board",
+    "exam": "What do you expect? It is a wooden board. However, there's some writing on it.",
+    "location": 13,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 12,
+    "noun": "building",
+    "description": "a building",
+    "exam": "The building seems to have been built using whatever could be salvaged from various shipwrecks. Good craftsman skills of whoever built it though since it looks like it could withstand anything.",
+    "location": 15,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 13,
+    "noun": "door",
+    "description": "a door",
+    "exam": "The door is made out of metal, and there's a small keyhole in it.",
+    "location": 15,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 14,
+    "noun": "shovel",
+    "description": "a small shovel",
+    "exam": "Just your ordinary treasure-hunting shovel. A must have for any respectable pirate.",
+    "location": 16,
+    "gettable": True,
+    "visible": True
 }
     objects.append(data)
     
@@ -358,8 +501,14 @@ def check_input(verb,noun,name):
             print_location(current_location,1)
         case 4:             #inventory
             inventory()
+        case 5:             #go north
+            go_north()
+        case 6:             #go south
+            go_south()
         case 7:             #go west
             go_west()
+        case 8:             # go east
+            go_east()
         case 22:                #clear
             os.system("cls")    #clears the console
         case 18:                #verbose
@@ -391,10 +540,10 @@ def create_locations ():
     "verbose": "You are at the bottom of a steep cliff. The very rock is as vertical as it can get, and you don't fancy looking up since the very thought of it is making you nauseous. There is a rope to be climbed back up, allowing for the nausea.",
     "outdoors": True,
     "visited": False,
-    "east": 0,
+    "east": 2,  #temporary
     "west": 0,
     "south": 5,
-    "north": 0
+    "north": 0  
 }
     locations.append(data)
     
@@ -404,10 +553,11 @@ def create_locations ():
     "outdoors": True,
     "visited": False,
     "east": 0,
-    "west": 0,
+    "west": 1,  #temporary to check one can get everywhere
     "south": 6,
-    "north": 0
+    "north": 0  
 }
+
     locations.append(data)
     
     data = {
@@ -441,7 +591,7 @@ def create_locations ():
     "visited": False,
     "east": 0,
     "west": 0,
-    "south": 18,
+    "south": 9,
     "north": 1
 }
     locations.append(data)
@@ -472,6 +622,126 @@ def create_locations ():
 }
     locations.append(data)
 
+    data = {
+    "brief": "You are the bottom of a hill.",
+    "verbose": "You're at the bottom of a hill. Sometime in the past someone made an artificial cave in it, and the entrence is to the south. However, the entrence is barred with a gate.",
+    "outdoors": True,
+    "visited": False,
+    "east": 0,
+    "west": 0,
+    "south": 12,
+    "north": 4
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are inside the ship.",
+    "verbose": "You're inside the ship. Despite its small size, it is clearly a very luxurous ship and may have been the prized possession of some nobleman before it ended up at this godforsaken island. In fact, the nobleman is still here. He is sitting in a chair, although he could use bit more flesh on him. Mr Skeleton does not look healthy.",
+    "outdoors": False,
+    "visited": False,
+    "east": 0,
+    "west": 0,
+    "south": 0,
+    "north": 5
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are at the start of the jungle.",
+    "verbose": "You're outskirts of the jungle. Strange animal noises can be heard from everywhere, and it makes you feel shaky as if something wants to eat you.",
+    "outdoors": True,
+    "visited": False,
+    "east": 11,
+    "west": 0,
+    "south": 14,
+    "north": 0
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are at pathway.",
+    "verbose": "You're at a pathway, where paths leads in several directions. The air is stale.",
+    "outdoors": True,
+    "visited": True,
+    "east": 11,
+    "west": 10,
+    "south": 0,
+    "north": 7
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are in a cave.",
+    "verbose": "You are in a cave. It is manmade, otherwise it wouldn't be so perfectly square. The walls are covered in moss, and the floor is stone cold. Which makes sense since it is stone. In one corner there's an old and unstable table standing.",
+    "outdoors": False,
+    "visited": False,
+    "east": 0,
+    "west": 0,
+    "south": 0,
+    "north": 8
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are on a beach.",
+    "verbose": "You are on a beach. It is like any other beach you have ever seen, except for the large banana tree at the western edge. There's a wooden board nailed to the trunk.",
+    "outdoors": True,
+    "visited": False,
+    "east": 14,
+    "west": 0,
+    "south": 0,
+    "north": 0
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are on a beach.",
+    "verbose": "You are on a beach. It would be a lovely beach if it wasn't for the fact that you're marooned on this island. Golden sand, very clear blue water in the ocean, and overall a picturesque postcard feel to it. A pathway can be seen leading into the jungle.\nOut at sea, you can see \"The Sea Monkey\" slowly sinking beneath the waves.",
+    "outdoors": True,
+    "visited": False,
+    "east": 15,
+    "west": 13,
+    "south": 0,
+    "north": 10
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are on a beach.",
+    "verbose": "You are on the eastern end of the beach. It still looks lovely, but that old and worn-out house ruins the look. The door is closed.",
+    "outdoors": True,
+    "visited": False,
+    "east": 16,
+    "west": 14,
+    "south": 0,
+    "north": 0
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are inside the building.",
+    "verbose": "You are inside the building. The question that occurs: why bother locking it? It is completely devoid of furniture or interesting features.",
+    "outdoors": False,
+    "visited": False,
+    "east": 0,
+    "west": 15,
+    "south": 0,
+    "north": 0
+}
+    locations.append(data)
+    
+    data = {
+    "brief": "You are in another clearing.",
+    "verbose": "You are in another clearing. Someone has used some vines to create an X on the ground.",
+    "outdoors": True,
+    "visited": False,
+    "east": 0,
+    "west": 0,
+    "south": 0,
+    "north": 0
+}
+    locations.append(data)
+    
     return current_location
 
 def print_verbs(): 
@@ -498,6 +768,9 @@ def print_location(which_location,verbose_mode):
     
 
 def print_direction(where):
+    if where==17:
+        #do not display directions at treasure-site
+        return
     print("\nYou can go: ",end = " ")
     mydirs=""
     current_location_data=locations[where]
@@ -571,4 +844,32 @@ def go_west():
         current_location=west
         print_location(current_location,0)
         
-    
+def go_east():
+    global current_location
+    current_location_data=(locations[current_location])
+    east=current_location_data['east']
+    if east==0:
+        print("You can not go that way!")
+    else:
+        current_location=east
+        print_location(current_location,0)
+        
+def go_north():
+    global current_location
+    current_location_data=(locations[current_location])
+    north=current_location_data['north']
+    if north==0:
+        print("You can not go that way!")
+    else:
+        current_location=north
+        print_location(current_location,0)
+        
+def go_south():
+    global current_location
+    current_location_data=(locations[current_location])
+    south=current_location_data['south']
+    if south==0:
+        print("You can not go that way!")
+    else:
+        current_location=south
+        print_location(current_location,0)        
