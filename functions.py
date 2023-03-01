@@ -14,10 +14,44 @@ COLOR = {
 
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions"}
 locations=[]
+objects=[]
 verbs=[]
 current_location=4
 verbosity=False
 #1=always print verbose text, 0 only at first visit. Altered by verbose and brief functions
+
+
+def createObjects():
+    #the different keys are for:
+    #id: internal id to keep track of which object the user interacts with
+    #noun: the noun used to refer to it. Also displayed in "You can see:" text at location
+    #exam: what will be displayed when user examines the object
+    #location: initial location. Updated when taken/dropped etc. -1 if being carried
+    #gettable: if the object can be taken or not.
+    #visible: if the object should be displayed in "You can see:". Used when something must be done before the object reveals itself. 
+    #Also used if something is being described in the main-text for objects that are always in a specific location such as a building,
+    #boat, etc
+    data = {
+    "ID": 0,
+    "noun": "sword",
+    "exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
+    "location": -1,
+    "gettable": True,
+    "visible": True
+}
+    objects.append(data)
+    
+    #print(objects)
+    #print(len(objects))
+    #print(type(objects))
+    #current_object_data=objects[0]
+    #print(type(current_object_data))
+    #print("ID:"+str(current_object_data['ID']))
+    #print("noun:"+str(current_object_data['noun']))
+    #print("exam:"+str(current_object_data['exam']))
+    #print("initial:"+str(current_object_data['initial']))
+    #print("gettable:"+str(current_object_data['gettable']))
+    #print("visible:"+str(current_object_data['visible']))
 
 
 def welcome():
@@ -309,6 +343,8 @@ def check_input(verb,noun,name):
             print_verbs()
         case 3:             #look
             print_location(current_location,1)
+        case 4:             #inventory
+            inventory()
         case 7:             #go west
             go_west()
         case 22:                #clear
@@ -439,7 +475,21 @@ def set_brief():
     global verbosity
     verbosity=False
     print("Verbose mode OFF")
+
+def inventory():
+    print("You are carrying:")
+    inventory=0     #Keep track of how much you are carrying
     
+    for item in objects:
+        
+        locat=item['location']
+        
+        if locat==-1:
+            print_yellow(item['noun'])
+            inventory+=1
+    
+    if inventory==0:
+        print_red("Bloody nothing!")
 def go_west():
     global current_location
     current_location_data=(locations[current_location])
