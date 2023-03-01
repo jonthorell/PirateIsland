@@ -16,6 +16,7 @@ import functions
 functions.print_intro()
 functions.createVerbs()
 functions.createObjects()
+functions.createNouns()
 
 #raise SystemExit('Placeholder to not starting the game for checking variables')
 

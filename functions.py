@@ -12,13 +12,16 @@ COLOR = {
     "ENDC": "\033[0m",
 }
 
-verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions"}
+verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions","investigate"}
+nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate"}
 locations=[]
 objects=[]
 verbs=[]
+nouns=[]
+
 current_location=14
 verbosity=False
-#1=always print verbose text, 0 only at first visit. Altered by verbose and brief functions
+#True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
 
 def createObjects():
@@ -91,7 +94,7 @@ def createObjects():
     "ID": 5,
     "noun": "skeleton",
     "description": "Mr skeleton",
-    "exam": "The skeleton holds a piece of paper and an ID-card.",
+    "exam": "The skeleton is wearing what was once very nice clothes. Now the clothes looks nothing like clothes, more like holes with remnants of fabric around it.",
     "location": 9,
     "gettable": False,
     "visible": False
@@ -197,6 +200,61 @@ def createObjects():
 }
     objects.append(data)
     
+    data = {
+    "ID": 15,
+    "noun": "ship",
+    "description": "a pirate vessel",
+    "exam": "The pirate vessel, \"The Sea Monkey\" is too far out of your reach to be examined. You know it inside-out anyway.",
+    "location": 14,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 16,
+    "noun": "banana-tree",
+    "description": "a banana-tree",
+    "exam": "The banana-tree is full of overripe bananas. They look disgusting.",
+    "location": 13,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 17,
+    "noun": "rocks",
+    "description": "a bunch of rocks",
+    "exam": "When you examine the rocks, you discover a golden ring amongst them.",
+    "location": 5,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 18,
+    "noun": "guard",
+    "description": "a stern-looking guard",
+    "exam": "No-one messes with Ace Rimmer!",
+    "location": 5,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
+    data = {
+    "ID": 19,
+    "noun": "gate",
+    "description": "a sturdy looking gate",
+    "exam": "The gate is made up of 5 sturdy-looking bars.",
+    "location": 8,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
     #print(objects)
     #print(len(objects))
     #print(type(objects))
@@ -265,6 +323,128 @@ def print_instructions ():
     rules=rules+"\n\nIn other words: everyting you need to do can be accomplished by either a one or a two-word command. Nothing fancier than that is ever required."
     rules=rules+"\n\nIf you need to, you can view these instructions again with the command help."
     print_yellow(rules)
+    
+def createNouns():
+    data = {
+    "ID": 0,
+    "noun": "sword"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 1,
+    "noun": "chest"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 2,
+    "noun": "bottle"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 3,
+    "noun": "eyepatch"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 4,
+    "noun": "map"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 5,
+    "noun": "skeleton"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 6,
+    "noun": "paper"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 7,
+    "noun": "id"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 8,
+    "noun": "rope"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 9,
+    "noun": "table"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 10,
+    "noun": "ring"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 11,
+    "noun": "board"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 12,
+    "noun": "building"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 13,
+    "noun": "door"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 14,
+    "noun": "shovel"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 15,
+    "noun": "ship"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 16,
+    "noun": "banana-tree"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 17,
+    "noun": "rocks"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 18,
+    "noun": "guard"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 19,
+    "noun": "gate"
+}
+    nouns.append(data)
+    
 
 def createVerbs ():
     data = {
@@ -446,6 +626,12 @@ def createVerbs ():
 }
     verbs.append(data)
     
+    data = {
+    "ID": 9,
+    "verb": "investigate"
+}
+    verbs.append(data)
+    
 def parser(string_to_parse):
     #splits the input into verb and noun
     if not string_to_parse:
@@ -478,8 +664,11 @@ def parser(string_to_parse):
 def check_input(verb,noun,name):
     if verb not in verbset:
         print(f"I'm sorry {name}, I do not understand that verb.")
-        #f"{name}, what is thy bidding? "
         return
+        
+    #if noun not in nounset:
+    #    print(f"I'm sorry {name}, I do not understand that noun.")
+    #    return    
     
     for i in range(len(verbs)):
         curr_verb=verbs[i]
@@ -509,6 +698,8 @@ def check_input(verb,noun,name):
             go_west()
         case 8:             # go east
             go_east()
+        case 9:             #examine something
+            examine(noun)
         case 22:                #clear
             os.system("cls")    #clears the console
         case 18:                #verbose
@@ -872,4 +1063,115 @@ def go_south():
         print("You can not go that way!")
     else:
         current_location=south
-        print_location(current_location,0)        
+        print_location(current_location,0)  
+        
+def examine(noun):
+    
+    match=0    #initial value. If still 0 at end of loop, no match
+    
+    for i in range(len(nouns)):
+        curr_noun=nouns[i]
+        array_noun=curr_noun['noun']
+        array_id=curr_noun['ID']
+        if array_noun==noun:
+            match=1
+            break
+    if match==0:
+        print_red("Sorry, I don't understand what I should examine. What is a \""+noun+"\"?")
+        return
+    
+    current_obj=objects[array_id]
+    
+    #print(current_location)
+    #print(array_id)
+    #print(current_obj)
+    #print(noun)
+    
+    if current_location==9 and array_id==5:
+        tmp_object=objects[6]
+        if tmp_object['visible']==False:
+            print("When you examine what remains of the skeletons clothing, you discover a piece of paper and an ID-card.")
+            tmp_object['visible']=True
+            tmp_object=objects[7]
+            tmp_object['visible']=True
+            return
+        else:
+            exam_text=current_obj['exam']
+            print(exam_text)
+            return
+    
+    if current_location==1 and array_id==8:
+        #rope bottom of cliff
+        exam_text="A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back."
+        print(exam_text)
+        return
+    
+    if current_location==3 and array_id==17:
+        #rocks
+        #should be in elif but does not work there. Here temporarily. WIll be moved to the elif construct eventually
+        
+        exam_text=current_obj['exam']
+        tmp_object=objects[10]
+        
+        if tmp_object['visible']==False:
+            #ring has not been discovered
+            tmp_object['visible']=True
+            current_obj['exam']="You found nothing out of the ordinary amongst the rocks."
+        print(exam_text)
+        return
+    
+    if current_obj['location']==-1:
+        #first, check if player trying to examine something carried
+        print(current_obj['exam'])
+    elif current_obj['location']==current_location and current_obj['visible']==True:
+        #check if object is at the current location and visible
+        print(current_obj['exam'])
+    elif current_location==14 and array_id==15:
+        #is the player by the ship and trying to exam it?
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==13 and array_id==11:
+        #board on bananatree
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==13 and array_id==16:
+        #banana tree
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==15 and array_id==12:
+        #building
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==15 and array_id==13:
+        #door
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==7 and array_id==1:
+        #chest
+        exam_text=current_obj['exam']
+        print(exam_text) 
+    elif current_location==5 and array_id==18:
+        #guard
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==8 and array_id==19:
+        #gate
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==12 and array_id==9:
+        #table
+        exam_text=current_obj['exam']
+        print(exam_text)
+    elif current_location==5 and array_id==15:
+        exam_text="The ship is a luxury vessel to be sure!"
+        print(exam_text)
+    else:
+        print_red("I'm sorry, I can not do that.")
+    
+    #"ID": 0,
+    #"noun": "sword",
+    #"description": "a cutlass sword",
+    #"exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
+    #"location": -1,
+    #"gettable": True,
+    #"visible": True
