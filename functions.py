@@ -13,7 +13,7 @@ COLOR = {
 }
 
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint"}
-nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign"}
+nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree"}
 
 locations=[]
 objects=[]
@@ -496,11 +496,15 @@ def get(noun):
         return
     else:
         noun_id=result[1]
-        print("Get id: "+str(noun_id))
     
-    
-    print("Outside of if: "+noun)
-            
-  
-            
-            
+    tmp_object=objects[noun_id] #get the object with the same id as the noun
+    if tmp_object['location']==-1:
+        print("But you are already carrying it.")
+    elif tmp_object['location']==current_location and tmp_object['gettable']==True and tmp_object['visible']==True:
+        #only pick up the object if: 1. It is in the current location, 2. It is gettable, and 3. It is marked as visible.
+        print("You pick up "+tmp_object['description']+".")
+        tmp_object['location']=-1
+    elif current_location==7 and noun_id==1:
+        print("It is far too heavy to pick up!")
+    else:
+        print("I'm sorry, I do not know how to pick that up.")
