@@ -12,7 +12,7 @@ COLOR = {
     "ENDC": "\033[0m",
 }
 
-verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions","investigate","hint"}
+verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint"}
 nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate"}
 
 locations=[]
@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=17
+current_location=8
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -114,12 +114,16 @@ def check_input(verb,noun,name):
             wear(noun)
         case 11:                #remove something
             remove(noun)
+        case 15:                #read
+            read(noun)
         case 22:                #clear
             os.system("cls")    #clears the console
         case 18:                #verbose
             set_verbose()
         case 19:                #brief
             set_brief()
+        case 21:                #break
+            v_break(noun)
         case 23:                #exits
             print_direction(current_location)
         case 24:
@@ -414,6 +418,15 @@ def hint():
         print("I have no hint to provide at this time.")
         
 def wear(noun):
+    if noun=="ring":
+        tmp_object=objects[10]
+        if(tmp_object['location']==-1):
+            print("You put the ring on your finger.")
+            dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
+        if tmp_object['location']==current_location and tmp_object['visible']==True:
+            print("You pick up the ring and put it on your finger.")
+            dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
+            
     if noun !="eyepatch":
         print("How am I supposed to wear that?")
     else:
@@ -424,4 +437,29 @@ def remove(noun):
         print("Que? I can't see how I'm gonna remove that.")
     else:
         print("And ruin that piratey-look? I think not!")        
-               
+
+def dead(text):
+    print_red(text)
+    raise SystemExit('You have failed.')
+
+def read(noun):
+    if noun=="board" and current_location==13:
+        print("The writing on the board says: \"Beware of cannibals\". Yikes!")
+    else:
+        print("You can not read that.")
+        
+def v_break(noun):
+    global current_location
+    current_location_data=(locations[current_location])
+    south=current_location_data['south']
+    
+    if current_location==8 and south==0 and noun=="gate":
+        print("Apparently, the bars of the gate were made out of styrofoam so the gate is easily broken.")
+        current_location_data['south']=12
+        current_location_data['verbose']="You're at the bottom of a hill. Sometime in the past someone made an artificial cave in it, and the entrence is to the south."
+        tmp_object=objects[19]
+        tmp_object['exam']="Some vandal has broken the gate."
+    elif current_location==8 and south==12 and noun=="gate":
+        print("But the gate has already been broken down.")
+    else:
+        print("I don't know to break that.")

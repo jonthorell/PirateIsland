@@ -25,4 +25,7 @@ South at harbour: stop player from going south when guard is there.
 South at cave-entrance: update south to 12 when gate been broken
 East outside of building: update each when door has been opened. Also update so the door is on the ground
 
+wear ring:
+	make sure it works after having been dropped elsewhere
+
 
