@@ -1,0 +1,24 @@
+To do 
+
+exam()
+
+Gate
+Should alter the text after destroyed
+guard (when there) at harbour
+
+hint system
+
+Should only provide hint whenever say the guard is there. If that has been solved, skop the hint
+
+
+objects in list directly instead of the append version (low pri)
+
+walk-thru text and map in repo
+
+docstrings
+
+flowchart
+
+test.md
+
+

@@ -539,6 +539,12 @@ def createVerbs (verbs):
 }
     verbs.append(data)
     
+    data = {
+    "ID": 24,
+    "verb": "hint"
+}
+    verbs.append(data)
+    
 def create_locations (locations):
     data = {
     "brief": "You are in limbo.",

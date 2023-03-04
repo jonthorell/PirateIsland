@@ -2,8 +2,6 @@ import os
 os.system("")  # enables ansi escape characters in terminal
 os.system("cls") #clears the console
 
-
-
 COLOR = {
     "HEADER": "\033[95m",
     "BLUE": "\033[94m",
@@ -14,7 +12,7 @@ COLOR = {
     "ENDC": "\033[0m",
 }
 
-verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions","investigate"}
+verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","close","clear","quit","instructions","exits","directions","investigate","hint"}
 nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate"}
 
 locations=[]
@@ -43,8 +41,7 @@ def print_cyan(text):
     
 def print_yellow(text):
     print(COLOR["YELLOW"], text, COLOR["ENDC"])
-    
-    
+        
 def parser(string_to_parse):
     #splits the input into verb and noun
     if not string_to_parse:
@@ -121,6 +118,8 @@ def check_input(verb,noun,name):
             set_brief()
         case 23:                #exits
             print_direction(current_location)
+        case 24:
+            hint()              #prints a small hint
 
 def print_verbs(): 
     print("The game understands the following verbs (including abreviations): \n")
@@ -362,3 +361,51 @@ def examine(noun):
     #"location": -1,
     #"gettable": True,
     #"visible": True
+    
+def print_instructions ():
+    rules="\nInteractive fiction is purely text-based, and can be considered a story where the player takes charge of the outcome rather than just reading along."
+    rules+="\nThe player moves around in the game by issuing commands. These commands consists of one or two words, in a verb-noun pattern."
+    rules+="\nSome verbs work on their own (inventory for example), others need a noun (open door for example). "
+    rules+="\n\nThe idea is that you walk around in a fictional world and solves puzzles along the way. A puzzle can be"
+    rules+=" (for example) finding the key to a locked door\nso it can be unlocked and the player can get further into the world displayed. "
+    
+    rules+="\n\nA typical game is usually littered with information and objects that the player"
+    rules+=" thinks might be important, but in the end serves only as distractions."
+    rules+='\n\nEverything after a second word will be discarded. If you enter a command such as "inventory list" and the verb (inventory) does not expect a noun, \nthe noun will be discared as well.'
+    rules+="\n\nDirections are always entered with just the direction. That is, it is a one-word sentence. Either 'north' or 'n' will suffice. Go north is unneccesary."
+    rules+="\n\nIn other words: everyting you need to do can be accomplished by either a one or a two-word command. Nothing fancier than that is ever required."
+    
+    rules+="\n\nThe first time you enter a location, you will get a long description of the place. On subsequent visits you only get a shorter one."
+    rules+="\nYou can get the long description again by issuing the command \"look\"."
+    rules+="\nIf you want to, you can change this to always describe the longer description."
+    rules+="\nYou do that by issueing the command \"verbose\"."
+    rules+="\nTo revert to the default, issue the command \"brief\"."
+    
+    rules+="\n\nSome examples of commands (not specific to this game to avoid spoilers):"
+    rules+="\nInventory: lists what you are carrying"
+    rules+="\nExamine door - checks if there is something special about the door. Depending on what you examine, other objects may be revealed."
+    rules+="\nDrop book - drops the book into the current location"
+    rules+="\nGet book - picks up the book, if it is available"
+    rules+="\nOpen door - opens the door, if it can be opened"
+    rules+="\nUse lamp - depends on the noun, but in this case it would turn on the lamp."
+    
+    rules+="\n\nThat should get you started."
+    rules+="\nIf you need to, you can view these instructions again with the command help."
+    rules+="\n\n"
+    
+    print_yellow(rules)
+    
+def hint():
+    if current_location==15:
+        print("You may want to find a way to open that door.")
+    elif current_location==7:
+        print("There might something special about that chest.")
+    elif current_location==2:
+        print("You may want to find a way of climbing down the cliffside.")
+    elif current_location==8:
+        print("The gate is in the way. How can that be solved?")
+    elif current_location==5:
+        print("You want to get rid of the guard somehow.")
+    else:
+        print("I have no hint to provide at this time.")
+    

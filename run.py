@@ -16,8 +16,10 @@ import functions            #main functions
 import welcome              #functions for initial greetings, help-texts
 import create               #functions for creating objects, nouns, locations & verbs
 
-welcome.welcome()
-welcome.print_intro()
+#welcome.welcome()
+functions.print_instructions()
+#welcome.hint()
+#welcome.print_intro()
 create.createVerbs(functions.verbs)
 create.createObjects(functions.objects)
 create.createNouns(functions.nouns)
