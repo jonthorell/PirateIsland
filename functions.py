@@ -13,7 +13,7 @@ COLOR = {
 }
 
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint"}
-nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate"}
+nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign"}
 
 locations=[]
 objects=[]
@@ -114,6 +114,8 @@ def check_input(verb,noun,name):
             wear(noun)
         case 11:                #remove something
             remove(noun)
+        case 12:                #get something
+            get(noun)
         case 15:                #read
             read(noun)
         case 22:                #clear
@@ -443,10 +445,19 @@ def dead(text):
     raise SystemExit('You have failed.')
 
 def read(noun):
-    if noun=="board" and current_location==13:
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("I'm sorry, I do not know how to read that.")
+        return
+    else:
+        noun_id=result[1]
+    
+    #print("Outside of if: "+noun)
+    if noun_id==11 and current_location==13:
         print("The writing on the board says: \"Beware of cannibals\". Yikes!")
     else:
-        print("You can not read that.")
+        print("I'm sorry, I do not know how to read that.")
         
 def v_break(noun):
     global current_location
@@ -463,3 +474,33 @@ def v_break(noun):
         print("But the gate has already been broken down.")
     else:
         print("I don't know to break that.")
+        
+def get_noun_by_id(noun):
+    match=0    #initial value. If still 0 at end of loop, no match
+    
+    for i in range(len(nouns)):
+        curr_noun=nouns[i]
+        array_noun=curr_noun['noun']
+        array_id=curr_noun['ID']
+        if array_noun==noun:
+            match=1
+            return match,array_id
+    
+    return match,array_id
+
+def get(noun):
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("I'm sorry, I do not know how to pick that up.")
+        return
+    else:
+        noun_id=result[1]
+        print("Get id: "+str(noun_id))
+    
+    
+    print("Outside of if: "+noun)
+            
+  
+            
+            

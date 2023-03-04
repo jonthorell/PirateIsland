@@ -352,6 +352,12 @@ def createNouns(nouns):
 }
     nouns.append(data)
     
+    data = {
+    "ID": 11,
+    "noun": "sign"
+}
+    nouns.append(data)
+    
 
 def createVerbs (verbs):
     data = {
