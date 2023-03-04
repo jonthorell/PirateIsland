@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=8
+current_location=14
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -399,7 +399,7 @@ def print_instructions ():
     
     rules+="\n\nThat should get you started."
     rules+="\nIf you need to, you can view these instructions again with the command help."
-    rules+="\n\n"
+    rules+="\n\nAnd remember: read the descriptions carefully. They can provide valueable clues."
     
     print_yellow(rules)
     
