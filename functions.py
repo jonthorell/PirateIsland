@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14
+current_location=17
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 

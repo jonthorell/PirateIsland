@@ -568,7 +568,7 @@ def create_locations (locations):
     "verbose": "You are at the bottom of a steep cliff. The very rock is as vertical as it can get, and you don't fancy looking up since the very thought of it is making you nauseous. There is a rope to be climbed back up, allowing for the nausea.",
     "outdoors": True,
     "visited": False,
-    "east": 2,  #temporary
+    "east": 0,  
     "west": 0,
     "south": 5,
     "north": 0  
@@ -581,7 +581,7 @@ def create_locations (locations):
     "outdoors": True,
     "visited": False,
     "east": 0,
-    "west": 1,  #temporary to check one can get everywhere
+    "west": 0,  
     "south": 6,
     "north": 0  
 }
@@ -657,7 +657,7 @@ def create_locations (locations):
     "visited": False,
     "east": 0,
     "west": 0,
-    "south": 12,
+    "south": 0,
     "north": 4
 }
     locations.append(data)
@@ -739,7 +739,7 @@ def create_locations (locations):
     "verbose": "You are on the eastern end of the beach. It still looks lovely, but that old and worn-out house ruins the look. The door is closed.",
     "outdoors": True,
     "visited": False,
-    "east": 16,
+    "east": 0,
     "west": 14,
     "south": 0,
     "north": 0
