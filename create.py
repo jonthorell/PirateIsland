@@ -1,4 +1,4 @@
-
+# This file creates all lists/dics necessary for the game
 
 def createObjects(objects):
     #the different keys are for:

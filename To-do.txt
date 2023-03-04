@@ -8,7 +8,7 @@ guard (when there) at harbour
 
 hint system
 
-Should only provide hint whenever say the guard is there. If that has been solved, skop the hint
+Should only provide hint whenever say the guard is there. If that has been solved, skip the hint
 
 
 objects in list directly instead of the append version (low pri)

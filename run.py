@@ -17,7 +17,7 @@ import welcome              #functions for initial greetings, help-texts
 import create               #functions for creating objects, nouns, locations & verbs
 
 #welcome.welcome()
-functions.print_instructions()
+#functions.print_instructions()
 #welcome.hint()
 #welcome.print_intro()
 create.createVerbs(functions.verbs)
@@ -27,10 +27,7 @@ create.create_locations (functions.locations)
 
 #raise SystemExit('Placeholder to not starting the game for checking variables')
 
-# name=input("What is your name? ")
-
-
-
+#name=input("What is your name? ")
 name="Jonas"
 
 turns=0

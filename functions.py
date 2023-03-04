@@ -110,6 +110,10 @@ def check_input(verb,noun,name):
             go_east()
         case 9:             #examine something
             examine(noun)
+        case 10:                #wear something
+            wear(noun)
+        case 11:                #remove something
+            remove(noun)
         case 22:                #clear
             os.system("cls")    #clears the console
         case 18:                #verbose
@@ -408,4 +412,16 @@ def hint():
         print("You want to get rid of the guard somehow.")
     else:
         print("I have no hint to provide at this time.")
-    
+        
+def wear(noun):
+    if noun !="eyepatch":
+        print("How am I supposed to wear that?")
+    else:
+        print("But you are already wearing it.")
+        
+def remove(noun):
+    if noun !="eyepatch":
+        print("Que? I can't see how I'm gonna remove that.")
+    else:
+        print("And ruin that piratey-look? I think not!")        
+               

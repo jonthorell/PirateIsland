@@ -1,3 +1,5 @@
+#This file is only used at game-start to print introdoctory text and instructions
+
 from functions import print_header,print_green,print_cyan,print_yellow
 
 def welcome():
@@ -28,3 +30,5 @@ def print_intro():
     intro+="\n\nYour only chance is to swim ashore and then somehow find your way back to civilazation."
     print_cyan(intro)
     input("Press Enter to continue...")
+
+    
