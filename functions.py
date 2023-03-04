@@ -116,6 +116,8 @@ def check_input(verb,noun,name):
             remove(noun)
         case 12:                #get something
             get(noun)
+        case 13:                #drop something
+            drop(noun)
         case 15:                #read
             read(noun)
         case 22:                #clear
@@ -508,3 +510,25 @@ def get(noun):
         print("It is far too heavy to pick up!")
     else:
         print("I'm sorry, I do not know how to pick that up.")
+
+def drop(noun):
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("But that is not something you have in your possession, mate.")
+        return
+    else:
+        noun_id=result[1]
+    
+    tmp_object=objects[noun_id] #get the object with the same id as the noun
+    if noun_id==3:
+        print("And ruin that piratey-look? I think not!")
+    elif tmp_object['location']!=-1:
+        print("But that is not something you have in your possession, mate.")
+    elif tmp_object['location']==-1:
+        #Drop the object.
+        print("You drop "+tmp_object['description']+".")
+        tmp_object['location']=current_location
+    else:
+        print("I'm sorry, I do not know how to drop that.") # should never happen. Here as a fail-safe
+        
