@@ -3,26 +3,31 @@
 # locally using just notepad++ and python installed.
 # while experimening and figuring out what my project should be
 
-# import my own functions. They are in a separate file to make 
-# the code easier to read and game-file itself only contain the 
-# main loop and the initialization code
-# This of course requires that a lot of the functions require 
-# parameters and return-values
-# Which is good-practice anyway
+# import my own functions. 
 
-import functions
+# Divided in three for readability and manageability
+# Makes it easier to concentrate on the code in question
 
-# functions.welcome()
-functions.print_intro()
-functions.createVerbs()
-functions.createObjects()
-functions.createNouns()
+# welcome-functions. Only used at game-start, and data that is unchanged during the game
+# create. Creates the different objects etc the player can interact with. Some will be altered during game.
+# functions. The main game-logic is in this import.
+
+import functions            #main functions
+import welcome              #functions for initial greetings, help-texts
+import create               #functions for creating objects, nouns, locations & verbs
+
+welcome.welcome()
+welcome.print_intro()
+create.createVerbs(functions.verbs)
+create.createObjects(functions.objects)
+create.createNouns(functions.nouns)
+create.create_locations (functions.locations)
 
 #raise SystemExit('Placeholder to not starting the game for checking variables')
 
 # name=input("What is your name? ")
 
-functions.create_locations ()
+
 
 name="Jonas"
 
