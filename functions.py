@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=2
+current_location=4
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -506,7 +506,6 @@ def read(noun):
         print("I'm sorry, I do not know how to read that.")
         
 def v_break(noun):
-
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -515,11 +514,20 @@ def v_break(noun):
     else:
         noun_id=result[1]
     
-
-    #global current_location
     current_location_data=(locations[current_location])
     south=current_location_data['south']
-    
+    if noun_id==2:
+        tmp_bottle=objects[2]
+        tmp_map=objects[4]
+        if tmp_bottle['location']==-1 or tmp_bottle['location']==current_location:
+            if tmp_map['visible']==True:
+                print("But the bottle has already been smashed.")
+            else:
+                print("You smash the bottle and can retrieve the piece of paper. It turns out to be a map!")
+                tmp_map['visible']=True
+                tmp_map['location']=current_location
+                tmp_bottle['description']="a broken bottle"
+        return
     if current_location==8 and south==0 and noun_id==19:
         print("Apparently, the bars of the gate were made out of styrofoam so the gate is easily broken.")
         current_location_data['south']=12
