@@ -20,10 +20,11 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14
+current_location=14     #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
+#Some functions to print text in different colors
 def print_green(text):
     print(COLOR["GREEN"], text, COLOR["ENDC"])
 
@@ -74,8 +75,7 @@ def parser(string_to_parse):
 def check_input(verb,noun,name):
     if verb not in verbset:
         print_red(f"I'm sorry {name}, I do not understand that verb.")
-        return
-         
+        return       
     for i in range(len(verbs)):
         curr_verb=verbs[i]
         array_verb=curr_verb['verb']
@@ -309,11 +309,6 @@ def examine(noun):
     
     current_obj=objects[array_id]
     
-    #print(current_location)
-    #print(array_id)
-    #print(current_obj)
-    #print(noun)
-    
     if current_location==9 and array_id==5:
         tmp_object=objects[6]
         if tmp_object['visible']==False:
@@ -394,14 +389,7 @@ def examine(noun):
         print(exam_text)
     else:
         print_red("I'm sorry, I can not do that.")
-    
-    #"ID": 0,
-    #"noun": "sword",
-    #"description": "a cutlass sword",
-    #"exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
-    #"location": -1,
-    #"gettable": True,
-    #"visible": True
+   
     
 def print_instructions ():
     rules="\nInteractive fiction is purely text-based, and can be considered a story where the player takes charge of the outcome rather than just reading along."
@@ -458,15 +446,13 @@ def hint():
         print("I have no hint to provide at this time.")
         
 def wear(noun):
-
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
         print_red("How am I supposed to wear that?! What is a \""+noun+"\"?")
         return
     else:
-        noun_id=result[1]
-    
+        noun_id=result[1]  
     if noun_id==10:
         tmp_object=objects[noun_id]
         if(tmp_object['location']==-1):

@@ -2,6 +2,7 @@
 # should be. That is because I did a lot of work 
 # locally using just notepad++ and python installed.
 # while experimening and figuring out what my project should be
+# But still quite a lot of commits
 
 # import my own functions. 
 
@@ -20,12 +21,12 @@ import create               #functions for creating objects, nouns, locations & 
 #functions.print_instructions()
 #welcome.hint()
 #welcome.print_intro()
+
+# The below creates everything needed for the game-logic
 create.createVerbs(functions.verbs)
 create.createObjects(functions.objects)
 create.createNouns(functions.nouns)
 create.create_locations (functions.locations)
-
-#raise SystemExit('Placeholder to not starting the game for checking variables')
 
 #name=input("What is your name? ")
 name="Jonas"
@@ -36,15 +37,15 @@ game_in_progress=True
 
 while game_in_progress:
     user_input=input(f"\n{name}, what is thy bidding? ")
-    user_string=functions.parser(user_input)
-    if user_string is not None:
+    user_string=functions.parser(user_input)    #parser function splits the input string into words and returns it here
+    if user_string is not None: #if none, loop back to new prompt
         verb=user_string[0]
         noun=user_string[1]    
-        value=functions.check_input(verb,noun,name)
-        if value==50:
+        value=functions.check_input(verb,noun,name)     #check for valid inputs, and processing proceeds in functions.py file. Name is passed to be able to customize some string with username
+        if value==50:       #if the input is quit, return 50 to terminate the game
             print("---------------------")
             print("Thank you for playing.")
             print("Your game took "+str(turns)+" turns.")
-            game_in_progress=False
+            game_in_progress=False      #break out of while-loop
         else:
-            turns+=1
+            turns+=1    #increase the number of turns that has been used

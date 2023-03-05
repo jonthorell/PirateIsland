@@ -254,6 +254,7 @@ def createObjects(objects):
     objects.append(data)
     
 def createNouns(nouns):
+    #id field MUST correspond with the ID-field in objects. Used for synonyms and determining which object the user tries to manipulate
     data = {
     "ID": 0,
     "noun": "sword"
@@ -430,6 +431,7 @@ def createNouns(nouns):
     
 
 def createVerbs (verbs):
+    #id is used for synonyms in a look-up table in functions.py. That way only one match statement is needed no matter how many synonyms per verb is defined
     data = {
     "ID": 0,
     "verb": "exit"
@@ -635,17 +637,17 @@ def createVerbs (verbs):
     
 def create_locations (locations):
     data = {
-    "brief": "You are in limbo.",
-    "verbose": "You're in limbo. Everything is as dark as one would expect of the afterlife. Sorry dear, you're dead.",
-    # Essentially here to make sure the map really starts at 1. 
-    # In "Pirate Island" it is impossible for the player to die so this will never be displayed
+    # This first location is here to make sure the map really starts at 1 for game-logic purposes. 
+    # In "Pirate Island" this location is never used.
     # However, the code is getting flexible enough so any if-game could potentially be developed using this code
     # If another game was developed using this code as the base, the player could be "transported" here when they die
     # before showing the end-of-game message
-    "outdoors": False,
-    "visited": False,
-    "east": 0,
-    "west": 0,
+    "brief": "You are in limbo.",   #short description of location
+    "verbose": "You're in limbo. Everything is as dark as one would expect of the afterlife. Sorry dear, you're dead.", #long description of location
+    "outdoors": False,  #is the location set outdoors, in case one wants certain (random) events to only happen outdoors.
+    "visited": False,   #has the player been here before? Set to true whenever the player enters the place. Also used to determine if brief or verbose should be displayed
+    "east": 0,  #can you go in that direction? If no, set to 0. Otherwise set to the location you will move to if you go in that direction. Some of these values are changed
+    "west": 0,  #depending on what the player do
     "south": 0,
     "north": 0,
     "down": 0,
@@ -717,7 +719,7 @@ def create_locations (locations):
     "visited": False,
     "east": 0,
     "west": 0,
-    "south": 18,    #deliberately wrong. Used for checking if guard has been bribed yet. When he is, the value will be changed to 9
+    "south": 18,    #deliberately wrong. Location 18 does not exist. Used for checking if guard has been bribed yet in go_south() function. When he is, the value will be changed to 9
     "north": 1,
     "down": 0,
     "up": 0
