@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=1
+current_location=14
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -73,13 +73,9 @@ def parser(string_to_parse):
 
 def check_input(verb,noun,name):
     if verb not in verbset:
-        print(f"I'm sorry {name}, I do not understand that verb.")
+        print_red(f"I'm sorry {name}, I do not understand that verb.")
         return
-        
-    #if noun not in nounset:
-    #    print(f"I'm sorry {name}, I do not understand that noun.")
-    #    return    
-    
+         
     for i in range(len(verbs)):
         curr_verb=verbs[i]
         array_verb=curr_verb['verb']
@@ -118,20 +114,24 @@ def check_input(verb,noun,name):
             get(noun)
         case 13:                #drop something
             drop(noun)
+        case 14:                #use
+            v_use(noun)
         case 15:                #read
             read(noun)
         case 16:                #go down
             go_down()
         case 17:                #go up
             go_up()
-        case 22:                #clear
-            os.system("cls")    #clears the console
         case 18:                #verbose
             set_verbose()
         case 19:                #brief
-            set_brief()
+            set_brief()    
+        case 20:                #
+            v_open(noun)
         case 21:                #break
-            v_break(noun)
+            v_break(noun)    
+        case 22:                #clear
+            os.system("cls")    #clears the console
         case 23:                #exits
             print_direction(current_location)
         case 24:
@@ -160,9 +160,6 @@ def print_location(which_location,verbose_mode):
     
 
 def print_direction(where):
-    if where==17:
-        #do not display directions at treasure-site
-        return
     print("\nYou can go: ",end = " ")
     mydirs=""
     current_location_data=locations[where]
@@ -212,7 +209,7 @@ def inventory():
             inventory+=1
     
     if inventory==0:
-        print_red("Bloody nothing!") #since you can not drop the eyepatch, this will never be shown. Just there in case one wants to expand the game
+        print_red("Bloody nothing!") #since you can not drop the eyepatch, this will never be shown. Just there in case one wants to expand the game or use it as a basis for another
 
 def you_can_see():
     
@@ -246,7 +243,7 @@ def go_east():
     global current_location
     current_location_data=(locations[current_location])
     east=current_location_data['east']
-    if east==0:
+    if east<=0:
         print("You can not go that way!")
     else:
         current_location=east
@@ -447,6 +444,8 @@ def hint():
         print("The gate is in the way. How can that be solved?")
     elif current_location==5:
         print("You want to get rid of the guard somehow.")
+    elif current_location==17:
+        print("Remember, X marks the spot.")
     else:
         print("I have no hint to provide at this time.")
         
@@ -455,7 +454,7 @@ def wear(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("How am I supposed to wear that?!")
+        print_red("How am I supposed to wear that?! What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
@@ -478,7 +477,7 @@ def remove(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("Que? I can't see how I'm gonna remove that.")
+        print_red("Que? I can't see how I'm gonna remove that. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
@@ -495,7 +494,7 @@ def read(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("I'm sorry, I do not know how to read that.")
+        print_red("I'm sorry, I do not know how to read that. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
@@ -511,7 +510,7 @@ def v_break(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("Que? I can't see how I'm gonna break that.")
+        print_red("Que? I can't see how I'm gonna break that. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
@@ -529,6 +528,8 @@ def v_break(noun):
         tmp_object['exam']="Some vandal has broken the gate."
     elif current_location==8 and south==12 and noun_id==19:
         print("But the gate has already been broken down.")
+    elif current_location==15 and noun_id==13:
+        print("The door is way too sturdy for that.")
     else:
         print("Que? I can't see how I'm gonna break that.")
         
@@ -555,6 +556,8 @@ def get(noun):
         noun_id=result[1]
     
     tmp_object=objects[noun_id] #get the object with the same id as the noun
+    tmp_door=objects[13]
+    door_visible=tmp_door['visible']
     if tmp_object['location']==-1:
         print("But you are already carrying it.")
     elif tmp_object['location']==current_location and tmp_object['gettable']==True and tmp_object['visible']==True:
@@ -563,6 +566,8 @@ def get(noun):
         tmp_object['location']=-1
     elif current_location==7 and noun_id==1:
         print("It is far too heavy to pick up!")
+    elif current_location==15 and noun_id==13 and door_visible==True:
+        print("Why would you want to walk around with a heavy door for?")
     else:
         print("I'm sorry, I do not know how to pick that up.")
 
@@ -570,7 +575,7 @@ def drop(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("But that is not something you have in your possession, mate.")
+        print_red("I don't know how to drop that, mate. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
@@ -586,4 +591,67 @@ def drop(noun):
         tmp_object['location']=current_location
     else:
         print("I'm sorry, I do not know how to drop that.") # should never happen. Here as a fail-safe
+        
+def v_open(noun):
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print_red("I don't know how to open that, mate. What is a \""+noun+"\"?")
+        return
+    else:
+        noun_id=result[1]
+    
+    tmp_object=objects[noun_id] #get the object with the same id as the noun
+    
+    
+    if current_location==7 and noun_id==1:
+        key_obj=objects[20]
+        if (key_obj['visible'])==False:
+            print("With great effort, you open the chest. Inside it you find a small key.")
+            key_obj['visible']=True
+        else:
+            print("But the chest is already open.")
+    elif current_location==15 and noun_id==13:
+        current_location_data=(locations[current_location])
+        unlocked=current_location_data['east']
+        
+        if unlocked==0:
+            print("The door is locked.")
+        elif unlocked==-1:
+            print("You open the door. The hinges were bad apparently so the door falls down onto the ground.")
+            current_location_data['east']=16
+            current_location_data['verbose']="You are on the eastern end of the beach. It still looks lovely, but that old and worn-out house ruins the look. The door is open."
+            door_obj=objects[13]
+            door_obj['visible']=True
+            door_obj['description']="a door on the ground"
+        else:
+            print("The door is already open.")
+    else:
+        print("I'm sorry, I don't know how to open that.")
+
+def v_use(noun):
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print_red("I don't know how to use that, mate. What is a \""+noun+"\"?")
+        return
+    else:
+        noun_id=result[1]
+    
+    tmp_object=objects[noun_id] #get the object with the same id as the noun
+    if current_location==15 and noun_id==20:
+        current_location_data=(locations[current_location])
+        unlocked=current_location_data['east']
+        if tmp_object['location']!=-1:
+            print("But you don't have a key.")
+        elif unlocked==-1:
+            print("But the door is already unlocked.")
+        elif unlocked==16:
+            print("But the door is already opened.")
+        else:
+            print("You use the key to unlock the door. It could have used a wee bit of oil beforehand, but it works.")
+            current_location_data['east']=-1
+    else:
+            print("I don't know how to use that.")
+            
         

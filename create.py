@@ -231,6 +231,17 @@ def createObjects(objects):
 }
     objects.append(data)
     
+    data = {
+    "ID": 20,
+    "noun": "key",
+    "description": "a small key",
+    "exam": "The key seems to be made out of silver and some other unknown ore.",
+    "location": 7,
+    "gettable": True,
+    "visible": False
+}
+    objects.append(data)
+    
 def createNouns(nouns):
     data = {
     "ID": 0,
@@ -391,6 +402,12 @@ def createNouns(nouns):
     data = {
     "ID": 19,
     "noun": "bars"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 20,
+    "noun": "key"
 }
     nouns.append(data)
     
@@ -851,7 +868,7 @@ def create_locations (locations):
     "verbose": "You are in another clearing. Someone has used some vines to create an X on the ground.",
     "outdoors": True,
     "visited": False,
-    "east": 0,
+    "east": 4,
     "west": 0,
     "south": 0,
     "north": 0,
