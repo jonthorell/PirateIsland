@@ -518,12 +518,12 @@ def createVerbs (verbs):
     verbs.append(data)
     data = {
     "ID": 16,
-    "verb": "dig"
+    "verb": "down"
 }
     verbs.append(data)
     data = {
     "ID": 17,
-    "verb": "climb"
+    "verb": "up"
 }
     verbs.append(data)
     data = {
@@ -587,6 +587,18 @@ def createVerbs (verbs):
 }
     verbs.append(data)
     
+    data = {
+    "ID": 16,
+    "verb": "d"
+}
+    verbs.append(data)
+    
+    data = {
+    "ID": 17,
+    "verb": "u"
+}
+    verbs.append(data)
+    
 def create_locations (locations):
     data = {
     "brief": "You are in limbo.",
@@ -601,7 +613,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 0,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
 
@@ -613,7 +627,9 @@ def create_locations (locations):
     "east": 0,  
     "west": 0,
     "south": 5,
-    "north": 0  
+    "north": 0,
+    "down": 0,
+    "up": 2    
 }
     locations.append(data)
     
@@ -625,7 +641,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,  
     "south": 6,
-    "north": 0  
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
 
     locations.append(data)
@@ -638,7 +656,9 @@ def create_locations (locations):
     "east": 4,
     "west": 0,
     "south": 7,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -650,7 +670,9 @@ def create_locations (locations):
     "east": 0,
     "west": 3,
     "south": 8,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -662,7 +684,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 9,
-    "north": 1
+    "north": 1,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -676,7 +700,9 @@ def create_locations (locations):
     "east": 7,
     "west": 0,
     "south": 0,
-    "north": 2
+    "north": 2,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
 
@@ -688,7 +714,9 @@ def create_locations (locations):
     "east": 0,
     "west": 6,
     "south": 11,
-    "north": 3
+    "north": 3,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
 
@@ -700,7 +728,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 0,
-    "north": 4
+    "north": 4,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -712,7 +742,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 0,
-    "north": 5
+    "north": 5,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -724,7 +756,9 @@ def create_locations (locations):
     "east": 11,
     "west": 0,
     "south": 14,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -736,7 +770,9 @@ def create_locations (locations):
     "east": 11,
     "west": 10,
     "south": 0,
-    "north": 7
+    "north": 7,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -748,7 +784,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 0,
-    "north": 8
+    "north": 8,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -760,7 +798,9 @@ def create_locations (locations):
     "east": 14,
     "west": 0,
     "south": 0,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -772,7 +812,9 @@ def create_locations (locations):
     "east": 15,
     "west": 13,
     "south": 0,
-    "north": 10
+    "north": 10,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -784,7 +826,9 @@ def create_locations (locations):
     "east": 0,
     "west": 14,
     "south": 0,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -796,7 +840,9 @@ def create_locations (locations):
     "east": 0,
     "west": 15,
     "south": 0,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
     
@@ -808,7 +854,9 @@ def create_locations (locations):
     "east": 0,
     "west": 0,
     "south": 0,
-    "north": 0
+    "north": 0,
+    "down": 0,
+    "up": 0
 }
     locations.append(data)
 

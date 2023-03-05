@@ -12,15 +12,15 @@ COLOR = {
     "ENDC": "\033[0m",
 }
 
-verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint"}
-nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree","gates","bar","bars"}
+verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","down","up","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint","d","u"}
+#nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree","gates","bar","bars"}
 
 locations=[]
 objects=[]
 verbs=[]
 nouns=[]
 
-current_location=8
+current_location=1
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -120,6 +120,10 @@ def check_input(verb,noun,name):
             drop(noun)
         case 15:                #read
             read(noun)
+        case 16:                #go down
+            go_down()
+        case 17:                #go up
+            go_up()
         case 22:                #clear
             os.system("cls")    #clears the console
         case 18:                #verbose
@@ -140,7 +144,6 @@ def print_verbs():
 
 def print_location(which_location,verbose_mode):
     current_location_data=locations[which_location]
-    
     brief=current_location_data['brief']
     verbose=current_location_data['verbose']
     outdoors=current_location_data['outdoors']
@@ -167,16 +170,22 @@ def print_direction(where):
     west=current_location_data['west']
     south=current_location_data['south']
     north=current_location_data['north']
-    if east==0 and west==0 and south==0 and north==0:
+    up=current_location_data['up']
+    down=current_location_data['down']
+    if east==0 and west==0 and south==0 and north==0 and up==0 and down==0:
         mydirs="Nowhere!"
     if east>0:
-        mydirs=mydirs+"East "
+        mydirs+="East "
     if west>0:
-        mydirs=mydirs+"West "
+        mydirs+="West "
     if south>0:
-        mydirs=mydirs+"South "
+        mydirs+="South "
     if north>0:
-        mydirs=mydirs+"North"
+        mydirs+="North"
+    if down>0:
+        mydirs+="Down"
+    if up>0:
+        mydirs+="Up"
     
     print_green(mydirs)
     
@@ -262,6 +271,26 @@ def go_south():
     else:
         current_location=south
         print_location(current_location,0)  
+
+def go_up():
+    global current_location
+    current_location_data=(locations[current_location])
+    up=current_location_data['up']
+    if up==0:
+        print("You can not go that way!")
+    else:
+        current_location=up
+        print_location(current_location,0)
+
+def go_down():
+    global current_location
+    current_location_data=(locations[current_location])
+    down=current_location_data['down']
+    if down==0:
+        print("You can not go that way!")
+    else:
+        current_location=down
+        print_location(current_location,0)
         
 def examine(noun):
     
@@ -520,7 +549,7 @@ def get(noun):
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
-        print("I'm sorry, I do not know how to pick that up.")
+        print_red("I'm sorry, I do not know how to pick that up. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
