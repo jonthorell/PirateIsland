@@ -13,7 +13,7 @@ COLOR = {
 }
 
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","down","up","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint","d","u"}
-#nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree","gates","bar","bars"}
+
 
 locations=[]
 objects=[]
@@ -84,7 +84,6 @@ def check_input(verb,noun,name):
             #break out of the loop when typed verb corresponds to entry in combined list/dict
             #synonyms have the same ID. That way one case statement can match as many synonyms as you want without a lot of repeated code
             break
-        
     match array_id:
         case 0:             #quit
             return 50       #exit game from main-py. 
@@ -136,6 +135,8 @@ def check_input(verb,noun,name):
             print_direction(current_location)
         case 24:
             hint()              #prints a small hint
+        case _:                 #default. Should never happen
+            raise SystemExit('An unexpected error happened. Sorry about that')
 
 def print_verbs(): 
     print("The game understands the following verbs (including abreviations): \n")
@@ -506,8 +507,15 @@ def read(noun):
     else:
         noun_id=result[1]
     
-    #print("Outside of if: "+noun)
-    if noun_id==11 and current_location==13:
+    if current_location==9 and noun_id==6:
+        tmp_paper=objects[noun_id]
+        if tmp_paper['location']!=-1:
+            print("But you do not have a piece of paper.")
+        else:
+            print_blue("The piece of paper is both a map of the sea as well as instructions on how to operate the ship.")
+            print_blue("\nNow you can finally get home to do some more pirating!")
+            raise SystemExit('\nWell done! You have completed the game!')
+    elif noun_id==11 and current_location==13:
         print("The writing on the board says: \"Beware of cannibals\". Yikes!")
     else:
         print("I'm sorry, I do not know how to read that.")

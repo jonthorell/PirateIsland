@@ -1,18 +1,20 @@
 To do 
 
-colors: red when the parser does not understand something, or dead
-cyan: can not do that
-green: exits, you can see
-yellow: inventory
+colors: 
 
+red when the parser does not understand something, or dead
+cyan: can not do that
+DONE green: exits, you can see
+DONE yellow: inventory
+DONE blue: completion
 
 rewrite exam()
 
 exam guard only when there at harbour.
+exam rope when tied (up)
 
-hint system
 
-Should only provide hint whenever say the guard is there. If that has been solved, skip the hint
+DONE Hint system should only provide hint whenever say the guard is there. If that has been solved, skip the hint
 
 
 objects in list directly instead of the append version (low pri)
@@ -31,7 +33,7 @@ DONE East outside of building: update each when door has been opened. Also updat
 
 DONE wear ring: make sure it works after having been dropped elsewhere. Works
 
-Read paper on ship to finish the game
+DONE Read paper on ship to finish the game
 	
 DONE create functions get_noun_by_id
 
