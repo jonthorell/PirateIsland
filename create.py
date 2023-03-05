@@ -242,6 +242,17 @@ def createObjects(objects):
 }
     objects.append(data)
     
+    data = {
+    "ID": 21,
+    "noun": "treasure",
+    "description": "a huge treasure",
+    "exam": "The treasure consists of gold, jewels, diamonds, sapphires, and you name it. Worth many pieces of eights.",
+    "location": 17,
+    "gettable": True,
+    "visible": False
+}
+    objects.append(data)
+    
 def createNouns(nouns):
     data = {
     "ID": 0,
@@ -408,6 +419,12 @@ def createNouns(nouns):
     data = {
     "ID": 20,
     "noun": "key"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 21,
+    "noun": "treasure"
 }
     nouns.append(data)
     

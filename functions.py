@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=4
+current_location=17
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -671,6 +671,16 @@ def v_use(noun):
         else:
             print("You use the key to unlock the door. It could have used a wee bit of oil beforehand, but it works.")
             current_location_data['east']=-1
+    elif current_location==17 and noun_id==14:
+        tmp_shovel=objects[14]
+        tmp_treasure=objects[21]
+        if tmp_shovel['location']!=-1:
+            print("But you do not have a shovel.")
+        elif tmp_treasure['visible']==True:
+            print("But you have already found the treasure.")
+        else:
+            print("You dig furiously for several hours, and is rewarded when you find a huge buried treasure.")
+            tmp_treasure['visible']=True           
     elif current_location==2 and noun_id==8:
             current_location_data=(locations[current_location])
             tmprope=objects[8]
