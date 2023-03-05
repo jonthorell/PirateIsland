@@ -1,15 +1,14 @@
 To do 
 
-colors: red when the parser does not understand something
+colors: red when the parser does not understand something, or dead
+cyan: can not do that
 green: exits, you can see
 yellow: inventory
 
 
-exam()
+rewrite exam()
 
-Gate
-Should alter the text after destroyed
-guard (when there) at harbour
+exam guard only when there at harbour.
 
 hint system
 
@@ -26,17 +25,16 @@ flowchart
 
 test.md
 
-South at harbour: stop player from going south when guard is there.
-South at cave-entrance: update south to 12 when gate been broken
-East outside of building: update each when door has been opened. Also update so the door is on the ground
+DONE South at harbour: stop player from going south when guard is there.
+DONE South at cave-entrance: update south to 12 when gate been broken
+DONE East outside of building: update each when door has been opened. Also update so the door is on the ground
 
-wear ring:
-	make sure it works after having been dropped elsewhere. Works
+DONE wear ring: make sure it works after having been dropped elsewhere. Works
+
+Read paper on ship to finish the game
 	
-create functions
+DONE create functions get_noun_by_id
 
-		get_noun_by_id --done
-		get_object_by_id
 		
 
 

@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=5
+current_location=14
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -436,15 +436,20 @@ def print_instructions ():
     print_yellow(rules)
     
 def hint():
-    if current_location==15:
+    tmp_door=locations[15]
+    tmp_key=objects[20]
+    tmp_rope=locations[2]
+    tmp_gate=locations[8]
+    tmp_guard=locations[5]
+    if current_location==15 and tmp_door['east']!=16:
         print("You may want to find a way to open that door.")
-    elif current_location==7:
+    elif current_location==7 and tmp_key['visible']==False:
         print("There might something special about that chest.")
-    elif current_location==2:
+    elif current_location==2 and tmp_rope['down']==0:
         print("You may want to find a way of climbing down the cliffside.")
-    elif current_location==8:
+    elif current_location==8 and tmp_gate['south']==0:
         print("The gate is in the way. How can that be solved?")
-    elif current_location==5:
+    elif current_location==5 and tmp_guard['south']==18:
         print("You want to get rid of the guard somehow.")
     elif current_location==17:
         print("Remember, X marks the spot.")
