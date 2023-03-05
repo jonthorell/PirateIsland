@@ -1,5 +1,10 @@
 To do 
 
+colors: red when the parser does not understand something
+green: exits, you can see
+yellow: inventory
+
+
 exam()
 
 Gate
@@ -30,7 +35,7 @@ wear ring:
 	
 create functions
 
-		get_noun_by_id
+		get_noun_by_id --done
 		get_object_by_id
 		
 

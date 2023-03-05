@@ -13,14 +13,14 @@ COLOR = {
 }
 
 verbset={"exit","l","help","verbs","look","i","inventory","n","north","s","south","w","west","e","east","exam","examine","wear","remove","get","take","drop","use","read","dig","climb","verbose","brief","open","break","clear","quit","instructions","exits","directions","investigate","hint"}
-nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree"}
+nounset={"sword","chest","bottle","eyepatch","map","skeleton","paper","id","rope","table","ring","board","building","door","shovel","ship","banana-tree","rocks","guard","gate","sign","patch","cutlass","tree","gates","bar","bars"}
 
 locations=[]
 objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14
+current_location=8
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -91,7 +91,7 @@ def check_input(verb,noun,name):
         
     match array_id:
         case 0:             #quit
-            return 50       #exit game from main-py. Will also be returned if player dies
+            return 50       #exit game from main-py. 
         case 1:             #help
             print_instructions()
         case 2:             #verbs
@@ -203,7 +203,7 @@ def inventory():
             inventory+=1
     
     if inventory==0:
-        print_red("Bloody nothing!")
+        print_red("Bloody nothing!") #since you can not drop the eyepatch, this will never be shown. Just there in case one wants to expand the game
 
 def you_can_see():
     
@@ -221,7 +221,7 @@ def you_can_see():
     
     if location_see>0:
         print("You can see:",end = " ")
-        print(see_string)
+        print_green(see_string)
             
 def go_west():
     global current_location
@@ -422,8 +422,17 @@ def hint():
         print("I have no hint to provide at this time.")
         
 def wear(noun):
-    if noun=="ring":
-        tmp_object=objects[10]
+
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("How am I supposed to wear that?!")
+        return
+    else:
+        noun_id=result[1]
+    
+    if noun_id==10:
+        tmp_object=objects[noun_id]
         if(tmp_object['location']==-1):
             print("You put the ring on your finger.")
             dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
@@ -431,13 +440,20 @@ def wear(noun):
             print("You pick up the ring and put it on your finger.")
             dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
             
-    if noun !="eyepatch":
+    if noun_id !=3:
         print("How am I supposed to wear that?")
     else:
         print("But you are already wearing it.")
         
 def remove(noun):
-    if noun !="eyepatch":
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("Que? I can't see how I'm gonna remove that.")
+        return
+    else:
+        noun_id=result[1]
+    if noun_id !=3:
         print("Que? I can't see how I'm gonna remove that.")
     else:
         print("And ruin that piratey-look? I think not!")        
@@ -462,20 +478,30 @@ def read(noun):
         print("I'm sorry, I do not know how to read that.")
         
 def v_break(noun):
-    global current_location
+
+    result=get_noun_by_id(noun)
+    match=result[0]
+    if match==0:
+        print("Que? I can't see how I'm gonna break that.")
+        return
+    else:
+        noun_id=result[1]
+    
+
+    #global current_location
     current_location_data=(locations[current_location])
     south=current_location_data['south']
     
-    if current_location==8 and south==0 and noun=="gate":
+    if current_location==8 and south==0 and noun_id==19:
         print("Apparently, the bars of the gate were made out of styrofoam so the gate is easily broken.")
         current_location_data['south']=12
         current_location_data['verbose']="You're at the bottom of a hill. Sometime in the past someone made an artificial cave in it, and the entrence is to the south."
         tmp_object=objects[19]
         tmp_object['exam']="Some vandal has broken the gate."
-    elif current_location==8 and south==12 and noun=="gate":
+    elif current_location==8 and south==12 and noun_id==19:
         print("But the gate has already been broken down.")
     else:
-        print("I don't know to break that.")
+        print("Que? I can't see how I'm gonna break that.")
         
 def get_noun_by_id(noun):
     match=0    #initial value. If still 0 at end of loop, no match

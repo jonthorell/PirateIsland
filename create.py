@@ -376,6 +376,24 @@ def createNouns(nouns):
 }
     nouns.append(data)
     
+    data = {
+    "ID": 19,
+    "noun": "gates"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 19,
+    "noun": "bar"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 19,
+    "noun": "bars"
+}
+    nouns.append(data)
+    
 
 def createVerbs (verbs):
     data = {
