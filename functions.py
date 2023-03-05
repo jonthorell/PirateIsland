@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14
+current_location=2
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -630,6 +630,7 @@ def v_open(noun):
         print("I'm sorry, I don't know how to open that.")
 
 def v_use(noun):
+    global current_location
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -639,6 +640,17 @@ def v_use(noun):
         noun_id=result[1]
     
     tmp_object=objects[noun_id] #get the object with the same id as the noun
+    if noun_id==4:
+        tmpmap=objects[4]
+        if tmpmap['location']!=-1:
+            print("But you do not have a map.")
+            return
+        else:
+            print("You use the map and when you followed its instructions you are at...")
+            current_location=17
+            print_location(current_location,1)
+            return
+    
     if current_location==15 and noun_id==20:
         current_location_data=(locations[current_location])
         unlocked=current_location_data['east']
@@ -651,6 +663,20 @@ def v_use(noun):
         else:
             print("You use the key to unlock the door. It could have used a wee bit of oil beforehand, but it works.")
             current_location_data['east']=-1
+    elif current_location==2 and noun_id==8:
+            current_location_data=(locations[current_location])
+            tmprope=objects[8]
+            if tmprope['location']!=-1:
+                print("But you do not have any rope.")
+            elif current_location_data['down']==1:
+                print("But you have already used the rope.")
+            else:
+                print("You tie the rope around the rock and let the other end run down the cliffside.")
+                current_location_data['down']=1
+                tmprope['location']=0
+                tmprope['gettable']=False
+                tmprope['visible']=False
+                current_location_data['verbose']="You're at the top of a cliff. Far, far down below you can see a path dwindling south towards what seems to be a harbour. There is a huge piece of rock jutting out of what looks to be granite, although you can not be sure. You are, after all, a pirate and not a geologist. A piece of rope is tied to the rock."
     else:
             print("I don't know how to use that.")
             
