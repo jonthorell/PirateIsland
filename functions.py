@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=17
+current_location=5
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -265,6 +265,8 @@ def go_south():
     south=current_location_data['south']
     if south==0:
         print("You can not go that way!")
+    elif current_location==5 and south==18:
+        print("The guard steps infront of you and says \"And where do you think you are trying to go mi-laddio?\nThis is private property!\"")
     else:
         current_location=south
         print_location(current_location,0)  
@@ -671,6 +673,21 @@ def v_use(noun):
         else:
             print("You use the key to unlock the door. It could have used a wee bit of oil beforehand, but it works.")
             current_location_data['east']=-1
+    elif current_location==5 and noun_id==21:
+        tmp_treasure=objects[21]
+        tmp_guard=objects[18]
+        current_location_data=(locations[current_location])
+        bribed=current_location_data['south']
+        if tmp_treasure['location']!=-1 and bribed!=9:
+            print("But you do not have any treasure.")
+        elif bribed==9:
+            print("But the guard has already been bribed and is nowhere to be seen.")
+        else:
+            print("The guard hesistantly accepts the treasure as a bribe and wanders off.")
+            current_location_data['south']=9
+            tmp_treasure['location']=0
+            tmp_guard['location']=0
+            current_location_data['verbose']="You're at the shore. It is more of a harbour really, with one sole ship lying anchored here. The ship is somewhat small, but appears to be sea-worthy."            
     elif current_location==17 and noun_id==14:
         tmp_shovel=objects[14]
         tmp_treasure=objects[21]

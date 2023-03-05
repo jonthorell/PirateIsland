@@ -717,7 +717,7 @@ def create_locations (locations):
     "visited": False,
     "east": 0,
     "west": 0,
-    "south": 9,
+    "south": 18,    #deliberately wrong. Used for checking if guard has been bribed yet. When he is, the value will be changed to 9
     "north": 1,
     "down": 0,
     "up": 0
