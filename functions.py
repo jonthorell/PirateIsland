@@ -20,7 +20,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14     #start-location
+current_location=14    #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -125,7 +125,7 @@ def check_input(verb,noun,name):
             set_verbose()
         case 19:                #brief
             set_brief()    
-        case 20:                #
+        case 20:                #open
             v_open(noun)
         case 21:                #break
             v_break(noun)    
@@ -234,7 +234,7 @@ def go_west():
     global current_location
     current_location_data=(locations[current_location])
     west=current_location_data['west']
-    if west==0:
+    if west<=0:
         print("You can not go that way!")
     else:
         current_location=west
@@ -254,7 +254,7 @@ def go_north():
     global current_location
     current_location_data=(locations[current_location])
     north=current_location_data['north']
-    if north==0:
+    if north<=0:
         print("You can not go that way!")
     else:
         current_location=north
@@ -264,7 +264,7 @@ def go_south():
     global current_location
     current_location_data=(locations[current_location])
     south=current_location_data['south']
-    if south==0:
+    if south<=0:
         print("You can not go that way!")
     elif current_location==5 and south==18:
         print("The guard steps infront of you and says \"And where do you think you are trying to go mi-laddio?\nThis is private property!\"")
@@ -276,7 +276,7 @@ def go_up():
     global current_location
     current_location_data=(locations[current_location])
     up=current_location_data['up']
-    if up==0:
+    if up<=0:
         print("You can not go that way!")
     else:
         current_location=up
@@ -286,111 +286,12 @@ def go_down():
     global current_location
     current_location_data=(locations[current_location])
     down=current_location_data['down']
-    if down==0:
+    if down<=0:
         print("You can not go that way!")
     else:
         current_location=down
         print_location(current_location,0)
         
-def examine(noun):
-    
-    match=0    #initial value. If still 0 at end of loop, no match
-    
-    for i in range(len(nouns)):
-        curr_noun=nouns[i]
-        array_noun=curr_noun['noun']
-        array_id=curr_noun['ID']
-        if array_noun==noun:
-            match=1
-            break
-    if match==0:
-        print_red("Sorry, I don't understand what I should examine. What is a \""+noun+"\"?")
-        return
-    
-    current_obj=objects[array_id]
-    
-    if current_location==9 and array_id==5:
-        tmp_object=objects[6]
-        if tmp_object['visible']==False:
-            print("When you examine what remains of the skeletons clothing, you discover a piece of paper and an ID-card.")
-            tmp_object['visible']=True
-            tmp_object=objects[7]
-            tmp_object['visible']=True
-            return
-        else:
-            exam_text=current_obj['exam']
-            print(exam_text)
-            return
-    
-    if current_location==1 and array_id==8:
-        #rope bottom of cliff
-        exam_text="A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back."
-        print(exam_text)
-        return
-    
-    if current_location==3 and array_id==17:
-        #rocks
-        #should be in elif but does not work there. Here temporarily. WIll be moved to the elif construct eventually
-        
-        exam_text=current_obj['exam']
-        tmp_object=objects[10]
-        
-        if tmp_object['visible']==False:
-            #ring has not been discovered
-            tmp_object['visible']=True
-            current_obj['exam']="You found nothing out of the ordinary amongst the rocks."
-        print(exam_text)
-        return
-    
-    if current_obj['location']==-1:
-        #first, check if player trying to examine something carried
-        print(current_obj['exam'])
-    elif current_obj['location']==current_location and current_obj['visible']==True:
-        #check if object is at the current location and visible
-        print(current_obj['exam'])
-    elif current_location==14 and array_id==15:
-        #is the player by the ship and trying to exam it?
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==13 and array_id==11:
-        #board on bananatree
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==13 and array_id==16:
-        #banana tree
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==15 and array_id==12:
-        #building
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==15 and array_id==13:
-        #door
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==7 and array_id==1:
-        #chest
-        exam_text=current_obj['exam']
-        print(exam_text) 
-    elif current_location==5 and array_id==18:
-        #guard
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==8 and array_id==19:
-        #gate
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==12 and array_id==9:
-        #table
-        exam_text=current_obj['exam']
-        print(exam_text)
-    elif current_location==5 and array_id==15:
-        exam_text="The ship is a luxury vessel to be sure!"
-        print(exam_text)
-    else:
-        print_red("I'm sorry, I can not do that.")
-   
-    
 def print_instructions ():
     rules="\nInteractive fiction is purely text-based, and can be considered a story where the player takes charge of the outcome rather than just reading along."
     rules+="\nThe player moves around in the game by issuing commands. These commands consists of one or two words, in a verb-noun pattern."
@@ -714,4 +615,86 @@ def v_use(noun):
     else:
             print("I don't know how to use that.")
             
-        
+ 
+def examine(noun):
+    result=get_noun_by_id(noun)
+    match=result[0]
+    
+    if match==0:
+        print_red("I don't know how to examine that, mate. What is a \""+noun+"\"?")
+        return
+    else:
+        noun_id=result[1]
+    
+    tmp_object=objects[noun_id] #get the object with the same id as the noun
+    
+    #check conditionals
+    if current_location==9 and noun_id==5:
+        #skeleton
+        if objects[6]['visible']==False:
+            print("When you examine what remains of the skeletons clothing, you discover a piece of paper and an ID-card.")
+            objects[6]['visible']=True
+            objects[7]['visible']=True
+            return
+        else:
+            print(objects[noun_id]['exam'])
+            return
+    elif current_location==1 and noun_id==8:   
+            #rope at bottom of cliff
+            exam_text="A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back."
+            print(exam_text)
+            return
+    elif current_location==2 and noun_id==8:
+            #rope tied to cliff
+            if locations[2]['down']==1:
+                print("A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.")
+    elif current_location==3 and noun_id==17:
+            #rocks
+            if objects[10]['visible']==False:
+                #when the ring has not been found yet
+                objects[10]['visible']=True    #has now been found
+                print("When you examine the rocks, you discover a golden ring amongst them.")
+            else:
+                objects[17]['exam']="You found nothing out of the ordinary amongst the rocks."
+                print(objects[17]['exam'])
+    elif current_location==14 and noun_id==15:
+            #is the player by the ship and trying to exam it?
+            print(objects[noun_id]['exam'])
+    elif current_location==13 and noun_id==11:
+            #board on bananatree
+            print(objects[noun_id]['exam'])
+    elif current_location==13 and noun_id==16:
+            #tree
+            print(objects[noun_id]['exam'])
+    elif current_location==15 and noun_id==13:
+            #door
+            print(objects[noun_id]['exam'])
+    elif current_location==7 and noun_id==1:
+            #chest
+            print(objects[noun_id]['exam'])
+    elif current_location==5 and noun_id==18:
+            #guard
+            if objects[noun_id]['location']!=current_location:
+                print("But the guard is not here.")
+            else:
+                print(objects[noun_id]['exam'])
+    elif current_location==8 and noun_id==19:
+                #gate
+                print(objects[noun_id]['exam'])
+    elif current_location==12 and noun_id==9:
+                #table
+                print(objects[noun_id]['exam'])
+    elif current_location==15 and noun_id==12:
+                #building
+                print(objects[12]['exam'])                 
+    elif current_location==5 and noun_id==15:
+                #exit vessel
+                print("The ship is a luxury vessel to be sure!")
+    elif objects[noun_id]['location']==-1:
+                #inventory, next to last because some exceptions can occur first
+                print(objects[noun_id]['exam'])
+    elif objects[noun_id]['location']==current_location and objects[noun_id]['visible']==True:
+                #objects visible at current position
+                print(objects[noun_id]['exam'])
+    else:
+                print_red("I'm sorry, I can not examine that.")

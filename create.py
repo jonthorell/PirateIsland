@@ -429,6 +429,18 @@ def createNouns(nouns):
 }
     nouns.append(data)
     
+    data = {
+    "ID": 18,
+    "noun": "rimmer"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 12,
+    "noun": "house"
+}
+    nouns.append(data)
+    
 
 def createVerbs (verbs):
     #id is used for synonyms in a look-up table in functions.py. That way only one match statement is needed no matter how many synonyms per verb is defined

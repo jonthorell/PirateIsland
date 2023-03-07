@@ -8,14 +8,21 @@ DONE green: exits, you can see
 DONE yellow: inventory
 DONE blue: completion
 
-rewrite exam()
+DONE rewrite exam()
 
-exam guard only when there at harbour.
-exam rope when tied (up)
+DONE exam guard only when there at harbour.
+
+exam rope when tied (up), check why no output
 
 
 DONE Hint system should only provide hint whenever say the guard is there. If that has been solved, skip the hint
 
+change to remove all tmp-variables. Use syntax 
+
+exam_text=objects[5]['exam']
+print(exam_text)
+
+instead
 
 objects in list directly instead of the append version (low pri)
 
