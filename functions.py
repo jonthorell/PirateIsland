@@ -22,7 +22,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=15    #start-location
+current_location=14   #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -51,7 +51,7 @@ def parser(string_to_parse):
         #returns to prompt if no input
         return
     noun=""
-    noun_tmp=""
+    noun_tmp="" #noun and noun_tmp empty strings at first
     string_to_parse=string_to_parse.lower() #convert the user input to lower case for easy comparison
     #remove the, a, and an from string. To make sure player can write stuff like "open the door" if one wants to despite that the game is verb-noun only based
     string2=string_to_parse.replace(' the '," ") #remove all occurences of 'the'
@@ -82,10 +82,8 @@ def check_input(verb,noun,name):
         return       
     for i in range(len(verbs)):
         #loop thru the list verbs to get the id of the verb used
-        curr_verb=verbs[i]
-        array_verb=curr_verb['verb']
-        array_id=curr_verb['ID']
-        if verb==array_verb:
+        array_id=verbs[i]['ID']
+        if verb==verbs[i]['verb']:
             #break out of the loop when typed verb corresponds to entry in combined list/dict
             #synonyms have the same ID. That way one case statement can match as many synonyms as you want without a lot of repeated code
             #thanks to the 'if verb not in verbset' at the top, there is no need for an else. Sooner or later, this if-statement will return true
@@ -409,8 +407,6 @@ def read(noun):
         print("I'm sorry, I do not know how to read that.")
         
 def v_break(noun):
-    global locations
-    global objects
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -418,9 +414,9 @@ def v_break(noun):
         return
     else:
         noun_id=result[1] 
-    south=locations[current_location]['south']
     if noun_id==2:
-        if objects[2]['location']==-1 or objects[2]['location']==current_location:
+        if objects[noun_id]['location']==-1 or objects[noun_id]['location']==current_location:
+            #is the bottle either carried or at the current location?
             if objects[4]['visible']==True:
                 #has the map been found?
                 print("But the bottle has already been smashed.")
@@ -429,17 +425,17 @@ def v_break(noun):
                 print("You smash the bottle and can retrieve the piece of paper. It turns out to be a map!")
                 objects[4]['visible']=True
                 objects[4]['location']=current_location
-                objects[2]['description']="a broken bottle"
+                objects[noun_id]['description']="a broken bottle"
         return
-    if current_location==8 and south==0 and noun_id==19:
+    if current_location==8 and locations[current_location]['south']==0 and noun_id==19:
         #break gate
         #if south=0, unbroken
         print("Apparently, the bars of the gate were made out of styrofoam so the gate is easily broken.")
         #update lists
         locations[current_location]['south']=12
         locations[current_location]['verbose']="You're at the bottom of a hill. Sometime in the past someone made an artificial cave in it, and the entrence is to the south."
-        objects[19]['exam']="Some vandal has broken the gate."
-    elif current_location==8 and south==12 and noun_id==19:
+        objects[noun_id]['exam']="Some vandal has broken the gate."
+    elif current_location==8 and locations[current_location]['south']==12 and noun_id==19:
         print("But the gate has already been broken down.")
     elif current_location==15 and noun_id==13:
         print("The door is way too sturdy for that.")
@@ -465,8 +461,6 @@ def get(noun):
         return
     else:
         noun_id=result[1] 
-    tmp_door=objects[13]
-    door_visible=tmp_door['visible']
     if objects[noun_id]['location']==-1:
         print("But you are already carrying it.")
     elif objects[noun_id]['location']==current_location and objects[noun_id]['gettable']==True and objects[noun_id]['visible']==True:
@@ -514,11 +508,10 @@ def v_open(noun):
         else:
             print("But the chest is already open.")
     elif current_location==15 and noun_id==13:
-        unlocked=locations[current_location]['east']
-        if unlocked==0:
+        if locations[current_location]['east']==0:
             #east will be updated when the door is open
             print("The door is locked.")
-        elif unlocked==-1:
+        elif locations[current_location]['east']==-1:
             print("You open the door. The hinges were bad apparently so the door falls down onto the ground.")
             locations[current_location]['east']=16
             locations[current_location]['verbose']="You are on the eastern end of the beach. It still looks lovely, but that old and worn-out house ruins the look. The door is open."
@@ -539,66 +532,74 @@ def v_use(noun):
     else:
         noun_id=result[1] 
     if noun_id==4:
-        if objects[4]['location']!=-1:
+        if objects[noun_id]['location']!=-1:
+            #you can "use map" wherever you are location-wise but you have to possess the map
             print("But you do not have a map.")
             return
         else:
+            #if you have the map, "teleport" the player to the treasure-site
             print("You use the map and when you followed its instructions you are at...")
             current_location=17
             print_location(current_location,1)
             return
-    #continue from here
+    #restart if-block since it is now using location as primary identifyer. Mainly due to readability
     if current_location==15 and noun_id==20:
-        current_location_data=(locations[current_location])
-        unlocked=current_location_data['east']
-        if tmp_object['location']!=-1:
+        #you can only use "use key" if you're in location 15 (outside building)
+        if objects[noun_id]['location']!=-1:
+            #and if you possess they key
             print("But you don't have a key.")
-        elif unlocked==-1:
+        elif locations[current_location]['east']==-1:
+            #unneccesary to unlock twice
             print("But the door is already unlocked.")
-        elif unlocked==16:
+        elif locations[current_location]['east']==16:
+            #or when the door is open
             print("But the door is already opened.")
         else:
+            #unlock the door
             print("You use the key to unlock the door. It could have used a wee bit of oil beforehand, but it works.")
-            current_location_data['east']=-1
+            locations[current_location]['east']=-1
     elif current_location==5 and noun_id==21:
-        tmp_treasure=objects[21]
-        tmp_guard=objects[18]
-        current_location_data=(locations[current_location])
-        bribed=current_location_data['south']
-        if tmp_treasure['location']!=-1 and bribed!=9:
+        #you can only "use treasure" if you're at the shore with the escape-vessel
+        if objects[noun_id]['location']!=-1 and locations[current_location]['south']!=9:
+            #and you need to possess the treasure, and the guard must not be bribed already
             print("But you do not have any treasure.")
-        elif bribed==9:
+        elif locations[current_location]['south']==9:
+            #the guard has already been bribed. No need to do it twice.
             print("But the guard has already been bribed and is nowhere to be seen.")
         else:
             print("The guard hesistantly accepts the treasure as a bribe and wanders off.")
-            current_location_data['south']=9
-            tmp_treasure['location']=0
-            tmp_guard['location']=0
-            current_location_data['verbose']="You're at the shore. It is more of a harbour really, with one sole ship lying anchored here. The ship is somewhat small, but appears to be sea-worthy."            
+            locations[current_location]['south']=9  #update the south direction so the guard (not there anymore) does not stop you from boarding the ship
+            objects[noun_id]['location']=0   #destroy the treausre so it is no longer in your inventory
+            objects[18]['location']=0   #move the guard away from the scene
+            #update the verbose description so the guard is no longer displayed.
+            locations[current_location]['verbose']="You're at the shore. It is more of a harbour really, with one sole ship lying anchored here. The ship is somewhat small, but appears to be sea-worthy."            
     elif current_location==17 and noun_id==14:
-        tmp_shovel=objects[14]
-        tmp_treasure=objects[21]
-        if tmp_shovel['location']!=-1:
+        #you need to be at the treasure-site to "use shovel"
+        if objects[noun_id]['location']!=-1:
+            #you need to possess the shovel
             print("But you do not have a shovel.")
-        elif tmp_treasure['visible']==True:
+        elif objects[21]['visible']==True:
+            #and you can not find the treasure twice
             print("But you have already found the treasure.")
         else:
             print("You dig furiously for several hours, and is rewarded when you find a huge buried treasure.")
-            tmp_treasure['visible']=True           
+            objects[21]['visible']=True           #reveal the treasure
     elif current_location==2 and noun_id==8:
-            current_location_data=(locations[current_location])
-            tmprope=objects[8]
-            if tmprope['location']!=-1:
-                print("But you do not have any rope.")
-            elif current_location_data['down']==1:
+            #you can only "use rope" at location 2 (top of cliff)
+            if locations[current_location]['down']==1:
+                #if you haven't used the rope already that is
                 print("But you have already used the rope.")
+            elif objects[noun_id]['location']!=-1:
+                #and you need to carry the rope
+                print("But you do not have a rope.")
             else:
                 print("You tie the rope around the rock and let the other end run down the cliffside.")
-                current_location_data['down']=1
-                tmprope['location']=0
-                tmprope['gettable']=False
-                tmprope['visible']=False
-                current_location_data['verbose']="You're at the top of a cliff. Far, far down below you can see a path dwindling south towards what seems to be a harbour. There is a huge piece of rock jutting out of what looks to be granite, although you can not be sure. You are, after all, a pirate and not a geologist. A piece of rope is tied to the rock."
+                locations[current_location]['down']=1   #make sure you can go down
+                objects[noun_id]['location']=0          #remove the rope from the inventory
+                objects[noun_id]['gettable']=False      #you can not get the rope again
+                objects[noun_id]['visible']=False       #the rope is made "invisible"
+                #update the verbose description of the location
+                locations[current_location]['verbose']="You're at the top of a cliff. Far, far down below you can see a path dwindling south towards what seems to be a harbour. There is a huge piece of rock jutting out of what looks to be granite, although you can not be sure. You are, after all, a pirate and not a geologist. A piece of rope is tied to the rock."
     else:
             print("I don't know how to use that.")
             
@@ -606,14 +607,11 @@ def v_use(noun):
 def examine(noun):
     result=get_noun_by_id(noun)
     match=result[0]
-    
     if match==0:
         print_red("I don't know how to examine that, mate. What is a \""+noun+"\"?")
         return
     else:
         noun_id=result[1]
-    
-    tmp_object=objects[noun_id] #get the object with the same id as the noun
     
     #check conditionals
     if current_location==9 and noun_id==5:
@@ -626,6 +624,9 @@ def examine(noun):
         else:
             print(objects[noun_id]['exam'])
             return
+    elif current_location==13 and noun_id==22:
+            #banana
+            print(objects[noun_id]['exam'])
     elif current_location==1 and noun_id==8:   
             #rope at bottom of cliff
             print("A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.")
@@ -633,9 +634,9 @@ def examine(noun):
     elif current_location==2 and noun_id==8:
             #rope tied to cliff
             #need a special condition here since the rope can sometimes be examined without being in your possession
-            if locations[2]['down']==1:
+            if locations[current_location]['down']==1:
                 #if rope has been used
-                print("A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.")
+                print("A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.\nIt is tied too securely to the cliff for that.")
                 return
             if objects[noun_id]['location']==-1:
                 #rope being carried
@@ -653,8 +654,8 @@ def examine(noun):
                 objects[10]['visible']=True    #has now been found
                 print("When you examine the rocks, you discover a golden ring amongst them.")
             else:
-                objects[17]['exam']="You found nothing out of the ordinary amongst the rocks."
-                print(objects[17]['exam'])
+                objects[noun_id]['exam']="You found nothing out of the ordinary amongst the rocks."
+                print(objects[noun_id]['exam'])
     elif current_location==14 and noun_id==15:
             #is the player by the ship and trying to exam it?
             print(objects[noun_id]['exam'])
@@ -684,7 +685,7 @@ def examine(noun):
                 print(objects[noun_id]['exam'])
     elif current_location==15 and noun_id==12:
                 #building
-                print(objects[12]['exam'])                 
+                print(objects[noun_id]['exam'])                 
     elif current_location==5 and noun_id==15:
                 #vessel
                 print("The ship is a luxury vessel to be sure!")
@@ -692,7 +693,7 @@ def examine(noun):
                 #inventory, next to last because some exceptions can occur first
                 print(objects[noun_id]['exam'])
     elif objects[noun_id]['location']==current_location and objects[noun_id]['visible']==True:
-                #objects visible at current position
+                #objects visible at current position, same as the inventory rule.
                 print(objects[noun_id]['exam'])
     else:
                 print_red("I'm sorry, I can not examine that.")

@@ -253,6 +253,17 @@ def createObjects(objects):
 }
     objects.append(data)
     
+    data = {
+    "ID": 22,
+    "noun": "banana",
+    "description": "a banana",
+    "exam": "The bananas are very brown and looks inedible. Still, they will provide nourishment nonetheless.",
+    "location": 13,
+    "gettable": False,
+    "visible": False
+}
+    objects.append(data)
+    
 def createNouns(nouns):
     #id field MUST correspond with the ID-field in objects. Used for synonyms and determining which object the user tries to manipulate
     data = {
@@ -438,6 +449,18 @@ def createNouns(nouns):
     data = {
     "ID": 12,
     "noun": "house"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 22,
+    "noun": "banana"
+}
+    nouns.append(data)
+    
+    data = {
+    "ID": 22,
+    "noun": "bananas"
 }
     nouns.append(data)
     
