@@ -33,3 +33,15 @@ Happy coding!
 ## Bugs encountered
 
 the commands verbosity and brief did not toggle the flag correctly. The problem was that those two commands alter a global variable and I forgot the global keyword.
+
+sometimes the drop verb did not seem to drop the object. It was removed from the inventory but did not turn up at the new location. Turns out this was a debugging problem.
+When testing a new function with dependencies (use key in location 15 for example) I forcibly set they key-object to be a part of the inventory. Just to easily check all
+conditions. When dropping the key it was removed from the inventory but did not show up at the location. Turned out it was an oversight in my thinking when checking and not
+the code. The key needs to be found before it can be used so it has the key-value "visible": False set. If one plays the game as the user will see it (or indeed, setting it
+to true at start) the logic works as expected. Silly me.
+
+## Comments
+
+The "engine" behind this example-game is really flexible. The scope of this particular game is quite limited, but the idea of how it works can be expanded as much as one wants.
+The map is essentially a grid. For this game, it is a 4 rows and 4 columns but that can be changed easily to say 10x10 if that is what your game requires. And not all positions need
+to be used.
