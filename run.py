@@ -17,10 +17,10 @@ import functions            #main functions
 import welcome              #functions for initial greetings, help-texts
 import create               #functions for creating objects, nouns, locations & verbs
 
-#welcome.welcome()
-#functions.print_instructions()
-#welcome.hint()
-#welcome.print_intro()
+welcome.welcome()
+functions.print_instructions()
+welcome.hint()
+welcome.print_intro()
 
 # The below creates everything needed for the game-logic
 create.createVerbs(functions.verbs)
@@ -28,8 +28,8 @@ create.createObjects(functions.objects)
 create.createNouns(functions.nouns)
 create.create_locations (functions.locations)
 
-#name=input("What is your name? ")
-name="Jonas"
+name=input("What is your name? ")
+#name="Jonas"
 
 turns=0
 functions.print_location(functions.current_location,1)
