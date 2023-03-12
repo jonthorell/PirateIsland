@@ -30,7 +30,4 @@ def print_intro():
     intro+="\n\nYour only chance is to swim ashore and then somehow find your way back to civilazation."
     print_cyan(intro)
     input("Press Enter to continue...")
-
-
-
     

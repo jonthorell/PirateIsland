@@ -26,9 +26,16 @@ welcome.print_intro()
 create.createVerbs(functions.verbs)
 create.createObjects(functions.objects)
 create.createNouns(functions.nouns)
-create.create_locations (functions.locations)
+create.create_locations(functions.locations)
 
-name=input("What is your name? ")
+while True:
+    name=input("What is your name? ")
+    
+    if name.strip() != '':
+        functions.print_red("Welcome "+name+"!\n")
+        break
+    else:
+        functions.print_red("Please provide a name!\n")
 #name="Jonas"
 
 turns=0
@@ -46,6 +53,8 @@ while game_in_progress:
             print("---------------------")
             print("Thank you for playing.")
             print("Your game took "+str(turns)+" turns.")
+            #print("\n")
+            #print(create.createObjects.__doc__)
             game_in_progress=False      #break out of while-loop
         else:
             turns+=1    #increase the number of turns that has been used

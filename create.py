@@ -2,7 +2,7 @@
 
 def createObjects(objects):
     """
-    Function createObjects() creates all objects the player can interact with
+    Function createObjetcs() create all the objetcs the player can interact with
     """
     #the different keys are for:
     #id: internal id to keep track of which object the user interacts with
