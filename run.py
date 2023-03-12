@@ -29,8 +29,8 @@ create.createNouns(functions.nouns)
 create.create_locations(functions.locations)
 
 while True:
-    name=input("What is your name? ")
-    
+    #make sure the name is not empty
+    name=input("What is your name? ")   
     if name.strip() != '':
         functions.print_red("Welcome "+name+"!\n")
         break
