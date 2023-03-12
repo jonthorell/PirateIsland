@@ -1,6 +1,9 @@
 # This file creates all lists/dics necessary for the game
 
 def createObjects(objects):
+    """
+    Function createObjects() creates all objects the player can interact with
+    """
     #the different keys are for:
     #id: internal id to keep track of which object the user interacts with
     #noun: the noun used to refer to it. 
@@ -265,6 +268,9 @@ def createObjects(objects):
     objects.append(data)
     
 def createNouns(nouns):
+    """
+    Function createNouns() create all the words the user can use as a noun
+    """
     #id field MUST correspond with the ID-field in objects. Used for synonyms and determining which object the user tries to manipulate
     data = {
     "ID": 0,
@@ -466,6 +472,9 @@ def createNouns(nouns):
     
 
 def createVerbs (verbs):
+    """
+    Function createVerbs() create all verbs the game understands
+    """
     #id is used for synonyms in a look-up table in functions.py. That way only one match statement is needed no matter how many synonyms per verb is defined
     data = {
     "ID": 0,
@@ -671,6 +680,9 @@ def createVerbs (verbs):
     verbs.append(data)
     
 def create_locations (locations):
+    """
+    The function create_locations() creates all the places the player can visited
+    """
     data = {
     # This first location is here to make sure the map really starts at 1 for game-logic purposes. 
     # In "Pirate Island" this location is never used.
