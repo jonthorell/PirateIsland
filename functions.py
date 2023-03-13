@@ -1,3 +1,6 @@
+"""
+Initial declarations in functions.py
+"""
 import os
 os.system("")  # enables ansi escape characters in terminal
 os.system("cls") #clears the console
@@ -28,24 +31,45 @@ verbosity=False
 
 #Some functions to print text in different colors
 def print_green(text):
+    """
+    Print text in green, from constant COLOR
+    """
     print(COLOR["GREEN"], text, COLOR["ENDC"])
 
 def print_header(text):
+    """
+    Print text in header, from constant COLOR
+    """
     print(COLOR["HEADER"], text, COLOR["ENDC"])
     
 def print_blue(text):
+    """
+    Print text in blue, from constant COLOR
+    """
     print(COLOR["BLUE"], text, COLOR["ENDC"])
     
 def print_red(text):
+    """
+    Print text in red, from constant COLOR
+    """
     print(COLOR["RED"], text, COLOR["ENDC"])
     
 def print_cyan(text):
+    """
+    Print text in cyan, from constant COLOR
+    """
     print(COLOR["CYAN"], text, COLOR["ENDC"])
     
 def print_yellow(text):
+    """
+    Print text in yellow, from constant COLOR
+    """
     print(COLOR["YELLOW"], text, COLOR["ENDC"])
         
 def parser(string_to_parse):
+    """
+    Splits user input into verb and noun
+    """
     #splits the input into verb and noun
     if not string_to_parse:
         #returns to prompt if no input
@@ -77,6 +101,9 @@ def parser(string_to_parse):
     return verb,noun
 
 def check_input(verb,noun,name):
+    """
+    Check if the input is valid. Parser 2 if you will. When an id has been found, jump to the corresponding function.
+    """
     if verb not in verbset:
         print_red(f"I'm sorry {name}, I do not understand that verb.")
         return       
@@ -120,7 +147,7 @@ def check_input(verb,noun,name):
         case 13:                #drop something
             drop(noun)
         case 14:                #use
-            v_use(noun)
+            use(noun)
         case 15:                #read
             read(noun)
         case 16:                #go down
@@ -145,11 +172,17 @@ def check_input(verb,noun,name):
             raise SystemExit('An unexpected error happened. Sorry about that')
 
 def print_verbs(): 
+    """
+    Function print_verbs() prints out the available verbs
+    """
     print("The game understands the following verbs (including abreviations): \n")
     for verb in verbset:
         print_yellow(verb.capitalize())
 
 def print_location(which_location,verbose_mode):
+    """
+    Function print_location() displays the current location
+    """
     #which_location is redundant (for now) since current_location is a global variable.
     #Should be changed
     global locations
@@ -169,6 +202,9 @@ def print_location(which_location,verbose_mode):
     
     
 def print_direction(where):
+    """
+    Function print_direction() prints out the directions the player can go
+    """
     print("\nYou can go: ",end = " ") #end=" ", make sure there is no linebreak
     mydirs="" #empty to start with
     
@@ -197,16 +233,26 @@ def print_direction(where):
     print_green(mydirs)
     
 def set_verbose():
+    """
+    Function set_verbose() turns on verbose mode. That is, always print long description
+    """
     global verbosity
     verbosity=True
     print("Verbose mode ON")
 
 def set_brief():
+    """
+    Function set_brief() turns of verbose mode. Print the long description on first visit or when
+    using the verb look
+    """
     global verbosity
     verbosity=False
     print("Verbose mode OFF")
 
 def inventory():
+    """
+    Function inventory() lists what the player is carrying
+    """
     print("You are carrying:")
     inventory=0     #Keep track of how much you are carrying
     for item in objects:
@@ -218,6 +264,9 @@ def inventory():
         print_red("Bloody nothing!") #since you can not drop the eyepatch, this will never be shown. Just there in case one wants to expand the game or use it as a basis for another
 
 def you_can_see():
+    """
+    Function you_can_see() lists objects visible at the current location
+    """
     #used to print "You can see:" at the end of the location
     see_string="" #empty at first
     location_see=0 # keep track of local objects
@@ -235,6 +284,9 @@ def you_can_see():
         print_green(see_string)
             
 def go_west():
+    """
+    Function go_west() moves the player westwards if possible
+    """
     global current_location
     west=locations[current_location]['west']
     if west<=0:
@@ -244,6 +296,9 @@ def go_west():
         print_location(current_location,0)  #the zero is there to make sure the verbose/brief setting is adhered to
         
 def go_east():
+    """
+    Function go_east() moves the player eastwards if possible
+    """
     global current_location
     east=locations[current_location]['east']
     if east<=0:
@@ -253,6 +308,9 @@ def go_east():
         print_location(current_location,0)  #the zero is there to make sure the verbose/brief setting is adhered to
         
 def go_north():
+    """
+    Function go_north() moves the player northwards if possible
+    """
     global current_location
     north=locations[current_location]['north']
     if north<=0:
@@ -262,6 +320,9 @@ def go_north():
         print_location(current_location,0)
         
 def go_south():
+    """
+    Function go_south() moves the player southwards if possible
+    """
     global current_location
     south=locations[current_location]['south']
     if south<=0:
@@ -274,6 +335,9 @@ def go_south():
         print_location(current_location,0)  
 
 def go_up():
+    """
+    Function go_up() moves the player upwards if possible
+    """
     global current_location
     up=locations[current_location]['up']
     if up<=0:
@@ -283,6 +347,9 @@ def go_up():
         print_location(current_location,0)
 
 def go_down():
+    """
+    Function go_down() moves the player downwards if possible
+    """
     global current_location
     down=locations[current_location]['down']
     if down<=0:
@@ -292,6 +359,9 @@ def go_down():
         print_location(current_location,0)
             
 def hint():
+    """
+    Function hint() provides some hints at some locations
+    """
     if current_location==15 and locations[current_location]['east']!=16:
         #if the door has not been opened, provide a hint
         print("You may want to find a way to open that door.")
@@ -313,6 +383,9 @@ def hint():
         print("I have no hint to provide at this time.")
         
 def wear(noun):
+    """
+    Function wear() lets the player wear some things
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -336,6 +409,9 @@ def wear(noun):
         print("But you are already wearing it.")
         
 def remove(noun):
+    """
+    Function remove() is the opposite of wear(). Lets the player unwear something
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -349,10 +425,16 @@ def remove(noun):
         print("And ruin that piratey-look? I think not!")        
 
 def dead(text):
+    """
+    Function dead() is used to display some game-over text when the player dies, and promtly exit the game
+    """
     print_red(text)
     raise SystemExit('You have failed.')
 
 def read(noun):
+    """
+    Function read() lets the player read some things
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -374,6 +456,9 @@ def read(noun):
         print("I'm sorry, I do not know how to read that.")
         
 def v_break(noun):
+    """
+    Function v_break() (v_ is there avoid conflict with reserved key-word) lets the player break/smash some things
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -398,7 +483,7 @@ def v_break(noun):
         #break gate
         #if south=0, unbroken
         print("Apparently, the bars of the gate were made out of styrofoam so the gate is easily broken.")
-        #update lists
+        #update dicts
         locations[current_location]['south']=12
         locations[current_location]['verbose']="You're at the bottom of a hill. Sometime in the past someone made an artificial cave in it, and the entrence is to the south."
         objects[noun_id]['exam']="Some vandal has broken the gate."
@@ -410,6 +495,11 @@ def v_break(noun):
         print("Que? I can't see how I'm gonna break that.")
         
 def get_noun_by_id(noun):
+    """
+    Function get_noun_by_id() finds the id of the noun the player typed and returned
+    back to the calling function, where it is used in if-else caulses to see if what
+    the player tried to do makes sense
+    """
     match=0    #initial value. If still 0 at end of loop, no match
     for i in range(len(nouns)):
         curr_noun=nouns[i]
@@ -421,6 +511,9 @@ def get_noun_by_id(noun):
     return match,array_id
 
 def get(noun):
+    """
+    Function get() lets the player pick up objects
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -442,6 +535,9 @@ def get(noun):
         print("I'm sorry, I do not know how to pick that up.")
 
 def drop(noun):
+    """
+    Function drop() lets the player drop objects
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -461,6 +557,9 @@ def drop(noun):
         print("I'm sorry, I do not know how to drop that.") # should never happen. Here as a fail-safe
         
 def v_open(noun):
+    """
+    Function v_open() (v_ to avoid clash with built in key-word) lets the player open certain things
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -489,7 +588,10 @@ def v_open(noun):
     else:
         print("I'm sorry, I don't know how to open that.")
 
-def v_use(noun):
+def use(noun):
+    """
+    Function use() lets the player use certain objects. That can be say use sword to attack an enemy
+    """
     global current_location
     result=get_noun_by_id(noun)
     match=result[0]
@@ -572,6 +674,9 @@ def v_use(noun):
             
  
 def examine(noun):
+    """
+    Function examine() lets the player examine or investigate certain objects in further detail
+    """
     result=get_noun_by_id(noun)
     match=result[0]
     if match==0:
@@ -666,6 +771,10 @@ def examine(noun):
                 print_red("I'm sorry, I can not examine that.")
                 
 def print_instructions ():
+    """
+    Function print_instructions() prints out the help-instructions. Printed at game-start and if the player
+    types help
+    """
     rules="\nInteractive fiction is purely text-based, and can be considered a story where the player takes charge of the outcome rather than just reading along."
     rules+="\nThe player moves around in the game by issuing commands. These commands consists of one or two words, in a verb-noun pattern."
     rules+="\nSome verbs work on their own (inventory for example), others need a noun (open door for example). "

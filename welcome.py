@@ -3,6 +3,9 @@
 from functions import print_header,print_green,print_cyan,print_yellow
 
 def welcome():
+    """
+    Function welcome() used at game start to provide a mini intro to the game-genre
+    """
     print_header('Welcome to "Pirate Island"')
     print ("A miniature interactive-fiction game")
     print ("An example of how such a game can be written in python")
@@ -11,7 +14,9 @@ def welcome():
     print ("------------------------")
     
 def hint():    
-    
+    """
+    Function hint() just used to provide info abouth the command verbs
+    """
     hint="\nHint: The earliest games of this type had a tendency to have 'guess-the-verb-to-be-used' puzzles included."
     hint+="\nNot by design for the most part, but whether by design or limitations "
     hint+="of the hardware at the time it is annoying, and something I do not like myself.\nFor that reason I added the command 'verbs' to display all the verbs the game understands."
@@ -20,6 +25,9 @@ def hint():
     
 
 def print_intro():
+    """
+    Function print_intro() just prins the background story of the gamne
+    """
     intro='You, as one of the crewmembers of the notorious pirate wessel "The Sea Monkey" is (or should I say was) on a journey for glory, fame and riches galore.'
     intro+=" \nYour captain, a certain Captain LeChuck, is as bloodthirsty and notorious as the ship."
     intro+="\n\nNeeedless to say, Governer Marley is not too keen on what you are doing so he sent another ship to take you down. That ship was piloted by a Jack Sparrow, the scourge"
