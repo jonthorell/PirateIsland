@@ -45,7 +45,10 @@ This is the map used for PirateIsland
 
 ![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/map.PNG?raw=true)
 
+And here is a link to a text-file with a walk-through. There are more things that can be done
+in the game, but that is all that is necessary.
 
+https://github.com/jonthorell/PirateIsland/blob/main/readme-files/walkthrough.txt
 
 # Design considerations (visual)
 
@@ -116,6 +119,8 @@ TO-BE-ADDED
 TO-BE-ADDED
 
 ## Game-play
+
+TO-BE-ADDED
 
 # Bugs encountered and fixed
 
