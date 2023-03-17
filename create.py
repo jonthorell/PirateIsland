@@ -141,165 +141,209 @@ def createObjects(objects):
     }
     objects.append(data)
 
+    exam = "The table is made of balsa wood. No wonder it is unstable."
+    exam += ' Someone has \ncarved "Smeagol was here" in it.'
+
     data = {
-    "ID": 9,
-    "noun": "table",
-    "description": "an unstable table",
-    "exam": 'The table is made of balsa wood. No wonder it is unstable. Someone has carved "Smeagol was here" in it.',
-    "location": 12,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 9,
+        "noun": "table",
+        "description": "an unstable table",
+        "exam": exam,
+        "location": 12,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The ring is perfectly cirular with a huge"
+    exam += " diamond decorating it."
+
     data = {
-    "ID": 10,
-    "noun": "ring",
-    "description": "a golden ring",
-    "exam": "The ring is perfectly cirular with a huge diamond decorating it.",
-    "location": 3,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 10,
+        "noun": "ring",
+        "description": "a golden ring",
+        "exam": exam,
+        "location": 3,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "What do you expect? It is a wooden board."
+    exam += " However, there's some writing on it."
+
     data = {
-    "ID": 11,
-    "noun": "board",
-    "description": "a wooden board",
-    "exam": "What do you expect? It is a wooden board. However, there's some writing on it.",
-    "location": 13,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 11,
+        "noun": "board",
+        "description": "a wooden board",
+        "exam": exam,
+        "location": 13,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The building seems to have been built using whatever could be "
+    exam += "salvaged from\nvarious shipwrecks. Good craftsman skills of"
+    exam += "whoever built it though"
+    exam += " since it \nlooks like it could withstand anything."
+
     data = {
-    "ID": 12,
-    "noun": "building",
-    "description": "a building",
-    "exam": "The building seems to have been built using whatever could be salvaged from various shipwrecks. Good craftsman skills of whoever built it though since it looks like it could withstand anything.",
-    "location": 15,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 12,
+        "noun": "building",
+        "description": "a building",
+        "exam": exam,
+        "location": 15,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The door is made out of metal, and there's"
+    exam += " a small keyhole in it."
+
     data = {
-    "ID": 13,
-    "noun": "door",
-    "description": "a door",
-    "exam": "The door is made out of metal, and there's a small keyhole in it.",
-    "location": 15,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 13,
+        "noun": "door",
+        "description": "a door",
+        "exam": exam,
+        "location": 15,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "Just your ordinary treasure-hunting shovel."
+    exam += " A must have for any \nrespectable pirate."
+
     data = {
-    "ID": 14,
-    "noun": "shovel",
-    "description": "a small shovel",
-    "exam": "Just your ordinary treasure-hunting shovel. A must have for any respectable pirate.",
-    "location": 16,
-    "gettable": True,
-    "visible": True
-}
+        "ID": 14,
+        "noun": "shovel",
+        "description": "a small shovel",
+        "exam": exam,
+        "location": 16,
+        "gettable": True,
+        "visible": True
+    }
     objects.append(data)
-    
+
+    exam = "The pirate vessel \"The Sea Monkey\" is too far out of your"
+    exam += " reach to be \nexamined. You know it inside-out anyway."
+
     data = {
-    "ID": 15,
-    "noun": "ship",
-    "description": "a pirate vessel",
-    "exam": "The pirate vessel, \"The Sea Monkey\" is too far out of your reach to be examined. You know it inside-out anyway.",
-    "location": 14,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 15,
+        "noun": "ship",
+        "description": "a pirate vessel",
+        "exam": exam,
+        "location": 14,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The banana-tree is full of overripe bananas. They "
+    exam += "look disgusting."
+
     data = {
-    "ID": 16,
-    "noun": "banana-tree",
-    "description": "a banana-tree",
-    "exam": "The banana-tree is full of overripe bananas. They look disgusting.",
-    "location": 13,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 16,
+        "noun": "banana-tree",
+        "description": "a banana-tree",
+        "exam": exam,
+        "location": 13,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "When you examine the rocks, you discover a"
+    exam += " golden ring amongst them."
+    exam += ' Could\nit be Sauron\'s fabled "One Ring"?'
+    exam += "\n\nThat could really make this unfortunate"
+    exam += " business of getting marooned\nto be worthwhile!"
+
     data = {
-    "ID": 17,
-    "noun": "rocks",
-    "description": "a bunch of rocks",
-    "exam": "When you examine the rocks, you discover a golden ring amongst them.",
-    "location": 5,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 17,
+        "noun": "rocks",
+        "description": "a bunch of rocks",
+        "exam": exam,
+        "location": 3,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
     data = {
-    "ID": 18,
-    "noun": "guard",
-    "description": "a stern-looking guard",
-    "exam": "No-one messes with Ace Rimmer!",
-    "location": 5,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 18,
+        "noun": "guard",
+        "description": "a stern-looking guard",
+        "exam": "No-one messes with Ace Rimmer!",
+        "location": 5,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
     data = {
-    "ID": 19,
-    "noun": "gate",
-    "description": "a sturdy looking gate",
-    "exam": "The gate is made up of 5 sturdy-looking bars.",
-    "location": 8,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 19,
+        "noun": "gate",
+        "description": "a sturdy looking gate",
+        "exam": "The gate is made up of 5 sturdy-looking bars.",
+        "location": 8,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The key seems to be made out of silver and some"
+    exam += " other unknown ore."
+
     data = {
-    "ID": 20,
-    "noun": "key",
-    "description": "a small key",
-    "exam": "The key seems to be made out of silver and some other unknown ore.",
-    "location": 7,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 20,
+        "noun": "key",
+        "description": "a small key",
+        "exam": exam,
+        "location": 7,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The treasure consists of gold, jewels, diamonds, sapphires, and"
+    exam += " you name \nit. Worth many pieces of eights."
+
     data = {
-    "ID": 21,
-    "noun": "treasure",
-    "description": "a huge treasure",
-    "exam": "The treasure consists of gold, jewels, diamonds, sapphires, and you name it. Worth many pieces of eights.",
-    "location": 17,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 21,
+        "noun": "treasure",
+        "description": "a huge treasure",
+        "exam": exam,
+        "location": 17,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The bananas are very brown and looks inedible. Still,"
+    exam += " they will\nprovide nourishment nonetheless."
+
     data = {
-    "ID": 22,
-    "noun": "banana",
-    "description": "a banana",
-    "exam": "The bananas are very brown and looks inedible. Still, they will provide nourishment nonetheless.",
-    "location": 13,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 22,
+        "noun": "banana",
+        "description": "a banana",
+        "exam": exam,
+        "location": 13,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+
 def createNouns(nouns):
     """
     Function createNouns() create all the words the user can use as a noun
     """
-    #id field MUST correspond with the ID-field in objects. Used for synonyms and determining which object the user tries to manipulate
+    # id field MUST correspond with the ID-field in objects.
+    # Used for synonyms and determining which object the user
+    # tries to manipulate
     data = {
     "ID": 0,
     "noun": "sword"

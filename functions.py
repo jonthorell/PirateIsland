@@ -25,7 +25,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=12   #start-location
+current_location=7   #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -725,7 +725,7 @@ def examine(noun):
             if objects[10]['visible']==False:
                 #when the ring has not been found yet
                 objects[10]['visible']=True    #has now been found
-                print("When you examine the rocks, you discover a golden ring amongst them.")
+                print(objects[noun_id]['exam'])
             else:
                 objects[noun_id]['exam']="You found nothing out of the ordinary amongst the rocks."
                 print(objects[noun_id]['exam'])
