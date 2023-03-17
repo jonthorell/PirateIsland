@@ -142,6 +142,10 @@ None known.
 
 All code run through: [ci-linter](https://pep8ci.herokuapp.com/)
 
+* run.py checked. Some whitespace issues corrected
+
+![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/run_py_check.PNG?raw=true)
+
 Add results and comments
 
 # To-do
