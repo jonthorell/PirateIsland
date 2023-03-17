@@ -132,6 +132,10 @@ conditions. When dropping the key it was removed from the inventory but did not 
 the code. The key needs to be found before it can be used so it has the key-value "visible": False set. If one plays the game as the user will see it (or indeed, setting it
 to true at start) the logic works as expected.
 
+3. Many strings were too long to display properly without overflow. Fixed by adding \n at strategic places to hardcode the length for a terminal 80 columns wide.
+
+4. When examin the skeleton twice, the second time a blank string was printed. Was a mistake when fixing the overflow problem so the variable was accidentally set to null.
+
 More to be added
 
 # Remaining bugs

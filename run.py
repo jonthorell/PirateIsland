@@ -21,10 +21,10 @@ import welcome
 import create
 # functions for creating objects, nouns, locations & verbs
 
-welcome.welcome()
-functions.print_instructions()
-welcome.hint()
-welcome.print_intro()
+#welcome.welcome()
+#functions.print_instructions()
+#welcome.hint()
+#welcome.print_intro()
 
 # The below creates everything needed for the game-logic
 create.createVerbs(functions.verbs)

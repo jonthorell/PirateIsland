@@ -25,7 +25,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=14   #start-location
+current_location=12   #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -478,6 +478,7 @@ def v_break(noun):
                 objects[4]['visible']=True
                 objects[4]['location']=current_location
                 objects[noun_id]['description']="a broken bottle"
+                objects[noun_id]['exam']="The bottle is broken."
         return
     if current_location==8 and locations[current_location]['south']==0 and noun_id==19:
         #break gate

@@ -2,117 +2,145 @@
 
 def createObjects(objects):
     """
-    Function createObjetcs() create all the objetcs the player can interact with
+    Function createObjetcs() create all the objetcs
+    the player can interact with
     """
-    #the different keys are for:
-    #id: internal id to keep track of which object the user interacts with
-    #noun: the noun used to refer to it. 
-    #description: Displayed in "You can see:" text at location
-    #exam: what will be displayed when user examines the object
-    #location: initial location. Updated when taken/dropped etc. -1 if being carried
-    #gettable: if the object can be taken or not.
-    #visible: if the object should be displayed in "You can see:". Used when something must be done before the object reveals itself. 
-    #Also used if something is being described in the main-text for objects that are always in a specific location such as a building,
-    #boat, etc
+    # the different keys are for:
+    # id: internal id to keep track of which object the user interacts with
+    # noun: the noun used to refer to it.
+    # description: Displayed in "You can see:" text at location
+    # exam: what will be displayed when user examines the object
+    # location: initial location. Updated when taken/dropped etc.
+    # -1 if being carried
+    # gettable: if the object can be taken or not.
+    # visible: if the object should be displayed in "You can see:".
+    # Used when something must be done before the object reveals itself.
+    # Also used if something is being described in the main-text for objects
+    # that are always in a specific location such as a building,
+    # boat, etc
+
+    exam = "It is your typical cutlass. Nothing special about it, apart"
+    exam += " from some stains \nthat appear to be blood."
+
     data = {
-    "ID": 0,
-    "noun": "sword",
-    "description": "a cutlass sword",
-    "exam": "It is your typical cutlass. Nothing special about it, apart from some stains that appear to be blood.",
-    "location": -1,
-    "gettable": True,
-    "visible": True
-}
+        "ID": 0,
+        "noun": "sword",
+        "description": "a cutlass sword",
+        "exam": exam,
+        "location": -1,
+        "gettable": True,
+        "visible": True
+    }
     objects.append(data)
-    
+
+    exam = "The chest looks and smells as if it is made out of campher wood."
+    exam += " It looks like \nit is extremely heavy."
+
     data = {
-    "ID": 1,
-    "noun": "chest",
-    "description": "a campher wood chest",
-    "exam": "The chest looks and smells as if it is made out of campher wood. It looks like it is extremely heavy.",
-    "location": 7,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 1,
+        "noun": "chest",
+        "description": "a campher wood chest",
+        "exam": exam,
+        "location": 7,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The bottle might have contained rum at one point. There seems"
+    exam += " to be something\nelse inside it now, a piece of paper."
+
     data = {
-    "ID": 2,
-    "noun": "bottle",
-    "description": "a dirty old bottle",
-    "exam": "The bottle might have contained rum at one point. There seems to be something else inside it now, a piece of paper.",
-    "location": 4,
-    "gettable": True,
-    "visible": True
-}
+        "ID": 2,
+        "noun": "bottle",
+        "description": "a dirty old bottle",
+        "exam": exam,
+        "location": 4,
+        "gettable": True,
+        "visible": True
+    }
     objects.append(data)
-    
+
     data = {
-    "ID": 3,
-    "noun": "eyepatch",
-    "description": "an eyepatch (being worn)",
-    "exam": "It is made of cloth, dyed black.",
-    "location": -1,
-    "gettable": True,
-    "visible": True
-}
+        "ID": 3,
+        "noun": "eyepatch",
+        "description": "an eyepatch (being worn)",
+        "exam": "It is made of cloth, dyed black.",
+        "location": -1,
+        "gettable": True,
+        "visible": True
+    }
     objects.append(data)
-    
+
+    exam = "The paper the map is written on seems to be fragile. "
+    exam += "Probably due\nto having been subjected to some liquid before."
+
     data = {
-    "ID": 4,
-    "noun": "map",
-    "description": "a treasure map",
-    "exam": "The paper the map is written on seems to be fragile. Probably due to having been subjected to some liquid before.",
-    "location": 4,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 4,
+        "noun": "map",
+        "description": "a treasure map",
+        "exam": exam,
+        "location": 4,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The skeleton is wearing what was once very nice clothes."
+    exam += "Now the clothes\n"
+    exam += "looks nothing like clothes, more like holes with remnants "
+    exam += "of fabric around it."
+
     data = {
-    "ID": 5,
-    "noun": "skeleton",
-    "description": "Mr skeleton",
-    "exam": "The skeleton is wearing what was once very nice clothes. Now the clothes looks nothing like clothes, more like holes with remnants of fabric around it.",
-    "location": 9,
-    "gettable": False,
-    "visible": False
-}
+        "ID": 5,
+        "noun": "skeleton",
+        "description": "Mr skeleton",
+        "exam": exam,
+        "location": 9,
+        "gettable": False,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "The piece of paper is partially crumbled but"
+    exam += "there are some words written on it."
+
     data = {
-    "ID": 6,
-    "noun": "paper",
-    "description": "a piece of paper",
-    "exam": "The piece of paper is partially crumbled, but there are some words written on it.",
-    "location": 9,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 6,
+        "noun": "paper",
+        "description": "a piece of paper",
+        "exam": exam,
+        "location": 9,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
     data = {
-    "ID": 7,
-    "noun": "id",
-    "description": "a ID card",
-    "exam": "Apparently the nobleman was called Murphy when he was alive.",
-    "location": 9,
-    "gettable": True,
-    "visible": False
-}
+        "ID": 7,
+        "noun": "id",
+        "description": "a ID card",
+        "exam": "Apparently the nobleman was called Murphy when he was alive.",
+        "location": 9,
+        "gettable": True,
+        "visible": False
+    }
     objects.append(data)
-    
+
+    exam = "A long rope made of the finest Hithlain."
+    exam += " Elven-made when elves still roamed\nmiddle-earth."
+
     data = {
-    "ID": 8,
-    "noun": "rope",
-    "description": "a long rope",
-    "exam": "A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth.",
-    "location": 12,
-    "gettable": True,
-    "visible": True
-}
+        "ID": 8,
+        "noun": "rope",
+        "description": "a long rope",
+        "exam": exam,
+        "location": 12,
+        "gettable": True,
+        "visible": True
+    }
     objects.append(data)
-    
+
     data = {
     "ID": 9,
     "noun": "table",
