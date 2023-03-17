@@ -1,0 +1,48 @@
+Walthrough
+
+The game can be solved in this manner. It does not necessarily have to be done in this order, but this works.
+
+North
+East
+North
+Open chest
+Get key
+South
+West
+South
+East
+Use key
+Open Door
+East
+Get shovel
+West
+West
+North
+East
+North
+North
+East
+Break bottle
+Get map
+South
+Break gate
+South
+Get rope
+Use map
+Use shovel
+Get treasure
+east
+west
+south
+west
+north
+down
+south
+use treasure
+south
+examine skeleton
+get paper
+read paper
+
+Done
+
