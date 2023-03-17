@@ -142,9 +142,9 @@ None known.
 
 All code run through: [ci-linter](https://pep8ci.herokuapp.com/)
 
-* run.py checked. Some whitespace issues corrected
+* run.py checked. Some whitespace issues corrected. When correcting those issues, made sure output is limited to 80 columns as well.
 
-![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/run_py_check.PNG?raw=true)
+![linter1](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/run_py_check.PNG?raw=true)
 
 Add results and comments
 
