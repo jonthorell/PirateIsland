@@ -41,6 +41,10 @@ This particular game should be considered more or less a proof-of-concept of how
 The map is essentially a grid. For this game, it is a 4 rows and 4 columns but that can be changed easily to say 10x10 if that is what your game requires. And not all positions need
 to be used.
 
+This is the map used for PirateIsland
+
+![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/map.PNG?raw=true)
+
 
 
 # Design considerations (visual)
@@ -70,6 +74,8 @@ The only requirement is that python itself is at least version 3.10.
 
 # Flowcharts and discussion of game-logic
 
+To be added
+
 # Technologies used
 
 Python
@@ -79,7 +85,7 @@ Gitpod and GitHub Desktop as IDE
 
 All code entered into its respective file from within gitpod.
 
-The source is hosted at github and deployed using the publicly availabe git-hube page of https://github.com/jonthorell/QuizGame
+The source is hosted at github and deployed using the publicly availabe git-hube page of https://github.com/jonthorell/PirateIsland
 
 ## Deployment to GitHub Pages
 
@@ -135,7 +141,8 @@ Add results and comments
 
 # To-do
 
-Re-factor the code in create.py so it is easier to read
+1. Re-factor the code in create.py so it is easier to read
+2. Change all output so it will fit in 80-columns.
 
 # Credits
 
