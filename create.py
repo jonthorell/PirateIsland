@@ -551,209 +551,210 @@ def createVerbs(verbs):
     # only one match statement is needed no matter how many synonyms per
     # verb is defined
     data = {
-    "ID": 0,
-    "verb": "exit"
-}
+        "ID": 0,
+        "verb": "exit"
+    }
     verbs.append(data)
     data = {
-    "ID": 1,
-    "verb": "help"
-}
+        "ID": 1,
+        "verb": "help"
+    }
     verbs.append(data)
     data = {
-    "ID": 2,
-    "verb": "verbs"
-}
+        "ID": 2,
+        "verb": "verbs"
+    }
     verbs.append(data)
     data = {
-    "ID": 3,
-    "verb": "look"
-}
+        "ID": 3,
+        "verb": "look"
+    }
     verbs.append(data)
     data = {
-    "ID": 3,
-    "verb": "l"
-}
+        "ID": 3,
+        "verb": "l"
+    }
     verbs.append(data)
     data = {
-    "ID": 4,
-    "verb": "inventory"
-}
+        "ID": 4,
+        "verb": "inventory"
+    }
     verbs.append(data)
     data = {
-    "ID": 4,
-    "verb": "i"
-}
+        "ID": 4,
+        "verb": "i"
+    }
     verbs.append(data)
     data = {
-    "ID": 5,
-    "verb": "north"
-}
+        "ID": 5,
+        "verb": "north"
+    }
     verbs.append(data)
     data = {
-    "ID": 5,
-    "verb": "n"
-}
+        "ID": 5,
+        "verb": "n"
+    }
     verbs.append(data)
     data = {
-    "ID": 6,
-    "verb": "s"
-}
+        "ID": 6,
+        "verb": "s"
+    }
     verbs.append(data)
     data = {
-    "ID": 6,
-    "verb": "south"
-}
+        "ID": 6,
+        "verb": "south"
+    }
     verbs.append(data)
     data = {
-    "ID": 7,
-    "verb": "west"
-}
+        "ID": 7,
+        "verb": "west"
+    }
     verbs.append(data)
     data = {
-    "ID": 7,
-    "verb": "w"
-}
+        "ID": 7,
+        "verb": "w"
+    }
     verbs.append(data)
     data = {
-    "ID": 8,
-    "verb": "e"
-}
+        "ID": 8,
+        "verb": "e"
+    }
     verbs.append(data)
     data = {
-    "ID": 8,
-    "verb": "east"
-}
+        "ID": 8,
+        "verb": "east"
+    }
     verbs.append(data)
     data = {
-    "ID": 9,
-    "verb": "exam"
-}
+        "ID": 9,
+        "verb": "exam"
+    }
     verbs.append(data)
     data = {
-    "ID": 9,
-    "verb": "examine"
-}
+        "ID": 9,
+        "verb": "examine"
+    }
     verbs.append(data)
     data = {
-    "ID": 10,
-    "verb": "wear"
-}
+        "ID": 10,
+        "verb": "wear"
+    }
     verbs.append(data)
     data = {
-    "ID": 11,
-    "verb": "remove"
-}
+        "ID": 11,
+        "verb": "remove"
+    }
     verbs.append(data)
     data = {
-    "ID": 12,
-    "verb": "get"
-}
+        "ID": 12,
+        "verb": "get"
+    }
     verbs.append(data)
     data = {
-    "ID": 12,
-    "verb": "take"
-}
+        "ID": 12,
+        "verb": "take"
+    }
     verbs.append(data)
     data = {
-    "ID": 13,
-    "verb": "drop"
-}
+        "ID": 13,
+        "verb": "drop"
+    }
     verbs.append(data)
     data = {
-    "ID": 14,
-    "verb": "use"
-}
+        "ID": 14,
+        "verb": "use"
+    }
     verbs.append(data)
     data = {
-    "ID": 15,
-    "verb": "read"
-}
+        "ID": 15,
+        "verb": "read"
+    }
     verbs.append(data)
     data = {
-    "ID": 16,
-    "verb": "down"
-}
+        "ID": 16,
+        "verb": "down"
+    }
     verbs.append(data)
     data = {
-    "ID": 17,
-    "verb": "up"
-}
+        "ID": 17,
+        "verb": "up"
+    }
     verbs.append(data)
     data = {
-    "ID": 18,
-    "verb": "verbose"
-}
+        "ID": 18,
+        "verb": "verbose"
+    }
     verbs.append(data)
     data = {
-    "ID": 19,
-    "verb": "brief"
-}
+        "ID": 19,
+        "verb": "brief"
+    }
     verbs.append(data)
     data = {
-    "ID": 20,
-    "verb": "open"
-}
+        "ID": 20,
+        "verb": "open"
+    }
     verbs.append(data)
     data = {
-    "ID": 21,
-    "verb": "break"
-}
+        "ID": 21,
+        "verb": "break"
+    }
     verbs.append(data)
     data = {
-    "ID": 22,
-    "verb": "clear"
-}
+        "ID": 22,
+        "verb": "clear"
+    }
     verbs.append(data)
     data = {
-    "ID": 0,
-    "verb": "quit"
-}
-    verbs.append(data)
-    
-    data = {
-    "ID": 1,
-    "verb": "instructions"
-}
+        "ID": 0,
+        "verb": "quit"
+    }
     verbs.append(data)
 
     data = {
-    "ID": 23,
-    "verb": "exits"
-}
+        "ID": 1,
+        "verb": "instructions"
+    }
     verbs.append(data)
 
     data = {
-    "ID": 23,
-    "verb": "directions"
-}
+        "ID": 23,
+        "verb": "exits"
+    }
     verbs.append(data)
-    
+
     data = {
-    "ID": 9,
-    "verb": "investigate"
-}
+        "ID": 23,
+        "verb": "directions"
+    }
     verbs.append(data)
-    
+
     data = {
-    "ID": 24,
-    "verb": "hint"
-}
+        "ID": 9,
+        "verb": "investigate"
+    }
     verbs.append(data)
-    
+
     data = {
-    "ID": 16,
-    "verb": "d"
-}
+        "ID": 24,
+        "verb": "hint"
+    }
     verbs.append(data)
-    
+
     data = {
-    "ID": 17,
-    "verb": "u"
-}
+        "ID": 16,
+        "verb": "d"
+    }
     verbs.append(data)
-    
-def create_locations (locations):
+
+    data = {
+        "ID": 17,
+        "verb": "u"
+    }
+    verbs.append(data)
+
+
+def create_locations(locations):
     """
     The function create_locations() creates all the places the player can visited
     """
