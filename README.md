@@ -19,6 +19,6 @@ to actually finish the game.
 
 Three screenshots to give a better idea of how it might look like:
 
-![island1] (https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island1.PNG?raw=true)
-![island2] (https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island2.PNG?raw=true)
-![island3] (https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island3.PNG?raw=true)
+![island1](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island1.PNG?raw=true)
+![island2](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island2.PNG?raw=true)
+![island3](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island3.PNG?raw=true)
