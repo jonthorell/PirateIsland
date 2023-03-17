@@ -57,9 +57,9 @@ The output is of course text-only. Some different colors are used though.
 In the game proper they are:
 
 Default console-color for the main part.
-Red is used when the game encounters a problem such as when it does not understand a verb.
-Green is used to print out the directions one can travel in as well as things that can be seen
-Yellow is used to print what the player is carrying as well as the help-text
+* Red is used when the game encounters a problem such as when it does not understand a verb.
+* Green is used to print out the directions one can travel in as well as things that can be seen
+* Yellow is used to print what the player is carrying as well as the help-text
 
 # Design considerations (code)
 
