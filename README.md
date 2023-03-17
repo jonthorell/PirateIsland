@@ -134,7 +134,9 @@ to true at start) the logic works as expected.
 
 3. Many strings were too long to display properly without overflow. Fixed by adding \n at strategic places to hardcode the length for a terminal 80 columns wide.
 
-4. When examin the skeleton twice, the second time a blank string was printed. Was a mistake when fixing the overflow problem so the variable was accidentally set to null.
+4. When examining the skeleton twice, the second time a blank string was printed. Was a mistake when fixing the overflow problem so the variable was accidentally set to null.
+
+5. Examining the skeleton did not use the correct key:value value. It used a hard-coded string. A left-over from some debugging.
 
 More to be added
 

@@ -345,209 +345,211 @@ def createNouns(nouns):
     # Used for synonyms and determining which object the user
     # tries to manipulate
     data = {
-    "ID": 0,
-    "noun": "sword"
-}
+        "ID": 0,
+        "noun": "sword"
+    }
     nouns.append(data)
-    
-    data = {
-    "ID": 1,
-    "noun": "chest"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 2,
-    "noun": "bottle"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 3,
-    "noun": "eyepatch"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 4,
-    "noun": "map"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 5,
-    "noun": "skeleton"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 6,
-    "noun": "paper"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 7,
-    "noun": "id"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 8,
-    "noun": "rope"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 9,
-    "noun": "table"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 10,
-    "noun": "ring"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 11,
-    "noun": "board"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 12,
-    "noun": "building"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 13,
-    "noun": "door"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 14,
-    "noun": "shovel"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 15,
-    "noun": "ship"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 16,
-    "noun": "banana-tree"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 17,
-    "noun": "rocks"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 18,
-    "noun": "guard"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 19,
-    "noun": "gate"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 11,
-    "noun": "sign"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 3,
-    "noun": "patch"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 0,
-    "noun": "cutlass"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 16,
-    "noun": "tree"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 19,
-    "noun": "gates"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 19,
-    "noun": "bar"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 19,
-    "noun": "bars"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 20,
-    "noun": "key"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 21,
-    "noun": "treasure"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 18,
-    "noun": "rimmer"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 12,
-    "noun": "house"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 22,
-    "noun": "banana"
-}
-    nouns.append(data)
-    
-    data = {
-    "ID": 22,
-    "noun": "bananas"
-}
-    nouns.append(data)
-    
 
-def createVerbs (verbs):
+    data = {
+        "ID": 1,
+        "noun": "chest"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 2,
+        "noun": "bottle"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 3,
+        "noun": "eyepatch"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 4,
+        "noun": "map"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 5,
+        "noun": "skeleton"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 6,
+        "noun": "paper"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 7,
+        "noun": "id"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 8,
+        "noun": "rope"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 9,
+        "noun": "table"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 10,
+        "noun": "ring"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 11,
+        "noun": "board"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 12,
+        "noun": "building"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 13,
+        "noun": "door"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 14,
+        "noun": "shovel"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 15,
+        "noun": "ship"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 16,
+        "noun": "banana-tree"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 17,
+        "noun": "rocks"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 18,
+        "noun": "guard"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 19,
+        "noun": "gate"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 11,
+        "noun": "sign"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 3,
+        "noun": "patch"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 0,
+        "noun": "cutlass"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 16,
+        "noun": "tree"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 19,
+        "noun": "gates"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 19,
+        "noun": "bar"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 19,
+        "noun": "bars"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 20,
+        "noun": "key"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 21,
+        "noun": "treasure"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 18,
+        "noun": "rimmer"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 12,
+        "noun": "house"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 22,
+        "noun": "banana"
+    }
+    nouns.append(data)
+
+    data = {
+        "ID": 22,
+        "noun": "bananas"
+    }
+    nouns.append(data)
+
+
+def createVerbs(verbs):
     """
     Function createVerbs() create all verbs the game understands
     """
-    #id is used for synonyms in a look-up table in functions.py. That way only one match statement is needed no matter how many synonyms per verb is defined
+    # id is used for synonyms in a look-up table in functions.py. That way
+    # only one match statement is needed no matter how many synonyms per
+    # verb is defined
     data = {
     "ID": 0,
     "verb": "exit"
