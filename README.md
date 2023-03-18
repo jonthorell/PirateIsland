@@ -70,6 +70,96 @@ The game consists of 4 python files:
 * welcome.py, shows initial help and background at game starts
 * functions.py, the file where all the game logic takes place
 
+## Data structures
+
+The game uses sets, lists, and dicts to keep track of everything the player do or tries
+to do.
+
+The verbs are defined twice. First in a set like this (shortened here):
+
+```python
+
+verbset={"exit","l","help","verbs","look","i","inventory","n","north","s"}
+
+```
+
+That is only to make it possible to check if it is verb the game understands with essentially just one line of code.
+
+It also defined like the following (nouns are also defined that way).
+
+
+```python
+
+data = {
+        "ID": 20,
+        "verb": "open"
+    }
+
+```
+
+It is the ID number that is used in conditional statements. That way it is easy to add synonyms without having
+to deal with even more if-clauses. You only need an addional dict like above with the same ID but different noun.
+
+Locations are defined like this:
+
+```python
+
+data = {
+        "brief": "You are the top of a cliff.",
+        "verbose": "Long description",
+        "outdoors": True,
+        "visited": False,
+        "east": 0,
+        "west": 0,
+        "south": 6,
+        "north": 0,
+        "down": 0,
+        "up": 0
+    }
+
+```
+
+And objects like this:
+
+```python
+
+data = {
+        "ID": 2,
+        "noun": "bottle",
+        "description": "a dirty old bottle",
+        "exam": exam,
+        "location": 4,
+        "gettable": True,
+        "visible": True
+    }
+
+```
+
+The dicts are nested within lists. The verb-dict is nested within a verb-list and so on. That way they can be treated
+like a multidimensional array.
+
+For example, to change whether it is possible to go east from location the player is currently at, one only needs to
+do like this:
+
+```python
+
+locations[current_location]['east'] = 17
+
+```
+
+Quite straight-forward and very flexible. Descriptions of the objects can be updated in a similar manner:
+
+```python
+
+objects[2]['exam'] = "The bottle is broken."
+
+```
+
+Updates the exam-text of object 2 if it gets broken somehow.
+
+Theoretically the same could be done with the nouns and verbs, but in this example game it is not utilized.
+
+
 ## Requirements
 
 The game has no external dependencies in form of libraries and frameworks.
@@ -164,6 +254,7 @@ Add results and comments
 
 1. Re-factor the code in create.py so it is easier to read
 2. Change all output so it will fit in 80-columns.
+3. Re-do the instructions into several pages
 
 # Credits
 
