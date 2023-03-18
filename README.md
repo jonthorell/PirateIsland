@@ -246,6 +246,13 @@ All code run through: [ci-linter](https://pep8ci.herokuapp.com/)
 
 ![linter-welcome.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/welcome_py_check.PNG?raw=true)
 
+* create.py checked. Some whitespace issues here as well, plus quite a few lines that were too long. Made sure output for all
+objects stays within the 80 column limitation as well.
+
+![linter-create.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/create_py_check.PNG?raw=true)
+
+
+
 
 
 Add results and comments
