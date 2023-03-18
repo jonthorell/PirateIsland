@@ -25,7 +25,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=17   #start-location
+current_location=3   #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -191,7 +191,7 @@ def print_location(which_location,verbose_mode):
     outdoors=locations[which_location]['outdoors']
     visited=locations[which_location]['visited']
     #the if statement checks whether vebose-mode has been turned on, you've never visted that location before, or you used the look-verb to redisplay the location
-    if verbosity==True or visited==False or verbose_mode==1:
+    if verbosity is True or visited is False or verbose_mode == 1:
         print(verbose)
     else:
         print(brief)
@@ -271,7 +271,7 @@ def you_can_see():
     see_string="" #empty at first
     location_see=0 # keep track of local objects
     for item in objects:
-        if item['visible']==False:
+        if item['visible'] is False:
             #skip items that should not be shown
             continue
         if item['location']==current_location:
@@ -365,7 +365,7 @@ def hint():
     if current_location==15 and locations[current_location]['east']!=16:
         #if the door has not been opened, provide a hint
         print("You may want to find a way to open that door.")
-    elif current_location==7 and objects[20]['visible']==False:
+    elif current_location==7 and objects[20]['visible'] is False:
         # if the key is "invisible" the chest has not been opened
         print("There might something special about that chest.")
     elif current_location==2 and locations[current_location]['down']==0:
@@ -398,7 +398,7 @@ def wear(noun):
             #you are carrying the ring
             print("You put the ring on your finger.")
             dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
-        if objects[noun_id]['location']==current_location and objects[noun_id]['visible']==True:
+        if objects[noun_id]['location']==current_location and objects[noun_id]['visible'] is True:
             #the ring is visble but not carried
             print("You pick up the ring and put it on your finger.")
             dead("\nOh no! The ring was cursed and turned you into a gold-statue.")
@@ -469,7 +469,7 @@ def v_break(noun):
     if noun_id==2:
         if objects[noun_id]['location']==-1 or objects[noun_id]['location']==current_location:
             #is the bottle either carried or at the current location?
-            if objects[4]['visible']==True:
+            if objects[4]['visible'] is True:
                 #has the map been found?
                 print("But the bottle has already been smashed.")
             else:
@@ -524,13 +524,13 @@ def get(noun):
         noun_id=result[1] 
     if objects[noun_id]['location']==-1:
         print("But you are already carrying it.")
-    elif objects[noun_id]['location']==current_location and objects[noun_id]['gettable']==True and objects[noun_id]['visible']==True:
+    elif objects[noun_id]['location']==current_location and objects[noun_id]['gettable'] is True and objects[noun_id]['visible'] is True:
         #only pick up the object if: 1. It is in the current location, 2. It is gettable, and 3. It is marked as visible.
         print("You pick up "+objects[noun_id]['description']+".")
         objects[noun_id]['location']=-1
     elif current_location==7 and noun_id==1:
         print("It is far too heavy to pick up!")
-    elif current_location==15 and noun_id==13 and objects[noun_id]['visible']==True:
+    elif current_location==15 and noun_id==13 and objects[noun_id]['visible'] is True:
         print("Why would you want to walk around with a heavy door for?")
     else:
         print("I'm sorry, I do not know how to pick that up.")
@@ -569,7 +569,7 @@ def v_open(noun):
     else:
         noun_id=result[1]    
     if current_location==7 and noun_id==1:
-        if objects[20]['visible']==False:
+        if objects[20]['visible'] is False:
             print("With great effort, you open the chest. Inside it you find a small key.")
             objects[20]['visible']=True
         else:
@@ -648,7 +648,7 @@ def use(noun):
         if objects[noun_id]['location']!=-1:
             #you need to possess the shovel
             print("But you do not have a shovel.")
-        elif objects[21]['visible']==True:
+        elif objects[21]['visible'] is True:
             #and you can not find the treasure twice
             print("But you have already found the treasure.")
         else:
@@ -689,7 +689,7 @@ def examine(noun):
     #check conditionals
     if current_location==9 and noun_id==5:
         #skeleton
-        if objects[6]['visible']==False:
+        if objects[6]['visible'] is False:
             print("When you examine what remains of the skeletons clothing, you discover a piece of paper and an ID-card.")
             objects[6]['visible']=True
             objects[7]['visible']=True
@@ -725,7 +725,7 @@ def examine(noun):
                 print_red("I'm sorry, I can not examine that.")
     elif current_location==3 and noun_id==17:
             #rocks
-            if objects[10]['visible']==False:
+            if objects[10]['visible'] is False:
                 #when the ring has not been found yet
                 objects[10]['visible']=True    #has now been found
                 print(objects[noun_id]['exam'])
@@ -768,7 +768,7 @@ def examine(noun):
     elif objects[noun_id]['location']==-1:
                 #inventory, next to last because some exceptions can occur first
                 print(objects[noun_id]['exam'])
-    elif objects[noun_id]['location']==current_location and objects[noun_id]['visible']==True:
+    elif objects[noun_id]['location']==current_location and objects[noun_id]['visible'] is True:
                 #objects visible at current position, same as the inventory rule.
                 print(objects[noun_id]['exam'])
     else:
