@@ -25,7 +25,7 @@ objects=[]
 verbs=[]
 nouns=[]
 
-current_location=7   #start-location
+current_location=17   #start-location
 verbosity=False
 #True=always print verbose text, False only at first visit. Altered by verbose and brief functions
 
@@ -700,6 +700,9 @@ def examine(noun):
     elif current_location==13 and noun_id==22:
             #banana
             print(objects[noun_id]['exam'])
+    elif current_location == 4 and noun_id == 23:
+            #sand
+            print(objects[noun_id]['exam'])
     elif current_location==1 and noun_id==8:   
             #rope at bottom of cliff
             print("A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.")
@@ -773,37 +776,45 @@ def examine(noun):
                 
 def print_instructions ():
     """
-    Function print_instructions() prints out the help-instructions. Printed at game-start and if the player
-    types help
+    Function print_instructions() prints out the help-instructions. Printed 
+    at game-start and if the player types help
     """
-    rules="\nInteractive fiction is purely text-based, and can be considered a story where the player takes charge of the outcome rather than just reading along."
-    rules+="\nThe player moves around in the game by issuing commands. These commands consists of one or two words, in a verb-noun pattern."
-    rules+="\nSome verbs work on their own (inventory for example), others need a noun (open door for example). "
-    rules+="\n\nThe idea is that you walk around in a fictional world and solves puzzles along the way. A puzzle can be"
-    rules+=" (for example) finding the key to a locked door\nso it can be unlocked and the player can get further into the world displayed. "
+    rules = "\nInteractive fiction is purely text-based, and can be considered a story "
+    rules += "\nwhere the player takes charge of the outcome rather than just reading along."
+    rules += "\nThe player moves around in the game by issuing commands. These commands"
+    rules +=" consistsof one or two words, in a verb-noun pattern."
+    rules += "\n\nSome verbs work on their own (inventory for example), others need a noun"
+    rules += "\n(open door for example). "
+    rules += "\n\nThe idea is that you walk around in a fictional world and solves puzzles"
+    rules += "\nalong the way. A puzzle can be (for example) finding the key"
+    rules += " to a locked door\nso it can be unlocked and the player can get further into the world displayed. "
     
-    rules+="\n\nA typical game is usually littered with information and objects that the player"
-    rules+=" thinks might be important, but in the end serves only as distractions."
-    rules+='\n\nEverything after a second word will be discarded. If you enter a command such as "inventory list" and the verb (inventory) does not expect a noun, \nthe noun will be discared as well.'
-    rules+="\n\nDirections are always entered with just the direction. That is, it is a one-word sentence. Either 'north' or 'n' will suffice. Go north is unneccesary."
-    rules+="\n\nIn other words: everyting you need to do can be accomplished by either a one or a two-word command. Nothing fancier than that is ever required."
+    rules += "\n\nA typical game is usually littered with information and objects that the player"
+    rules += " thinks might be important, but in the end serves only as distractions."
+    rules += '\n\nEverything after a second word will be discarded. If you enter a command such as"inventory list"'
+    rules += "and the verb (inventory) does not expect a noun, \nthe noun will be discared as well."
+    rules += "\n\nDirections are always entered with just the direction. That is, it is a one-word"
+    rules +="sentence.Either 'north' or 'n' will suffice. Go north is unneccesary."
+    rules += "\n\nIn other words: everyting you need to do can be accomplished by either a one or a two-word"
+    rules += " command. Nothing fancier than that is ever required."
     
-    rules+="\n\nThe first time you enter a location, you will get a long description of the place. On subsequent visits you only get a shorter one."
-    rules+="\nYou can get the long description again by issuing the command \"look\"."
-    rules+="\nIf you want to, you can change this to always describe the longer description."
-    rules+="\nYou do that by issueing the command \"verbose\"."
-    rules+="\nTo revert to the default, issue the command \"brief\"."
+    rules += "\n\nThe first time you enter a location, you will get a long description of the" 
+    rules += "\nplace. On subsequent visits you only get a shorter one."
+    rules += "\nYou can get the long description again by issuing the command \"look\"."
+    rules += "\nIf you want to, you can change this to always describe the longer description."
+    rules += "\nYou do that by issueing the command \"verbose\"."
+    rules += "\nTo revert to the default, issue the command \"brief\"."
     
-    rules+="\n\nSome examples of commands (not specific to this game to avoid spoilers):"
-    rules+="\nInventory: lists what you are carrying"
-    rules+="\nExamine door - checks if there is something special about the door. Depending on what you examine, other objects may be revealed."
-    rules+="\nDrop book - drops the book into the current location"
-    rules+="\nGet book - picks up the book, if it is available"
-    rules+="\nOpen door - opens the door, if it can be opened"
-    rules+="\nUse lamp - depends on the noun, but in this case it would turn on the lamp."
+    rules += "\n\nSome examples of commands (not specific to this game to avoid spoilers):\n"
+    rules += "\nInventory: lists what you are carrying"
+    rules += "\nExamine door: checks if there is something special about the door. Depending on what you examine, other objects may be revealed."
+    rules += "\nDrop book: drops the book into the current location"
+    rules += "\nGet book: picks up the book, if it is available"
+    rules += "\nOpen door: opens the door, if it can be opened"
+    rules += "\nUse lamp: depends on the noun, but in this case it would turn on the lamp."
     
-    rules+="\n\nThat should get you started."
-    rules+="\nIf you need to, you can view these instructions again with the command help."
-    rules+="\n\nAnd remember: read the descriptions carefully. They can provide valueable clues."
+    rules += "\n\nThat should get you started."
+    rules += "\nIf you need to, you can view these instructions again with the command help."
+    rules += "\n\nAnd remember: read the descriptions carefully. They can provide valueable clues."
     
     print_yellow(rules)
