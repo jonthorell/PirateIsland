@@ -228,6 +228,8 @@ to true at start) the logic works as expected.
 
 5. Examining the skeleton did not use the correct key:value value. It used a hard-coded string. A left-over from some debugging.
 
+6. A similar problem as 5 was discovered for examining the ring. Both fixed.
+
 More to be added
 
 # Remaining bugs
