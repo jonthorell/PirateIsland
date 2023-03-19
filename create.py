@@ -185,7 +185,7 @@ def createObjects(objects):
 
     exam = "The building seems to have been built using whatever could be "
     exam += "salvaged from\nvarious shipwrecks. Good craftsman skills of"
-    exam += "whoever built it though"
+    exam += " whoever built it though"
     exam += " since it \nlooks like it could withstand anything."
 
     data = {
