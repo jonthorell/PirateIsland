@@ -72,7 +72,7 @@ objects = []
 verbs = []
 nouns = []
 
-current_location = 14  # start-location
+current_location = 9  # start-location
 verbosity = False
 # True=always print verbose text, False only at first visit. Altered by
 # verbose and brief functions
@@ -962,7 +962,9 @@ def examine(noun):
         return
         # if error is true, no noun was entered. Return to prompt
     if match == 0:
-        print_reds("I don't know how to examine that, mate. What is a \"" + noun + '"?')
+        error = "I don't know how to examine that, mate."
+        error += 'What is a "' + noun + '"?'
+        print_red(error)
         return
     else:
         noun_id = result[1]
@@ -971,9 +973,10 @@ def examine(noun):
     if current_location == 9 and noun_id == 5:
         # skeleton
         if objects[6]["visible"] is False:
-            print(
-                "When you examine what remains of the skeletons clothing, you discover a piece of paper and an ID-card."
-            )
+            pr_str = "When you examine what remains of the skeletons"
+            pr_str += "clothing, you\ndiscover a piece of paper and "
+            pr_str += "an ID-card."
+            print(pr_str)
             objects[6]["visible"] = True
             objects[7]["visible"] = True
             return
@@ -988,18 +991,22 @@ def examine(noun):
         print(objects[noun_id]["exam"])
     elif current_location == 1 and noun_id == 8:
         # rope at bottom of cliff
-        print(
-            "A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back."
-        )
+        pr_str = "A long rope made of the finest Hithlain. Elven-made when"
+        pr_str += "\nelves still roamed middle-earth. There is no way to "
+        pr_str += "get it back."
+        print(pr_str)
         return
     elif current_location == 2 and noun_id == 8:
         # rope tied to cliff
-        # need a special condition here since the rope can sometimes be examined without being in your possession
+        # need a special condition here since the rope can sometimes be
+        # examined without being in your possession
         if locations[current_location]["down"] == 1:
             # if rope has been used
-            print(
-                "A long rope made of the finest Hithlain. Elven-made when elves still roamed middle-earth. There is no way to get it back.\nIt is tied too securely to the cliff for that."
-            )
+            pr_str = "A long rope made of the finest Hithlain. Elven-made when"
+            pr_str += "\nelves still roamed middle-earth. There is no way to "
+            pr_str += "get it back.\nIt is tied too"
+            pr_str += "securely to the cliff for that."
+            print(pr_str)
             return
         if objects[noun_id]["location"] == -1:
             # rope being carried
@@ -1072,64 +1079,61 @@ def print_instructions():
     Function print_instructions() prints out the help-instructions. Printed
     at game-start and if the player types help
     """
-    rules = "\nInteractive fiction is purely text-based, and can be considered a story "
-    rules += (
-        "\nwhere the player takes charge of the outcome rather than just reading along."
-    )
-    rules += "\nThe player moves around in the game by issuing commands. These commands"
-    rules += " consistsof one or two words, in a verb-noun pattern."
-    rules += (
-        "\n\nSome verbs work on their own (inventory for example), others need a noun"
-    )
-    rules += "\n(open door for example). "
-    rules += (
-        "\n\nThe idea is that you walk around in a fictional world and solves puzzles"
-    )
-    rules += "\nalong the way. A puzzle can be (for example) finding the key"
-    rules += " to a locked door\nso it can be unlocked and the player can get further into the world displayed. "
+    rules = "Interactive fiction is purely text-based, and can be considered"
+    rules += "\na story where the player takes charge of the outcome rather"
+    rules += "than\njust reading along. The player moves around in the game by"
+    rules += " issuing\ncommands. These commands consists of one or two words,"
+    rules += " in a\nverb-noun pattern.\n\n"
+    rules += "Some verbs work on their own (inventory for example), others"
+    rules += "\nneed a noun (open door for example).\n"
+    rules += "\nThe idea is that you walk around in a fictional world and"
+    rules += "\nsolves puzzles along the way. A puzzle can be (for example)"
+    rules += "\nfinding the key to a locked door so it can be unlocked and the"
+    rules += "\nplayer can get further into the world displayed."
     print_yellow(rules)
     input("Press Enter to continue...")
-
-    rules = "\n\nA typical game is usually littered with information and objects that the player"
-    rules += " thinks might be important, but in the end serves only as distractions."
-    rules += '\n\nEverything after a second word will be discarded. If you enter a command such as"inventory list"'
-    rules += "and the verb (inventory) does not expect a noun, \nthe noun will be discared as well."
-    rules += "\n\nDirections are always entered with just the direction. That is, it is a one-word"
-    rules += "sentence.Either 'north' or 'n' will suffice. Go north is unneccesary."
-    rules += "\n\nIn other words: everyting you need to do can be accomplished by either a one or a two-word"
-    rules += " command. Nothing fancier than that is ever required."
-
+    rules = "A typical game is usually littered with information and objects"
+    rules += "that \nthe player thinks might be important, but in the end "
+    rules += "serves only as\ndistractions."
+    rules += "\n\nEverything after a second word will be discarded. "
+    rules += "If you enter a\ncommand such as "
+    rules += '"inventory list" and the verb (inventory) does not'
+    rules += "\nexpect a noun, the noun will be discared as well.\n"
+    rules += "\nDirections are always entered with just the direction."
+    rules += "That is, \nit is a one-word sentence."
+    rules += " Either 'north' or 'n' will suffice.\n"
+    rules += "\nIn other words: everyting you need to do can be"
+    rules += "accomplished by\neither a one or a "
+    rules += "two-word command. Nothing fancier than that"
+    rules += "\nis ever required.\n"
     print_yellow(rules)
     input("Press Enter to continue...")
-
-    rules = "\n\nThe first time you enter a location, you will get a long description of the"
-    rules += "\nplace. On subsequent visits you only get a shorter one."
-    rules += '\nYou can get the long description again by issuing the command "look".'
-    rules += "\nIf you want to, you can change this to always describe the longer description."
+    rules = "The first time you enter a location, you will get a long"
+    rules += "\ndescription of the place. On subsequent visits you only"
+    rules += "\nget a shorter one.\n"
+    rules += "\nYou can get the long description again by issuing the"
+    rules += '\ncommand "look". If you want to, you can change this to'
+    rules += " \nalways describe the longer description.\n"
     rules += '\nYou do that by issueing the command "verbose".'
-    rules += '\nTo revert to the default, issue the command "brief".'
-
-    rules += (
-        "\n\nSome examples of commands (not specific to this game to avoid spoilers):\n"
-    )
+    rules += '\nTo revert to the default, issue the command "brief".\n'
+    rules += "\nSome examples of commands (not specific to this game to"
+    rules += "\navoid spoilers):\n"
     rules += "\nInventory: lists what you are carrying"
-    rules += "\nExamine door: checks if there is something special about the door. Depending on what you examine, other objects may be revealed."
+    rules += "\nExamine door: checks if there is something special"
+    rules += "about the door."
+    rules += "\nDepending on what you examine, other objects may be revealed."
     rules += "\nDrop book: drops the book into the current location"
     rules += "\nGet book: picks up the book, if it is available"
     rules += "\nOpen door: opens the door, if it can be opened"
-    rules += (
-        "\nUse lamp: depends on the noun, but in this case it would turn on the lamp."
-    )
-
+    rules += "\nUse lamp: depends on the noun, but in this case it would turn"
+    rules += "\non the lamp."
     print_yellow(rules)
     input("Press Enter to continue...")
-
-    rules = "\n\nThat should get you started."
-    rules += (
-        "\nIf you need to, you can view these instructions again with the command help."
-    )
-    rules += "\n\nAnd remember: read the descriptions carefully. They can provide valueable clues."
-
+    rules = "That should get you started."
+    rules += "\nIf you need to, you can view these instructions again with"
+    rules += "\nthe command help."
+    rules += "\n\nAnd remember: read the descriptions carefully. They can"
+    rules += " provide valueable clues."
     print_yellow(rules)
 
 
