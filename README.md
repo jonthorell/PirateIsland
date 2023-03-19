@@ -235,7 +235,13 @@ to true at start) the logic works as expected.
 
 6. A similar problem as 5 was discovered for examining the ring. Both fixed.
 
-More to be added
+7. Many smaller mistakes that created syntax-errors, such as missing the : after the def-statement, accidentally typed = instead of == and stuff of that nature. Fixed on the spot.
+
+8. Missed a check in the functions where a noun is required. The check was whether or not the player had actually typed in two words. Fixed by adding a new function that is called from
+the affected verb-functions.
+
+9. Some output (read: a lot) did not take the 80-column width into enough consideration. Most, if not all, of those should be fixed by now. If it has been missed somewhere it may look odd whenever
+that is printed to the console, but it does not affect functionality in any way.
 
 # Remaining bugs
 
@@ -258,11 +264,12 @@ objects stays within the 80 column limitation as well.
 
 ![linter-create.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/create_py_check.PNG?raw=true)
 
+* functions.py fully compliant. This one was run through "black" for an automated process. Or maybe I should say semi-automatic.
+There were some issues left that I fixed manually, mostly due to line-lengths.
 
+![linter-functions.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/functions_py_check.PNG?raw=true)
 
-
-
-Add results and comments
+The original functions.py is stored in readme-files in case it is not okay to use the "black" tool.
 
 # To-do
 
@@ -274,3 +281,7 @@ Add results and comments
 
 All code is by me. Syntax and examples have been looked at on [w3schools](https://www.w3schools.com/python/) but no code is lifted right
 out of there.
+
+Black helped out with making sure the code is PEP8 compliant.
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
