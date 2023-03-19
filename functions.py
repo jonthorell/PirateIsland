@@ -7,7 +7,8 @@ os.system("")  # enables ansi escape characters in terminal
 os.system("cls")  # clears the console
 
 COLOR = {
-    # used by the print_green etc functions to refer to the color by name. ENDC is used to go back to default
+    # used by the print_green etc functions to refer to the color by name.
+    # ENDC is used to go back to default
     "HEADER": "\033[95m",
     "BLUE": "\033[94m",
     "GREEN": "\033[92m",
@@ -17,7 +18,10 @@ COLOR = {
     "ENDC": "\033[0m",
 }
 
-# verbset is used to easy make a "I do not know that verb" error. If the verb is not in this set it can not be used by the player. It is a set to make sure there are no duplicate values
+# verbset is used to easy make a "I do not know that verb" error.
+# If the verb is not in this set it can not be used by the player.
+# It is a set to make sure there are no duplicate values
+
 verbset = {
     "exit",
     "l",
@@ -60,7 +64,9 @@ verbset = {
     "u",
 }
 
-# lists used to keep track of locations, nouns, etc. These have the potential to change during the game.
+# lists used to keep track of locations, nouns, etc. These have the
+# potential to change during the game.
+
 locations = []
 objects = []
 verbs = []
@@ -68,15 +74,19 @@ nouns = []
 
 current_location = 14  # start-location
 verbosity = False
-# True=always print verbose text, False only at first visit. Altered by verbose and brief functions
-# The variables current_location and verbosity are used in so many places (and in functions called
-# by other functions as well) so it made most sense to have them as globals.
+# True=always print verbose text, False only at first visit. Altered by
+# verbose and brief functions
+# The variables current_location and verbosity are used in so many places
+# (and in functions called by other functions as well) so it made most sense
+# to have them as globals.
 # They are not updated in many places so is relatively risk-free
 
-# The project does not rely on external libraries/frameworks so the risk of variable-clash is none
-
+# The project does not rely on external libraries/frameworks so the
+# risk of variable-clash is none
 
 # Some functions to print text in different colors
+
+
 def print_green(text):
     """
     Print text in green, from constant COLOR
@@ -132,21 +142,27 @@ def parser(string_to_parse):
     string_to_parse = (
         string_to_parse.lower()
     )  # convert the user input to lower case for easy comparison
-    # remove the, a, and an from string. To make sure player can write stuff like "open the door" if one wants to despite that the game is verb-noun only based
-    string2 = string_to_parse.replace(" the ", " ")  # remove all occurences of 'the'
-    string3 = string2.replace(" a ", " ")  # remove all occurences of 'a'
-    string_to_parse = string3.replace(" an ", " ")  # remove all occurences of 'an'
+    # remove the, a, and an from string. To make sure player can
+    # write stuff like "open the door" if one wants to despite that
+    # the game is verb-noun only based
+
+    string2 = string_to_parse.replace(" the ", " ")  # remove 'the'
+    string3 = string2.replace(" a ", " ")  # remove 'a'
+    string_to_parse = string3.replace(" an ", " ")  # remove 'an'
 
     x = string_to_parse.split(" ", 1)  # split into max two list-items
-    no_of_word = len(x)  # how many words are there. Item two may be several words
+    # how many words are there. Item two may be several words
+    no_of_word = len(x)
     verb = x[0]  # the verb is the first item
     if no_of_word == 2:
         noun_tmp = x[1]  # noun_tmp is the second "word". Word may be several
-        space = noun_tmp.find(" ")  # are there any remaining spaces in the input?
+        # are there any remaining spaces in the input?
+        space = noun_tmp.find(" ")
         if space == -1:  # no, there is not
             noun = noun_tmp
         else:
-            # iterate thru noun_tmp letter by letter until a space is detected. To make sure the noun is one word only. The rest is discarded
+            # iterate thru noun_tmp letter by letter until a space is detected.
+            # To make sure the noun is one word only. The rest is discarded
             for i in noun_tmp:
                 if i == " ":
                     break  # break out of loop when a space is detected
@@ -158,7 +174,8 @@ def parser(string_to_parse):
 
 def check_input(verb, noun, name):
     """
-    Check if the input is valid. Parser 2 if you will. When an id has been found, jump to the corresponding function.
+    Check if the input is valid. Parser 2 if you will. When an id has
+    been found, jump to the corresponding function.
     """
     if verb not in verbset:
         print_red(f"I'm sorry {name}, I do not understand that verb.")
@@ -167,9 +184,12 @@ def check_input(verb, noun, name):
         # loop thru the list verbs to get the id of the verb used
         array_id = verbs[i]["ID"]
         if verb == verbs[i]["verb"]:
-            # break out of the loop when typed verb corresponds to entry in combined list/dict
-            # synonyms have the same ID. That way one case statement can match as many synonyms as you want without a lot of repeated code
-            # thanks to the 'if verb not in verbset' at the top, there is no need for an else. Sooner or later, this if-statement will return true
+            # break out of the loop when typed verb corresponds to entry in
+            # combined list/dict. synonyms have the same ID. That way one
+            # case statement can match as many synonyms as you want without
+            # a lot of repeated code thanks to the 'if verb not in verbset'
+            # at the top, there is no need for an else. Sooner or later,
+            # this if-statement will return true
             break
     match array_id:
         # array_id corresponds to the verb_id. Depending on the id, jump to the corresponding function
@@ -465,6 +485,9 @@ def wear(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red('How am I supposed to wear that?! What is a "' + noun + '"?')
         return
@@ -495,6 +518,9 @@ def remove(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red(
             "Que? I can't see how I'm gonna remove that. What is a \"" + noun + '"?'
@@ -522,6 +548,9 @@ def read(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red(
             "I'm sorry, I do not know how to read that. What is a \"" + noun + '"?'
@@ -551,6 +580,9 @@ def v_break(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red(
             "Que? I can't see how I'm gonna break that. What is a \"" + noun + '"?'
@@ -628,6 +660,9 @@ def get(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red(
             "I'm sorry, I do not know how to pick that up. What is a \"" + noun + '"?'
@@ -661,6 +696,9 @@ def drop(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red("I don't know how to drop that, mate. What is a \"" + noun + '"?')
         return
@@ -686,6 +724,9 @@ def v_open(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red("I don't know how to open that, mate. What is a \"" + noun + '"?')
         return
@@ -726,6 +767,9 @@ def use(noun):
     global current_location
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red("I don't know how to use that, mate. What is a \"" + noun + '"?')
         return
@@ -831,6 +875,9 @@ def examine(noun):
     """
     result = get_noun_by_id(noun)
     match = result[0]
+    error=requires_noun(noun)
+    if error: return        
+    # if error is true, no noun was entered. Return to prompt
     if match == 0:
         print_red("I don't know how to examine that, mate. What is a \"" + noun + '"?')
         return
@@ -1001,3 +1048,10 @@ def print_instructions():
     rules += "\n\nAnd remember: read the descriptions carefully. They can provide valueable clues."
 
     print_yellow(rules)
+    
+def requires_noun(noun):
+    error = False
+    if noun == "None" or noun == "":
+        print_red("But this verb requires a noun!")
+        error=True
+    return error
