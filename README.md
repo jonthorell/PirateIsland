@@ -273,9 +273,8 @@ The original functions.py is stored in readme-files in case it is not okay to us
 
 # To-do
 
-1. Re-factor the code in create.py so it is easier to read
-2. Change all output so it will fit in 80-columns.
-3. Re-do the instructions into several pages
+1. Change all output so it will fit in 80-columns.
+
 
 # Credits
 
