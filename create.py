@@ -295,7 +295,7 @@ def createObjects(objects):
     objects.append(data)
 
     exam = "The key seems to be made out of silver and some"
-    exam += " other unknown ore."
+    exam += " other unknown ore. \nMithril maybe?"
 
     data = {
         "ID": 20,
@@ -1081,7 +1081,7 @@ def create_locations(locations):
     verbose_str = "You are on a beach. It would be a lovely beach if it"
     verbose_str += " wasn't  for the fact that\nyou're marooned on this"
     verbose_str += "island. Golden sand, very clear blue"
-    verbose_str += " water in the ocean,and overall"
+    verbose_str += " water in the ocean, and overall"
     verbose_str += " a picturesque postcard feel to it. "
     verbose_str += "A pathway can be seen leading\ninto the jungle.\n"
     verbose_str += "\nOut at sea, you can "

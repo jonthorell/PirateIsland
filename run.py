@@ -43,7 +43,7 @@ while True:
 
 
 turns = 0
-functions.print_location(functions.current_location, 1)
+functions.print_location(1)
 game_in_progress = True
 
 while game_in_progress:

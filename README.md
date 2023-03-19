@@ -70,6 +70,11 @@ The game consists of 4 python files:
 * welcome.py, shows initial help and background at game starts
 * functions.py, the file where all the game logic takes place
 
+* The project uses two global variables. Maybe not ideal but I settled for that due to:
+  * They are used in many functions (and some functions called by other functions) so it made sense to me to have them as globals
+  * For the most part the functions only need to read the value of the global variable, so the risk of variable-value conflict is small
+  * The project does not rely on external libraries and/or frameworks so external "thing" will not introduce a variable of the same name
+  
 ## Data structures
 
 The game uses sets, lists, and dicts to keep track of everything the player do or tries
