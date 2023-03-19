@@ -72,7 +72,7 @@ objects = []
 verbs = []
 nouns = []
 
-current_location = 9  # start-location
+current_location = 14  # start-location
 verbosity = False
 # True=always print verbose text, False only at first visit. Altered by
 # verbose and brief functions
@@ -877,7 +877,7 @@ def use(noun):
             print("But you do not have any treasure.")
         elif locations[current_location]["south"] == 9:
             # the guard has already been bribed. No need to do it twice.
-            pr_str = "But the guard has already been bribed and"
+            pr_str = "But the guard has already been bribed and "
             pr_str += "is nowhere to be seen."
             print(pr_str)
         else:
@@ -922,7 +922,7 @@ def use(noun):
             # and you need to carry the rope
             print("But you do not have a rope.")
         else:
-            pr_str = "You tie the rope around the rock"
+            pr_str = "You tie the rope around the rock "
             pr_str += "and let the other end run down the cliffside."
             print(pr_str)
             locations[current_location]["down"] = 1
@@ -1004,7 +1004,7 @@ def examine(noun):
             # if rope has been used
             pr_str = "A long rope made of the finest Hithlain. Elven-made when"
             pr_str += "\nelves still roamed middle-earth. There is no way to "
-            pr_str += "get it back.\nIt is tied too"
+            pr_str += "get it back.\nIt is tied too "
             pr_str += "securely to the cliff for that."
             print(pr_str)
             return
@@ -1080,7 +1080,7 @@ def print_instructions():
     at game-start and if the player types help
     """
     rules = "Interactive fiction is purely text-based, and can be considered"
-    rules += "\na story where the player takes charge of the outcome rather"
+    rules += "\na story where the player takes charge of the outcome rather "
     rules += "than\njust reading along. The player moves around in the game by"
     rules += " issuing\ncommands. These commands consists of one or two words,"
     rules += " in a\nverb-noun pattern.\n\n"
@@ -1092,9 +1092,9 @@ def print_instructions():
     rules += "\nplayer can get further into the world displayed."
     print_yellow(rules)
     input("Press Enter to continue...")
-    rules = "A typical game is usually littered with information and objects"
+    rules = "A typical game is usually littered with information and objects "
     rules += "that \nthe player thinks might be important, but in the end "
-    rules += "serves only as\ndistractions."
+    rules += "serves only as\ndistractions or red herrings."
     rules += "\n\nEverything after a second word will be discarded. "
     rules += "If you enter a\ncommand such as "
     rules += '"inventory list" and the verb (inventory) does not'
@@ -1102,7 +1102,7 @@ def print_instructions():
     rules += "\nDirections are always entered with just the direction."
     rules += "That is, \nit is a one-word sentence."
     rules += " Either 'north' or 'n' will suffice.\n"
-    rules += "\nIn other words: everyting you need to do can be"
+    rules += "\nIn other words: everyting you need to do can be "
     rules += "accomplished by\neither a one or a "
     rules += "two-word command. Nothing fancier than that"
     rules += "\nis ever required.\n"
@@ -1119,7 +1119,7 @@ def print_instructions():
     rules += "\nSome examples of commands (not specific to this game to"
     rules += "\navoid spoilers):\n"
     rules += "\nInventory: lists what you are carrying"
-    rules += "\nExamine door: checks if there is something special"
+    rules += "\nExamine door: checks if there is something special "
     rules += "about the door."
     rules += "\nDepending on what you examine, other objects may be revealed."
     rules += "\nDrop book: drops the book into the current location"
