@@ -170,6 +170,12 @@ Theoretically the same could be done with the nouns and verbs, but in this examp
 The game has no external dependencies in form of libraries and frameworks.
 The only requirement is that python itself is at least version 3.10.
 
+The requirements.txt file does not necessarily reflect that. The dependencies listed there are
+installed in my local environment, but not used in this project.
+
+As far as deployment to heroku is concerned, it does not hurt to have them there.
+See further under deployment.
+
 # Flowcharts and discussion of game-logic
 
 To be added
@@ -177,35 +183,38 @@ To be added
 # Technologies used
 
 Python
-Gitpod and GitHub Desktop as IDE
+Gitpod
+GitHub Desktop as IDE
 
 # Deployment
 
-All code entered into its respective file from within gitpod.
+All code entered into its respective file from within gitpod. At first deployment. After that, everything was done
+using notepad++ and GitHub Desktop. 
 
-The source is hosted at github and deployed using the publicly availabe git-hube page of https://github.com/jonthorell/PirateIsland
+The source is hosted at github and deployed using the publicly availabe github page of https://github.com/jonthorell/PirateIsland
 
-## Deployment to GitHub Pages
+## Deployment to Heroku
 
-NOTE: The game can of course not run from there. It is used as storage-area for files needed by this readme.
+In order to deploy something to Heroku, several steps needs to be taken care of.
 
-The site was deployed to GitHub pages. The steps to deploy are as follows:
+This is taken for granted that the project is already hosted at GitHub.
 
-- In the GitHub repository, navigate to the Settings tab
-- From the menu on left select 'Pages'
-- From the source section drop-down menu, select the Branch: main
-- Click 'Save'
-- A live link will be displayed in a green banner when published successfully.
-
-Changes in the code is regularily pushed into the repository using:
+Code changes are regularily pushed into that repository using either Github Desktop or the cli command git using:
 
 * git add .
 * git commit -m "commit message"
 * git push
 
-## Deployment to Heroku
+The steps for deployment to Heroku are:
 
-TO-BE-ADDED
+1. Create an account at Heroku.
+2. Create an app in Heroku, with a unique name and a region
+3. Under settings, create an environment variable with the name PORT and value of 8000
+4. This project does not need it, but if it did: create a variable with the name creds and the credential needed to access external resources.
+5. Create the buildpacks. For this project, python and nodejs (in that order)
+6. Under deployment, connect the github account to the heroku-account
+7. Under deployment method, connect the app to the correct github repository
+8. Decide if you want the deployment to be automatic or manual.
 
 # Testing
 
