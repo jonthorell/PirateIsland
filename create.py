@@ -721,7 +721,7 @@ def createVerbs(verbs):
     verbs.append(data)
     data = {
         "ID": 22,
-        "verb": "clear"
+        "verb": "cheat"
     }
     verbs.append(data)
     data = {

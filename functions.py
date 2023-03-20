@@ -3,8 +3,8 @@ Initial declarations in functions.py
 """
 import os
 
-os.system("")  # enables ansi escape characters in terminal
-os.system("cls")  # clears the console
+# os.system("")  # enables ansi escape characters in terminal
+# os.system("cls")  # clears the console. 
 
 COLOR = {
     # used by the print_green etc functions to refer to the color by name.
@@ -53,7 +53,7 @@ verbset = {
     "brief",
     "open",
     "break",
-    "clear",
+    "cheat",
     "quit",
     "instructions",
     "exits",
@@ -241,7 +241,12 @@ def check_input(verb, noun, name):
         case 21:  # break
             v_break(noun)
         case 22:  # clear
-            os.system("cls")  # clears the console
+            # os.system("cls")  # clears the console
+            # this was used in my local installation
+            # remains here as a reminder to me
+            # not necessary in deployment so add
+            # something "funny" here instead
+            print_red("What kind of low-life would cheat in game?!?")
         case 23:  # exits
             print_direction()
         case 24:
