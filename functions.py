@@ -1,10 +1,7 @@
 """
 Initial declarations in functions.py
 """
-import os
 
-# os.system("")  # enables ansi escape characters in terminal
-# os.system("cls")  # clears the console. 
 
 COLOR = {
     # used by the print_green etc functions to refer to the color by name.
@@ -799,7 +796,7 @@ def v_open(noun):
             print("The door is locked.")
         elif locations[current_location]["east"] == -1:
             pr_str = "You open the door. The hinges were bad "
-            pr_str += "apparently so the door falls down onto "
+            pr_str += "apparently so the door falls down\nonto "
             pr_str += "the ground."
             print(pr_str)
             locations[current_location]["east"] = 16
