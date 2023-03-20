@@ -237,12 +237,9 @@ def check_input(verb, noun, name):
             v_open(noun)
         case 21:  # break
             v_break(noun)
-        case 22:  # clear
-            # os.system("cls")  # clears the console
-            # this was used in my local installation
-            # remains here as a reminder to me
-            # not necessary in deployment so add
-            # something "funny" here instead
+        case 22:  # cheat
+            # something "funny" to replace a function
+            # only necessary on my local machine
             print_red("What kind of low-life would cheat in game?!?")
         case 23:  # exits
             print_direction()
