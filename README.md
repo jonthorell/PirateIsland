@@ -211,10 +211,13 @@ The steps for deployment to Heroku are:
 2. Create an app in Heroku, with a unique name and a region
 3. Under settings, create an environment variable with the name PORT and value of 8000
 4. This project does not need it, but if it did: create a variable with the name creds and the credential needed to access external resources.
-5. Create the buildpacks. For this project, python and nodejs (in that order)
-6. Under deployment, connect the github account to the heroku-account
-7. Under deployment method, connect the app to the correct github repository
-8. Decide if you want the deployment to be automatic or manual.
+5. In your gitpod/github repository, do: pip freeze > requirements.txt to add the requirements needed to build the project at heroku.
+6. Things installed locally will be added to the requirements file, to make sure everything necessary will be available.
+7. This might include things not necessarily referenced, but it will make sure the build will be complete.
+8. Create the buildpacks. For this project, python and nodejs (in that order)
+9. Under deployment, connect the github account to the heroku-account
+10. Under deployment method, connect the app to the correct github repository
+11. Decide if you want the deployment to be automatic or manual. That is a matter of preference. For now, I have opted to make it manual.
 
 # Testing
 
