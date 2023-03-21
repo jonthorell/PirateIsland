@@ -79,7 +79,7 @@ The game consists of 4 python files:
 
 The flowchart for run.py looks like this:
 
-![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_run.png?raw=true)
+![flowchart-run.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_run.png?raw=true)
 
 As can be seen from the flowchart, control is passed to functions.py in two places.
 
@@ -87,8 +87,13 @@ First to split the input into one verb and possibly a noun as well.
 
 The flowchart for that function looks like this:
 
-![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.png?raw=true)
+![flowchart-parser](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.png?raw=true)
 
+Secondly, to check the input. It validates what the user typed and what to do with that information.
+
+The flowchart for that is as follows:
+
+![flowchart-check-input](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_check_input.png?raw=true)
 
 ## Data structures
 
