@@ -361,7 +361,7 @@ The nested if-clause checks if the chest has been opened already or not. That ca
 doubt be accomplished in other ways as well. In this case, the easiest way of checking
 it was to see if the key (object id 20) had been made visible or not. When it is false,
 the chest is unopened. As soon as the chest has been opened, the key is made visible
-and thus the else-statement is triggered.
+and thus the else-statement is triggered if one tries to open the chest again.
 
 The elif-statement checks for the next combination of location and noun where the player
 might try opening something. If the developer thinks of something else the player might
@@ -386,9 +386,10 @@ See further under deployment.
 
 # Technologies used
 
-Python
-Gitpod
-GitHub Desktop as IDE
+* Python
+* Gitpod
+* GitHub Desktop as IDE
+* Heroku
 
 # Deployment
 
@@ -425,13 +426,53 @@ The steps for deployment to Heroku are:
 
 # Testing
 
-## Code
+Most functions can be tested in isolation. That is, the functions that corresponds to a specific verb.
 
-TO-BE-ADDED
+The helper-functions can not though. Especially not parser(), check_input(), get_noun_by_id(), and requires_noun()
 
-## Game-play
+parser() and check_input() were the two first functions written. They were actually written outside of project scope at first
+to get the hang on string-handling. And without being in a function at the time.
 
-TO-BE-ADDED
+As such, a lot of print-statements were used to make sure the variables got the values I expected. 
+
+* parser()
+
+1. Checked value of string2 after all occurenes of " the " had been removed (and other determiners)
+2. Checked he contents of the variable verb after the first split.
+3. Checked the "reminder" after the first split
+4. Checked if no_of_words is what it should be (either 1 or 2)
+5. Checked the values of i and noun at every iteration of the loop
+6. When converted to a function, check that the returned tuple contains the verb in [0]
+7. And the noun in [1]. Except if only word was entered, then [1] should contain "None"
+
+After testing with input strings of different lengths when it comes to the number of words I am confident that the
+returned tuple will always be a one-word verb in [0] and a one-word noun in [1]
+
+* check_input()
+
+1. Print the value of array_id and verb at every step in the loop
+2. Compare with the excel sheet if the values match. That is, if the verb is north the array_id should be 5.
+3. In the match/case statements, print some easily recognized text in the function called. Like so:
+
+```python
+case 6:  # go south
+            go_south()
+```
+
+```python
+
+def go_south():
+	print("Go south function")
+
+```
+
+Do that for every verb. When you get the correct output for every verb, you know the check_input() function
+works as intended and you can add functionality to the verb-functions.
+
+
+
+
+
 
 # Bugs encountered and fixed
 
