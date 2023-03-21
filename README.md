@@ -81,6 +81,15 @@ The flowchart for run.py looks like this:
 
 ![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_run.png?raw=true)
 
+As can be seen from the flowchart, control is passed to functions.py in two places.
+
+First to split the input into one verb and possibly a noun as well.
+
+The flowchart for that function looks like this:
+
+![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.pngraw=true)
+
+
 ## Data structures
 
 The game uses sets, lists, and dicts to keep track of everything the player do or tries
@@ -117,10 +126,24 @@ Locations are defined like this:
 
 data = {
         "brief": "You are the top of a cliff.",
+		# Short description of the location. Shown when
+		# player re-visits a place
         "verbose": "Long description",
+		# Long description of the location.
+		# Shown on first visit or when player uses the verb look
         "outdoors": True,
+		# Is the location outdoors?
+		# It never got used in this game but the intention at first
+		# was to have some random events happening only when the
+		# player is outdoors.
+		# Left it in place in case I want to add it later on
         "visited": False,
+		# Has the player visited the place before? Used to
+		# determine if brief or verbose should be printed
         "east": 0,
+		# Value 0: player can not go that way
+		# Value >0: if going east, move to that
+		# location
         "west": 0,
         "south": 6,
         "north": 0,
@@ -136,12 +159,30 @@ And objects like this:
 
 data = {
         "ID": 2,
+		# id: used in if/elif statements
         "noun": "bottle",
+		# the noun in cleartext.
         "description": "a dirty old bottle",
+		# what is printed in "You can see:" or
+		# in inventory
         "exam": exam,
+		# The text printed when player examines the
+		# object. In this case, the value of
+		# variable exam
         "location": 4,
+		# in which location is the object
+		# -1 = being carried
         "gettable": True,
+		# can it be picked up?
         "visible": True
+		# is it visible?
+		# used in two ways:
+		# 1 a object can be invisible until the player has done
+		# something else first. 
+		# 2 The object is immovable and described in the verbose text
+		# of the location. It is still an object though than can be
+		# examined. In order for it to not show up in "You can see:"
+		# as well, it needs to be invisible
     }
 
 ```
