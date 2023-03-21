@@ -189,7 +189,7 @@ See the comments in the code for how it works.
 
 Flowchart for a generic multi-word funcion looks like this:
 
-
+![flowchart-verb-noun](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/verb_noun_function.png?raw=true)
 
 ## Data structures
 
