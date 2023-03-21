@@ -75,6 +75,12 @@ The game consists of 4 python files:
   * For the most part the functions only need to read the value of the global variable, so the risk of variable-value conflict is small
   * The project does not rely on external libraries and/or frameworks so external "thing" will not introduce a variable of the same name
   
+## Flowcharts and discussion of game-logic
+
+The flowchart for run.py looks like this:
+
+![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_run.png?raw=true)
+
 ## Data structures
 
 The game uses sets, lists, and dicts to keep track of everything the player do or tries
@@ -176,10 +182,6 @@ installed in my local environment, but not used in this project.
 As far as deployment to heroku is concerned, it does not hurt to have them there.
 See further under deployment.
 
-# Flowcharts and discussion of game-logic
-
-To be added
-
 # Technologies used
 
 Python
@@ -211,8 +213,8 @@ The steps for deployment to Heroku are:
 2. Create an app in Heroku, with a unique name and a region
 3. Under settings, create an environment variable with the name PORT and value of 8000
 4. This project does not need it, but if it did: create a variable with the name creds and the credential needed to access external resources.
-5. In your gitpod/github repository, do: pip freeze > requirements.txt to add the requirements needed to build the project at heroku.
-6. Things installed locally will be added to the requirements file, to make sure everything necessary will be available.
+5. In gitpod (or locally if you prefer to work that way), do: pip freeze > requirements.txt to add the requirements needed to build the project at heroku.
+6. Things installed, if any, locally will be added to the requirements file, to make sure everything necessary will be available when deployed.
 7. This might include things not necessarily referenced, but it will make sure the build will be complete.
 8. Create the buildpacks. For this project, python and nodejs (in that order)
 9. Under deployment, connect the github account to the heroku-account
