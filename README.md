@@ -67,13 +67,13 @@ The game consists of 4 python files:
 
 * run.py, starts the game and initializes everything. The main game loop is also here
 * create.py, creates the lists and dicts the game uses to keep track of things
-* welcome.py, shows initial help and background at game starts
+* welcome.py, shows initial help and background at game start
 * functions.py, the file where all the game logic takes place
 
 * The project uses two global variables. Maybe not ideal but I settled for that due to:
   * They are used in many functions (and some functions called by other functions) so it made sense to me to have them as globals
   * For the most part the functions only need to read the value of the global variable, so the risk of variable-value conflict is small
-  * The project does not rely on external libraries and/or frameworks so external "thing" will not introduce a variable of the same name
+  * The project does not rely on external libraries and/or frameworks so external "things" will not introduce a variable of the same name
   
 ## Flowcharts and discussion of game-logic
 
@@ -81,19 +81,34 @@ The flowchart for run.py looks like this:
 
 ![flowchart-run.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_run.png?raw=true)
 
-As can be seen from the flowchart, control is passed to functions.py in two places.
+As can be seen from the flowchart, control is passed to functions.py in three places.
 
-First to split the input into one verb and possibly a noun as well.
+First when it is imported from run.py. This essentially "creates" the functions and initial values of some variables.
+
+Secondly, to split the input into one verb and possibly a noun as well.
 
 The flowchart for that function looks like this:
 
 ![flowchart-parser](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.png?raw=true)
 
-Secondly, to check the input. It validates what the user typed and what to do with that information.
+Finally, to check the input. It validates what the user typed and what to do with that information.
 
 The flowchart for that is as follows:
 
 ![flowchart-check-input](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_check_input.png?raw=true)
+
+## Functions
+
+* run.py has no functions. It only calls functions in the other files.
+* welcome.py has three functions.
+		- welcome(), prints a welcome message
+		- hint(), prints a hint about the verbs command
+		- print_intro(), sets the background story of the game
+* create.py has four functions
+		- createObjects(), creates all objects the user can interact with
+		- createNouns(), creates all the nouns the game understands
+		- createVerbs(), creates all the verbs the game understands
+		- createLocations(), creates all the locations the player can visit
 
 ## Data structures
 
