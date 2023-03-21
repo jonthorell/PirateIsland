@@ -159,6 +159,37 @@ The function for a verb that requires a noun takes the noun as a parameter, like
 def read(noun)
 
 ```
+At the start of every multi-word-function the following code is executed:
+
+```python
+
+	result = get_noun_by_id(noun)
+    match = result[0]
+	# gets the id of the noun entered by comparing what was entered
+	# with the combined noun list/dict
+	# Returns zero if the noun is not found in the list
+    error = requires_noun(noun)
+	# Function requires_noun() prints "This verb requires a noun" if none was entered and returns True
+    if error:
+        return
+        # if error is true, no noun was entered. Return to prompt
+    if match == 0:
+        error = "I don't know how to examine that, mate."
+        error += 'What is a "' + noun + '"?'
+        print_red(error)
+		# no match, so print a message that the game has no idea of what to do and return to prompt
+        return
+    else:
+        noun_id = result[1]
+		# the id of the noun is returned as the second item of a tuple, so that can be used in an if-statement
+
+```
+
+See the comments in the code for how it works.
+
+Flowchart for a generic multi-word funcion looks like this:
+
+
 
 ## Data structures
 
