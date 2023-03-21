@@ -101,14 +101,14 @@ The flowchart for that is as follows:
 
 * run.py has no functions. It only calls functions in the other files.
 * welcome.py has three functions.
-		- welcome(), prints a welcome message
-		- hint(), prints a hint about the verbs command
-		- print_intro(), sets the background story of the game
+    - welcome(), prints a welcome message
+    - hint(), prints a hint about the verbs command
+    - print_intro(), sets the background story of the game
 * create.py has four functions
-		- createObjects(), creates all objects the user can interact with
-		- createNouns(), creates all the nouns the game understands
-		- createVerbs(), creates all the verbs the game understands
-		- createLocations(), creates all the locations the player can visit
+    - createObjects(), creates all objects the user can interact with
+    - createNouns(), creates all the nouns the game understands
+    - createVerbs(), creates all the verbs the game understands
+    - createLocations(), creates all the locations the player can visit
 
 ## Data structures
 
