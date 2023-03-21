@@ -156,13 +156,14 @@ The function for a verb that requires a noun takes the noun as a parameter, like
 
 ```python
 
-def read(noun)
+def read(noun):
 
 ```
 At the start of every multi-word-function the following code is executed:
 
 ```python
-
+	
+	# code block 1
 	result = get_noun_by_id(noun)
     match = result[0]
 	# gets the id of the noun entered by comparing what was entered
@@ -190,6 +191,11 @@ See the comments in the code for how it works.
 Flowchart for a generic multi-word funcion looks like this:
 
 ![flowchart-verb-noun](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/verb_noun_function.png?raw=true)
+
+The verb-specific logic also needs to be adressed. It is quite similar for every verb. The code itself is not hard to follow
+or understand. It is basically only a bunch of if/elif/else statements per function.
+
+What is necessary to understand is how to build those statements. It is not hard, but we first need to discuss the data-structures.
 
 ## Data structures
 
@@ -312,8 +318,62 @@ Updates the exam-text of object 2 if it gets broken somehow.
 
 Theoretically the same could be done with the nouns and verbs, but in this example game it is not utilized.
 
+## if/elif/else per function
 
-## Requirements
+So with all that in mind, how does one build the logic in how the verbs work?
+
+The "problem" lies in figuring out which variables and/or list/dicts needs to be compared for the logic to make sense.
+
+An example to illustrate.
+
+Open chest
+
+Naturally, this takes place in the v_open(noun) function.
+
+```python
+
+if current_location == 7 and noun_id == 1:
+        if objects[20]["visible"] is False:
+            pr_str = "With great effort, you open the chest."
+            pr_str += "Inside it you find a small key."
+            print(pr_str)
+            objects[20]["visible"] = True
+        else:
+            print("But the chest is already open.")
+elif current_location == 8 and noun_id == 19:
+		print("You can not open the gate.")
+else:
+		print("I'm sorry, I don't know how to open that.")
+```
+
+That code is added just below the code earlier marked with code block 1.
+
+The chest can not be moved so it is always at location 7, as defined in the object.
+The noun entered was chest, which is noun_id 1. Noun_id and the object must have
+the same ID for this logic to work. There is an excel-file within the readme-files
+folder that I used to keep track of it. As mentioned elsewhere, if you have two
+nouns defined with the same ID they are treated as synonyms.
+
+So, line 1 of this code-block checks whether the player is at location 7 (see map)
+and used noun_id 7, which corresponds to the chest.
+
+The nested if-clause checks if the chest has been opened already or not. That can no
+doubt be accomplished in other ways as well. In this case, the easiest way of checking
+it was to see if the key (object id 20) had been made visible or not. When it is false,
+the chest is unopened. As soon as the chest has been opened, the key is made visible
+and thus the else-statement is triggered.
+
+The elif-statement checks for the next combination of location and noun where the player
+might try opening something. If the developer thinks of something else the player might
+try to open, just add another elif into the mix.
+
+Finally, an else to make sure the player always gets some feedback even if it is just
+to let them know they onto the wrong track.
+
+Every verb-function work in the same way. The only difference is in what to check for
+in the if-clauses.
+
+# Requirements
 
 The game has no external dependencies in form of libraries and frameworks.
 The only requirement is that python itself is at least version 3.10.

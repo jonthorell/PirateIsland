@@ -787,6 +787,8 @@ def v_open(noun):
             objects[20]["visible"] = True
         else:
             print("But the chest is already open.")
+    elif current_location == 8 and noun_id == 19:
+        print("The gate refuses to open.")
     elif current_location == 15 and noun_id == 13:
         if locations[current_location]["east"] == 0:
             # east will be updated when the door is open
