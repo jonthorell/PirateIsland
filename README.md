@@ -87,7 +87,7 @@ First to split the input into one verb and possibly a noun as well.
 
 The flowchart for that function looks like this:
 
-![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.pngraw=true)
+![map](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/flowchart_parser.png?raw=true)
 
 
 ## Data structures
