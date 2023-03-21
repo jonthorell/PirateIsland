@@ -437,42 +437,45 @@ As such, a lot of print-statements were used to make sure the variables got the 
 
 * parser()
 
-1. Checked value of string2 after all occurenes of " the " had been removed (and other determiners)
-2. Checked he contents of the variable verb after the first split.
-3. Checked the "reminder" after the first split
-4. Checked if no_of_words is what it should be (either 1 or 2)
-5. Checked the values of i and noun at every iteration of the loop
-6. When converted to a function, check that the returned tuple contains the verb in [0]
-7. And the noun in [1]. Except if only word was entered, then [1] should contain "None"
+    1. Checked value of string2 after all occurenes of " the " had been removed (and other determiners)
+    2. Checked he contents of the variable verb after the first split.
+    3. Checked the "reminder" after the first split
+    4. Checked if no_of_words is what it should be (either 1 or 2)
+    5. Checked the values of i and noun at every iteration of the loop
+    6. When converted to a function, check that the returned tuple contains the verb in [0]
+    7. And the noun in [1]. Except if only word was entered, then [1] should contain "None"
 
-After testing with input strings of different lengths when it comes to the number of words I am confident that the
-returned tuple will always be a one-word verb in [0] and a one-word noun in [1]
+    After testing with input strings of different lengths when it comes to the number of words I am confident that the
+    returned tuple will always be a one-word verb in [0] and a one-word noun in [1]
 
 * check_input()
 
-1. Print the value of array_id and verb at every step in the loop
-2. Compare with the excel sheet if the values match. That is, if the verb is north the array_id should be 5.
-3. In the match/case statements, print some easily recognized text in the function called. Like so:
+    1. Print the value of array_id and verb at every step in the loop
+    2. Compare with the excel sheet if the values match. That is, if the verb is north the array_id should be 5.
+    3. In the match/case statements, print some easily recognized text in the function called. Like so:
 
-```python
-case 6:  # go south
-            go_south()
-```
+    ```python
+    case 6:  # go south
+                go_south()
+    ```
 
-```python
+    ```python
 
-def go_south():
-	print("Go south function")
+    def go_south():
+    	print("Go south function")
 
-```
+    ```
 
-Do that for every verb. When you get the correct output for every verb, you know the check_input() function
-works as intended and you can add functionality to the verb-functions.
+    Do that for every verb. When you get the correct output for every verb, you know the check_input() function
+    works as intended and you can add functionality to the verb-functions.
 
+* get_noun_by_id()
 
+    add
 
+* requires_noun()
 
-
+    add
 
 # Bugs encountered and fixed
 
