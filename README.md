@@ -110,10 +110,41 @@ The flowchart for that is as follows:
     - createVerbs(), creates all the verbs the game understands
     - createLocations(), creates all the locations the player can visit
 * functions.py has 35 verbs. One for each verb the game understands as well as some helper-functions. The complete list is (without parameters):
-    - 	print_green()
-		prints text in green
-    -	print_header()
-		prints text in header color
+    - 	print_green(), prints text in green
+    -	print_header(), prints text in header color
+	-	print_blue(), prints text in blue
+	-	print_red(), prints text in red
+	-	print_cyan(), prints text in cyan
+	-	print_yellow(), prints text in yellow
+	-	parser(), splits input into verb and noun
+	-	check_input(), checks if input is valid and redirects to correct verb-function.
+	-	print_verbs(), prints a list of available verbs
+	-	print_location(), prints the current location
+	-	print_direction(), prints which ways the player can move
+	-	set_verbose(), turn on verbose mode
+	-	set_brief(), turn off verbose mode
+	-	inventory(), print what the player is carrying
+	-	you_can_see(), prints what is available at the current location
+	-	go_west(), go west
+	-	go_east(), go east
+	-	go_south(), go south
+	-	go_north(), go down
+	-	go_up(), go up
+	-	go_down(), go down
+	-	hint(), shows a small hint at some locations
+	-	wear(), lets the player wear some items
+	-	remove(), lets the player "unwear" some items
+	-	dead(), used when the player dies. Ends the game
+	-	read(), lets the player read some items
+	-	v_break(), lets the player break some things
+	-	get_noun_by_id(), returns id of noun player entered. Used in if/elif/else clauses
+	-	get(), lets the player pick up certain things
+	-	drop(), lets the player drop some things
+	-	v_open(), lets the player open some things
+	-	use(), lets the player use some things
+	-	examine(), lets the player examine some things
+	-	print_instructions(), prints the "manual"
+	-	requires_noun(), used from verb-functions where the player must enter a noun
 
 ## Data structures
 
