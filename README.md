@@ -145,6 +145,20 @@ The flowchart for that is as follows:
 	-	examine(), lets the player examine some things
 	-	print_instructions(), prints the "manual"
 	-	requires_noun(), used from verb-functions where the player must enter a noun
+	
+The general flowcharts above should be sufficient to understand the basic logic of how the code works.
+
+However, one additional is necessary. That is for the verbs that require a noun. The verbs that do not
+require a noun only ignores everything after the first space character, which means that a nonsense 
+sentence like "north is the new orange" is treated as if the player just typed north.
+
+The function for a verb that requires a noun takes the noun as a parameter, like so:
+
+```python
+
+def read(noun)
+
+```
 
 ## Data structures
 
