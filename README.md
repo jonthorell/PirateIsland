@@ -109,6 +109,11 @@ The flowchart for that is as follows:
     - createNouns(), creates all the nouns the game understands
     - createVerbs(), creates all the verbs the game understands
     - createLocations(), creates all the locations the player can visit
+* functions.py has 35 verbs. One for each verb the game understands as well as some helper-functions. The complete list is (without parameters):
+    - 	print_green()
+		prints text in green
+    -	print_header()
+		prints text in header color
 
 ## Data structures
 
