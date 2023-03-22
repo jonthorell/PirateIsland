@@ -27,6 +27,10 @@ Three screenshots to give a better idea of how it might look like:
 ![island2](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island2.PNG?raw=true)
 ![island3](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/island3.PNG?raw=true)
 
+The game is live here:
+
+https://pirate-island.herokuapp.com/
+
 # Scope
 
 The game can be solved, but is deliberately limited in size. Both when it comes to the number of "rooms" the player can visit and
@@ -498,8 +502,6 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	
     * ship ship 15 True 1
 	
-    1. Test
-	
 	On the other hand, if an unknown noun is entered you will get this:
 	
 	* sand gandalf 23 False 0
@@ -517,12 +519,61 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	
 	The most important thing to check here is regarding synonyms.
 	
-	"examine house" and "examine building" should return noun_id 12 (which it does).
+	"examine house" and "examine building" should both return noun_id 12 (which it does).
 
 * requires_noun()
 
     This one is easy to check. The code with the comment "code block 1" should be included in every funcion that requires a noun. If it has been left out in say examine(),
 	the player would not get "But this verb requires a noun!" if they try examine on its own.
+	
+The verb-specific verb-functions() can and was tested more-or-less in isolation. That is, the different conditions for a verb can be tested one by one.
+To continue with the example of "Open chest". There are two conditions apart from using the correct noun.
+
+1. The player is at the	correct location.
+2. Whether or not it has been opened already.
+
+So, what is needed is to test:
+
+1. What happens if one tries to open it at some other location?
+2. Is the object updated as it should so the chest can be opened only once?
+
+The chest is relatively straight-forward. But the key in it is needed to unlock a door.
+
+In that case, it needs to be checked:
+
+1. Do the player have the key?
+2. Is the player at the correct location?
+3. Has the door been unlocked already?
+4. Has the door been opened already?
+
+Same thing here regarding which objects are being manipulated to indicate if the player has successfully done each step along
+the way.  
+
+Repeat for every verb and every condition. In the case of opening the door, two verbs are involved so both functions obviously needs
+to be checked. And both verbs have other conditions as well that may trigger something else. 
+
+Therefore, it is probably a good idea to have a notebook ready to write down things that does not do what is to be expected and look
+further into the code and see where the problem could be.
+
+One very likely suspect is when you check for values for an object that can not be refered to by noun_id.
+
+Like this:
+
+```python
+if objects[6]["visible"] is False:
+objects[6]["visible"] = True
+```
+
+Make sure the [6] is refering to the correct item. Both in the if-statement and the assign-statement. And especially that it
+is the same object!
+
+It is timeconsuming but since the code needed for the conditions is pretty similar everywhere some bugs can sometimes be spotted
+by just looking at the code without actually testing. It should, of course, be tested anyway.
+
+In order to speed up testing, it is easy enough to alter the initial values. That is, to make sure the player starts at the
+correct location and already with the key in his/her possession.
+
+And finally, play through it from start to finish so one is sure that the game actually can be finished. 
 
 # Bugs encountered and fixed
 
@@ -549,6 +600,9 @@ the affected verb-functions.
 
 9. Some output (read: a lot) did not take the 80-column width into enough consideration. Most, if not all, of those should be fixed by now. If it has been missed somewhere it may look odd whenever
 that is printed to the console, but it does not affect functionality in any way.
+
+10. One bug showed up when deployed to Heroku. An oversight really, since I had some special code in place to get ansi-colors to work in the standard cmd.exe console in windows. Which, of course, is not
+needed on a linux-machine so an error popped up. The game was still playable though, but it did not look good with that error. Removed the offending code since it was not necessary anymore.
 
 # Remaining bugs
 
