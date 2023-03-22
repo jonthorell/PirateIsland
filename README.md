@@ -579,6 +579,10 @@ by just looking at the code without actually testing. It should, of course, be t
 In order to speed up testing, it is easy enough to alter the initial values. That is, to make sure the player starts at the
 correct location and already with the key in his/her possession.
 
+If it is not immediately obvious where the bug is, a recommendation is to add some print statements that prints the values of
+for example current_location, noun, verb, the object dict the code is working with, and whatever else may provide clues to what
+goes wrong.
+
 And finally, play through it from start to finish so one is sure that the game actually can be finished. 
 
 # Bugs encountered and fixed
