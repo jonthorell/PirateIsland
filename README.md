@@ -496,7 +496,6 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	
 	The output when a correct noun is input should be like this (assuming the noun is ship in this example):
 	* ship ship 15 True 1
-	
     1 First ship is what was found in the list
     2 Second ship is what was actually typed
     3 15 is the noun_id
