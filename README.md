@@ -502,6 +502,12 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	
     * ship ship 15 True 1
 	
+	1. First ship is what was found in the list
+	2. Second ship is what was actually typed by the player
+	3. 15 is the noun_id
+	4. True is because the entry in the list and what was typed corresponds
+	5. Consequently, the return value is 1.
+	
 	On the other hand, if an unknown noun is entered you will get this:
 	
 	* sand gandalf 23 False 0
@@ -631,11 +637,6 @@ There were some issues left that I fixed manually, mostly due to line-lengths.
 ![linter-functions.py](https://github.com/jonthorell/PirateIsland/blob/main/readme-files/functions_py_check.PNG?raw=true)
 
 The original functions.py is stored in readme-files in case it is not okay to use the "black" tool.
-
-# To-do
-
-1. Change all output so it will fit in 80-columns.
-
 
 # Credits
 
