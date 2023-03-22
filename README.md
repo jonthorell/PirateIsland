@@ -497,7 +497,8 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	The output when a correct noun is input should be like this (assuming the noun is ship in this example):
 	
     * ship ship 15 True 1
-    Test
+	
+    1. Test
 	
 	On the other hand, if an unknown noun is entered you will get this:
 	
