@@ -298,6 +298,7 @@ def print_direction():
     up = locations[current_location]["up"]
     down = locations[current_location]["down"]
     # Add the different locations to the string
+    # Everything >0: you can go that way
     if east > 0:
         mydirs += "East "
     if west > 0:
@@ -941,7 +942,7 @@ def use(noun):
             new_verbose += " see a path dwindling\nsouth towards "
             new_verbose += "what seems to be a harbour. There"
             new_verbose += " is a huge piece of rock jutting"
-            new_verbose += "out of what looks to be granite"
+            new_verbose += " out of what looks to be granite"
             new_verbose += ", although you can not be sure."
             new_verbose += " You \nare, after all, a pirate "
             new_verbose += "and not a geologist."
@@ -975,7 +976,7 @@ def examine(noun):
         # skeleton
         if objects[6]["visible"] is False:
             pr_str = "When you examine what remains of the skeletons"
-            pr_str += "clothing, you\ndiscover a piece of paper and "
+            pr_str += " clothing, you\ndiscover a piece of paper and "
             pr_str += "an ID-card."
             print(pr_str)
             objects[6]["visible"] = True
