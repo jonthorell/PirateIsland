@@ -471,11 +471,61 @@ As such, a lot of print-statements were used to make sure the variables got the 
 
 * get_noun_by_id()
 
-    add
+	```python
+    def get_noun_by_id(noun):
+    """
+    Function get_noun_by_id() finds the id of the noun the player
+    typed and returned back to the calling function, where it is
+    used in if-else caulses to see if what the player tried to do
+    makes sense
+    """
+    match = 0  # initial value. If still 0 at end of loop, no match
+    for i in range(len(nouns)):
+        curr_noun = nouns[i]
+        array_noun = curr_noun["noun"]
+        array_id = curr_noun["ID"]
+        if array_noun == noun:
+            match = 1
+            print(array_noun,noun,array_id,array_noun == noun,match)
+            return match, array_id
+    print(array_noun,noun,array_id,array_noun == noun,match)
+    return match, array_id
+	```
+	
+	If the get_noun_by_id() is temporarily changed like this, one can see what is returned.
+	
+	The output when a correct noun is input should be like this (assuming the noun is ship in this example):
+	* ship ship 15 True 1
+	
+	1 First ship is what was found in the list
+	2 Second ship is what was actually typed
+	3 15 is the noun_id
+	4 True is because the entry in the list and what was typed corresponds
+	5 1 is the value returned, based upon whether 1 and 2 match or not.
+	
+	On the other hand, if an unknown noun is entered you will get this:
+	
+	* sand gandalf 23 False 0
+	
+	1. sand is the last noun defined.
+	2. gandalf is what was actually entered in the input
+	3. 23 is the ID of the last defined noun (sand)
+	4. The value is False since "sand" and "gandalf" does not match
+	5. Consequently, the return value is 0.
+	
+	When those values are checked from the calling function (say v_open), what happens is:
+	
+	1. If match == 0, the noun is not recognized. "What is a _insert_noun_" is printed to the console, and returns to the prompt. In this case, the noun_id is irrelevant since it will never be checked.
+	2. Otherwise, return the id to be used in if/else statements.
+	
+	The most important thing to check here is regarding synonyms.
+	
+	"examine house" and "examine building" should return noun_id 12 (which it does).
 
 * requires_noun()
 
-    add
+    This one is easy to check. The code with the comment "code block 1" should be included in every funcion that requires a noun. If it has been left out in say examine(),
+	the player would not get "But this verb requires a noun!" if they try examine on its own.
 
 # Bugs encountered and fixed
 
