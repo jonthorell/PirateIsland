@@ -498,15 +498,11 @@ As such, a lot of print-statements were used to make sure the variables got the 
 	
 	* ship ship 15 True 1
 	
-	1 First ship is what was found in the list
-	
-	2 Second ship is what was actually typed
-	
-	3 15 is the noun_id
-	
-	4 True is because the entry in the list and what was typed corresponds
-	
-	5 1 is the value returned, based upon whether 1 and 2 match or not.
+	    1 First ship is what was found in the list
+	    2 Second ship is what was actually typed
+	    3 15 is the noun_id
+	    4 True is because the entry in the list and what was typed corresponds
+	    5 1 is the value returned, based upon whether 1 and 2 match or not.
 	
 	
 	On the other hand, if an unknown noun is entered you will get this:
